@@ -108,6 +108,45 @@ export default function Home() {
           </p>
         </a>
       </div>
+      <div className="flex-col justify-center text-center">
+        <h3 class="font-bold text-lg mb-4">
+          Color Palette (With Black and White)
+        </h3>
+        <table class="w-full border-collapse">
+          <tbody>
+            <tr>
+              <td class="bg-ucalgaryRed text-white p-4 font-bold">
+                ucalgaryRed
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-ucalgaryGold text-black p-4 font-bold">
+                ucalgaryGold
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-ucalgaryLightOrange text-black p-4 font-bold">
+                ucalgaryLightOrange
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-ucalgaryDarkOrange text-white p-4 font-bold">
+                ucalgaryDarkOrange
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-ucalgaryLightGrey text-black p-4 font-bold">
+                ucalgaryLightGrey
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-ucalgaryDarkGrey text-white p-4 font-bold">
+                ucalgaryDarkGrey
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
   );
 }

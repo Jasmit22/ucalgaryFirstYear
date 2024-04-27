@@ -13,12 +13,12 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        ucalgaryRed: "#d6001c",
-        ucalgaryGold: "#ffcd00",
-        ucalgaryLightOrange: "#ffa300",
-        ucalgaryDarkOrange: "#ff671f",
-        ucalgaryLightGrey: "#c7c8ca",
-        ucalgaryDarkGrey: "#6d6e71",
+        ucalgaryRed: "#D5011D",
+        ucalgaryGold: "#FCCB01",
+        ucalgaryLightOrange: "#FBA203",
+        ucalgaryDarkOrange: "#FC6721",
+        ucalgaryLightGrey: "#C8C9CB",
+        ucalgaryDarkGrey: "#6E6F71",
       },
       height: {
         128: "32rem",

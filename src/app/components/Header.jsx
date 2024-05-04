@@ -8,7 +8,7 @@ export default function header() {
     <header>
       <nav className="flex items-center justify-between bg-ucalgaryRed text-white py-4 px-4 sticky top-0 z-50 text-lg">
         <Link href="/" className="text-2xl font-bold ">
-          <h1 className="hover:text-ucalgaryLightGrey transition-all duration-150 ease-linear">
+          <h1 className="hover:text-ucalgaryGold transition-all duration-150 ease-linear">
             MonkeySquad
           </h1>
         </Link>

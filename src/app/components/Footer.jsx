@@ -6,7 +6,7 @@ export default function footer() {
     <footer className="p-20 bg-ucalgaryDarkOrange">
       <div className="flex gap-40">
         <div className="flex flex-col gap-5">
-          <h1 className="text-xl font-bold pb-2 text-ucalgaryGold border-ucalgaryGold border-b-4">
+          <h1 className="text-xl font-bold pb-2 text-white border-ucalgaryGold border-b-4">
             Explore MonkeySquad
           </h1>
           <div className="flex flex-col gap-2 font-medium">
@@ -32,7 +32,7 @@ export default function footer() {
         </div>
 
         <div className="flex flex-col gap-6">
-          <h1 className="text-xl font-bold pb-2 text-ucalgaryGold border-ucalgaryGold border-b-4">
+          <h1 className="text-xl font-bold pb-2 text-white border-ucalgaryGold border-b-4">
             Designed and developed by
           </h1>
           <div className="flex flex-col gap-2 font-medium">

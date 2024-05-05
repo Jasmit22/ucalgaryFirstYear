@@ -6,7 +6,7 @@ const page = () => {
     <div className="bg-ucalgaryGold font-semibold text-black flex justify-center items-center h-screen">
       <form>
         <div className="flex flex-col justify-center items-center w-full gap-7 border-4 shadow-2xl bg-yellow-100 border-ucalgaryLightOrange p-20 rounded-md">
-          <div className="font-bold text-3xl">Login</div>
+          <div className="font-bold text-3xl">Sign Up</div>
           <div className="flex flex-col justify-center gap-2">
             <label for="uname">Username or Email:</label>
             <input
@@ -30,15 +30,15 @@ const page = () => {
           <input
             className=" bg-white border-black border-2 p-1 px-3 rounded-md hover:bg-ucalgaryDarkOrange hover:text-white"
             type="submit"
-            value="Login"
+            value="Sign Up"
           ></input>
           <div className="text-xs text-center">
-            <h1>Don't have an account?</h1>
+            <h1>Already have an account?</h1>
             <Link
               className="text-ucalgaryDarkOrange hover:border-ucalgaryDarkOrange hover:border-b hover:font-extrabold"
-              href="/signup"
+              href="/login"
             >
-              Sign up here!
+              Login here!
             </Link>
           </div>
         </div>

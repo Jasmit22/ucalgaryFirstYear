@@ -1,6 +1,19 @@
 export default function Home() {
   return (
     <main>
+      <div className="flex-col justify-center text-center">
+        <h1 className="text-4xl font-bold text-center mt-4">
+          Welcome to MonkeySquad
+        </h1>
+        <ul>
+          Meet the MonkeySquad
+          <li>Monkey Jasmit</li>
+          <li>Monkey Joseph</li>
+          <li>Monkey Talaal</li>
+          <li>Monkey Yotam</li>
+        </ul>
+        <p>Talaal is an ape</p>
+      </div>
       <div className="flex-col justify-center text-center mt-4">
         <h3 className="font-bold text-lg mb-4">
           Color Palette (With Black and White)

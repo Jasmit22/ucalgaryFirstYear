@@ -14,6 +14,12 @@ body {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --ucalgaryRed: "#D5011D";
+  --ucalgaryGold: "#FCCB01";
+  --ucalgaryLightOrange: "#FBA203";
+  --ucalgaryDarkOrange: "#FC6721";
+  --ucalgaryLightGrey: "#C8C9CB";
+  --ucalgaryDarkGrey: "#6E6F71";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -67,7 +73,7 @@ nav {
 }
 
 .menu > li:hover > a {
-  color: white;
+  color: black;
 }
 
 .menu > li:hover > a::before {
@@ -86,12 +92,14 @@ nav {
   justify-content: end;
   box-sizing: border-box;
   transition: height 0.3s ease-in-out;
+  border-radius: 2rem;
 }
 
 .menu li .submenu a {
   color: white;
   opacity: 0;
   transition: opacity 0.25s;
+  border-radius: 2rem;
 }
 
 .menu > li:hover .submenu a {
@@ -124,6 +132,10 @@ nav {
   transition: all 0.2s ease-in-out;
   scale: 0 0;
   visibility: hidden;
+}
+
+a {
+  cursor: pointer;
 }
 
 /* Just a sample gradient, can refine later */

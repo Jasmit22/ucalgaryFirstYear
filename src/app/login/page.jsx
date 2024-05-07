@@ -33,7 +33,7 @@ const page = () => {
             value="Login"
           ></input>
           <div className="text-xs text-center">
-            <h1>Don't have an account?</h1>
+            <h1>Don&apos;t have an account?</h1>
             <Link
               className="text-ucalgaryDarkOrange hover:border-ucalgaryDarkOrange hover:border-b hover:font-extrabold"
               href="/signup"

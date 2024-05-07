@@ -36,9 +36,10 @@ export default function footer() {
             Designed and developed by
           </h1>
           <div className="flex flex-col gap-2 font-medium">
-            <h1>bruh</h1>
-            <h1>bruh</h1>
-            <h1>bruh</h1>
+            <h1>Sir Monkey Jasmit</h1>
+            <h1>Sir Monkey Joseph</h1>
+            <h1>Beta Monkey Talaal</h1>
+            <h1>Beta Monkey Yotam</h1>
           </div>
         </div>
       </div>

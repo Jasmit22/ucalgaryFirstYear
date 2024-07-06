@@ -4,8 +4,6 @@ import Image from "next/image";
 
 export default function header() {
   return (
-    // No responsiveness yet, just messing around
-    // No idea why sticky isn't working
     <header>
       <nav className="flex items-center justify-between bg-ucalgaryRed text-white py-4 px-4 sticky top-0 z-50 text-lg">
         <Link href="/" className="text-2xl font-bold flex gap-3 items-center">
@@ -14,13 +12,13 @@ export default function header() {
             MonkeySquad
           </h1>
         </Link>
-        <ul class="menu">
+        <ul className="menu">
           <li>
             <Link href="/about">About</Link>
           </li>
           <li>
             <a>Stuff</a>
-            <ul class="submenu bg-ucalgaryRed mt-2">
+            <ul className="submenu bg-ucalgaryRed mt-2">
               <li>
                 <Link href="/about">About</Link>
               </li>

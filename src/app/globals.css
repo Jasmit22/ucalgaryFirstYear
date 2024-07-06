@@ -92,14 +92,14 @@ nav {
   justify-content: end;
   box-sizing: border-box;
   transition: height 0.3s ease-in-out;
-  border-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .menu li .submenu a {
   color: white;
   opacity: 0;
   transition: opacity 0.25s;
-  border-radius: 2rem;
 }
 
 .menu > li:hover .submenu a {

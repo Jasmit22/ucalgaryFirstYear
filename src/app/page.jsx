@@ -10,7 +10,7 @@ export default function Home() {
           <li>Monkey Jasmit</li>
           <li>Monkey Joseph</li>
           <li>Monkey Talaal</li>
-          <li>Monkey Yotam</li>
+          <li>Sir Yotam</li>
         </ul>
         <p>Talaal is an ape</p>
       </div>

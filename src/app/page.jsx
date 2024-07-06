@@ -1,12 +1,12 @@
 export default function Home() {
   return (
-    <main>
+    <main style={{color: "white"}}>
       <div className="flex-col justify-center text-center">
         <h1 className="text-4xl font-bold text-center mt-4">
-          Welcome to CampusConnectCalgary
+          Welcome to CampusConnect
         </h1>
         <ul>
-          Meet the CampusConnectCalgary
+          Meet the CampusConnect
           <li>Monkey Jasmit</li>
           <li>Monkey Joseph</li>
           <li>Monkey Talaal</li>

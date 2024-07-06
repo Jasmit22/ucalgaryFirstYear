@@ -3,10 +3,10 @@ export default function Home() {
     <main>
       <div className="flex-col justify-center text-center">
         <h1 className="text-4xl font-bold text-center mt-4">
-          Welcome to MonkeySquad
+          Welcome to CampusConnectCalgary
         </h1>
         <ul>
-          Meet the MonkeySquad
+          Meet the CampusConnectCalgary
           <li>Monkey Jasmit</li>
           <li>Monkey Joseph</li>
           <li>Monkey Talaal</li>

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function StudySpotsPage() {
   return (
     <div className="flex flex-col gap-5">
@@ -16,13 +18,16 @@ export default function StudySpotsPage() {
               place to focus, collaborate, and succeed. Whether you need a quiet
               corner or a vibrant space, we’ve got you covered.
             </p>
-            <button className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-5 font-bold">
+            <Link
+              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-5 font-bold"
+              href="#content"
+            >
               Explore Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>
-      <div>Content</div>
+      <div id="content" className="mt-40">Content</div>
     </div>
   );
 }

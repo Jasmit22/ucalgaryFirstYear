@@ -7,7 +7,7 @@ export default function footer() {
       <div className="flex gap-40">
         <div className="flex flex-col gap-5">
           <h1 className="text-xl font-bold pb-2 text-white border-ucalgaryGold border-b-4">
-            Explore MonkeySquad
+            Explore Campus Connect
           </h1>
           <div className="flex flex-col gap-2 font-medium">
             <Link
@@ -28,18 +28,6 @@ export default function footer() {
             >
               Contact
             </Link>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-6">
-          <h1 className="text-xl font-bold pb-2 text-white border-ucalgaryGold border-b-4">
-            Designed and developed by
-          </h1>
-          <div className="flex flex-col gap-2 font-medium">
-            <h1>Sir Monkey Jasmit</h1>
-            <h1>Sir Monkey Joseph</h1>
-            <h1>Beta Monkey Talaal</h1>
-            <h1>Beta Monkey Yotam</h1>
           </div>
         </div>
       </div>

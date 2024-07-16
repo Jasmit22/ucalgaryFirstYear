@@ -1,8 +1,11 @@
 export default function Home() {
   return (
     <main>
-      <div className="flex-col justify-center text-center h-screen text-ucalgaryRed">
-        <h1 className="text-4xl font-bold text-center">
+      <div
+        className="flex-col justify-center text-center h-144 hero"
+        style={{ backgroundImage: "url(/tfdl.jpg)" }}
+      >
+        <h1 className="text-4xl font-bold text-center bg-black bg-opacity-60 text-white p-20 rounded-3xl">
           Welcome to Campus Connect
         </h1>
       </div>

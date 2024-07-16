@@ -13,6 +13,10 @@ body {
   color: white;
 }
 
+body {
+  /* padding-top: 5rem; */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -38,8 +42,25 @@ a {
   cursor: pointer;
 }
 
-.gradient-head {
-  background: -webkit-linear-gradient(135deg, #fc6721, #d5011d);
+header {
+  transition: background-color 1s ease-in;
+}
+
+header.scrolled {
+  background-color: #d5011d;
+}
+
+header .gradient-holder {
+  background-image: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0)
+  );
+  transition: background-image 1s ease-in-out;
+}
+
+header.scrolled .gradient-holder {
+  background-image: none;
 }
 
 /* Don't get rid of this, very helpful for debugging */

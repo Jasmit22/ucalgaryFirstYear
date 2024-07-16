@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <main>
       <div
-        className="flex-col justify-center text-center h-144 hero"
+        className="flex-col justify-center text-center h-screen hero"
         style={{ backgroundImage: "url(/tfdl.jpg)" }}
       >
         <h1 className="text-4xl font-bold text-center bg-black bg-opacity-60 text-white p-20 rounded-3xl">

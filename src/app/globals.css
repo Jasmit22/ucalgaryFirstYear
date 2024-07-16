@@ -8,42 +8,23 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
+  overflow-x: hidden;
+  font-size: 95%;
+  background-color: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
   --ucalgaryRed: "#D5011D";
   --ucalgaryGold: "#FCCB01";
   --ucalgaryLightOrange: "#FBA203";
   --ucalgaryDarkOrange: "#FC6721";
   --ucalgaryLightGrey: "#C8C9CB";
   --ucalgaryDarkGrey: "#6E6F71";
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
 
 nav {
@@ -53,98 +34,8 @@ nav {
   padding: 10px 30px 0;
 }
 
-.menu {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: middle;
-}
-
-.menu li {
-  display: inline-block;
-  width: 80px;
-  color: white;
-  transition: all 0.3s ease-in-out;
-}
-
-.menu li:hover .submenu {
-  height: 3rem;
-}
-
-.menu > li:hover > a {
-  color: black;
-}
-
-.menu > li:hover > a::before {
-  visibility: visible;
-  scale: 1 1;
-}
-
-.submenu {
-  overflow: hidden;
-  position: absolute;
-  left: 0;
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  height: 0;
-  justify-content: end;
-  box-sizing: border-box;
-  transition: height 0.3s ease-in-out;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
-}
-
-.menu li .submenu a {
-  color: white;
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.menu > li:hover .submenu a {
-  opacity: 1;
-}
-
-.menu > li .submenu a:hover {
-  background: rgb(0 0 0 / 20%);
-}
-
-.menu > li a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 7px;
-  text-decoration: none;
-  position: relative;
-  height: 100%;
-  transition: 0.3s;
-}
-
-.menu > li > a::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  bottom: 3px;
-  left: 0px;
-  background-color: var(--color-primary);
-  transition: all 0.2s ease-in-out;
-  scale: 0 0;
-  visibility: hidden;
-}
-
 a {
   cursor: pointer;
-}
-
-/* Just a sample gradient, can refine later */
-.gradient {
-  background: -webkit-linear-gradient(left, #ff8800, #e6cf00);
-  background: linear-gradient(to right, #ff8800, #e6cf00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Don't get rid of this, very helpful for debugging */

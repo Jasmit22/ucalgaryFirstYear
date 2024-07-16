@@ -6,7 +6,7 @@ export default function StudySpotsPage() {
     {
       title: "Taylor Family Digital Library",
       description:
-        "The TFDL is a modern library offering various study spaces, from silent areas to collaborative rooms. It features extensive resources, including books, computers, and study rooms. The views from the upper floors are also a great bonus.",
+        "A modern library offering various study spaces, from silent areas to collaborative rooms. It features extensive resources, including books, computers, and study rooms. The views from the upper floors are also a great bonus.",
       image: "/tfdl-study.jpg",
       tag: ["Modern", "Collaborative"],
     },
@@ -20,9 +20,29 @@ export default function StudySpotsPage() {
     {
       title: "Scurfield Hall",
       description:
-        "Scurfield Hall, home to the Haskayne School of Business, offers several study areas ideal for business students. There are quiet lounges and dedicated study rooms, perfect for individual work or group projects. The building's central location and proximity to business resources make it a convenient and practical study spot.",
+        "Scurfield Hall, home to the Haskayne School of Business, offers several study areas ideal for business students. There are quiet lounges and dedicated study rooms, perfect for individual work or group projects.",
       image: "/scurfield-study.jpg",
       tag: ["Business", "Central"],
+    },
+    {
+      title: "Hunter Student Commons",
+      description:
+        "The Hunter Student Commons is a vibrant and social study space. It offers a variety of seating options, from cozy nooks to large tables. The bustling atmosphere is perfect for group work or casual study sessions.",
+      image: "/hunter-student.jpg",
+      tag: ["Bright", "Collaborative"],
+    },
+    {
+      title: "Math Sciences Building",
+      description:
+        "A relatively quiet and focused study spot with many study spaces and computer labs, perfect for math and science students. The building's location and proximity to the science theatres make it a convenient and practical study spot.",
+      image: "/ms-study.jpg",
+      tag: ["Focused", "Resourceful"],
+    },
+    {
+      title: "Engineering Building",
+      description: "",
+      image: "/eng-building-study.jpg",
+      tag: ["Modern", "Collaborative"],
     },
   ];
 
@@ -35,7 +55,7 @@ export default function StudySpotsPage() {
         <div className="hero-overlay bg-opacity-70 backdrop-blur-sm"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-lg">
-            <h1 className="mb-5 text-5xl font-bold tracking-tight">
+            <h1 className="mb-5 text-5xl font-bold tracking-tight text-white">
               Top Study Spots
             </h1>
             <p className="mb-5">
@@ -54,13 +74,13 @@ export default function StudySpotsPage() {
       </div>
       <div
         id="content"
-        className="mt-10 text-black flex flex-col gap-10 items-center"
+        className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
       >
         {studySpots.map((studySpot, key) => {
           return (
             <div
               key={key}
-              className="card bg-base-100 max-w-[500px] max-h-[500px] shadow-xl"
+              className="card max-w-[450px] max-h-[450px] h-[450px] w-[450px] shadow-xl"
             >
               <figure>
                 <Image

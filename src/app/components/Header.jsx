@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function header() {
   return (
     <header className="flex sticky top-0 shadow-lg z-50">
-      <nav className="flex items-center justify-between bg-ucalgaryRed text-white py-4 px-4 sticky top-0 z-50 text-lg w-full">
+      <nav className="flex items-center justify-between gradient-head text-white py-4 px-4 sticky top-0 z-50 text-lg w-full">
         <Link
           href="/"
           className="text-2xl font-bold flex gap-3 items-center ml-4"

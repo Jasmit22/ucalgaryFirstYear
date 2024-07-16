@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function GoToPage() {
@@ -10,7 +11,7 @@ export default function GoToPage() {
         <div className="hero-overlay bg-opacity-70 backdrop-blur-sm"></div>
         <div className="hero-content text-neutral-content text-center">
           <div className="max-w-lg">
-            <h1 className="mb-5 text-5xl font-bold tracking-tight">
+            <h1 className="mb-5 text-5xl font-bold tracking-tight text-white">
               How do I get there?
             </h1>
             <p className="mb-5">
@@ -26,8 +27,28 @@ export default function GoToPage() {
           </div>
         </div>
       </div>
-      <div id="content" className="mt-40">
-        Content
+      <div
+        id="content"
+        className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10"
+      >
+        <div className="flex">
+          <figure>
+            <Image
+              className="w-full object-cover overflow-hidden"
+              src="/go-to/transit-app.png"
+              alt="Transit App"
+              width={100}
+              height={100}
+            />
+          </figure>
+          <div className="flex flex-col m-auto ml-6">
+            <h2 className="text-3xl font-bold">Download the Transit App</h2>
+            <p className="text-lg">
+              The transit app helps you plan your trip and gives you live
+              updates and estimated arrival times.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

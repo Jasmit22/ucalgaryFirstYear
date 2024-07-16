@@ -38,6 +38,10 @@ a {
   cursor: pointer;
 }
 
+.gradient-head {
+  background: -webkit-linear-gradient(135deg, #fc6721, #d5011d);
+}
+
 /* Don't get rid of this, very helpful for debugging */
 /* * {
   border: red solid 1px;

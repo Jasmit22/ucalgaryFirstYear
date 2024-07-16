@@ -1,4 +1,4 @@
-import { Manrope } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import "./globals.css";
 
@@ -6,17 +6,23 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const manrope = Manrope({ subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
-  title: "UCalgary First Year",
+  title: "Campus Connect",
   description: "Guidance for first year students at the University of Calgary",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${manrope.className}`}>
+      <body className={`${poppins.className}`}>
         <Header />
         {children}
         <Footer />

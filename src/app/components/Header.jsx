@@ -29,7 +29,12 @@ export default function Header() {
             href="/"
             className="text-2xl font-bold flex gap-3 items-center ml-4"
           >
-            <Image src={gradientLogo2} alt="CampusConnect Logo" width={50} />
+            <Image
+              src={gradientLogo2}
+              alt="CampusConnect Logo"
+              className="hover:-hue-rotate-15 transition-all duration-150 ease-linear"
+              width={50}
+            />
             <h1 className="campus-connect-text hidden hover:text-ucalgaryGold transition-all duration-150 ease-linear text-3xl font-semibold">
               Campus Connect
             </h1>

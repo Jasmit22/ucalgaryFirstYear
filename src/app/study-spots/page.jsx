@@ -40,7 +40,8 @@ export default function StudySpotsPage() {
     },
     {
       title: "Engineering Building",
-      description: "",
+      description:
+        "The Engineering Building features unique study areas, including innovation labs and project rooms designed specifically for engineering students. The vibrant atmosphere and specialized spaces make it an ideal spot for hands-on learning and collaborative projects.",
       image: "/eng-building-study.jpg",
       tag: ["Modern", "Collaborative"],
     },

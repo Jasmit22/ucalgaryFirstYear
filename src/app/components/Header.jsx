@@ -11,7 +11,7 @@ export default function Header() {
       const header = document.querySelector("header");
       const text = document.querySelector(".campus-connect-text");
 
-      if (window.scrollY > 5) {
+      if (window.scrollY > 500) {
         header.classList.add("scrolled");
         text.classList.add("hiding");
       } else {
@@ -35,7 +35,7 @@ export default function Header() {
               className="hover:-hue-rotate-15 transition-all duration-150 ease-linear"
               width={50}
             />
-            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold transition-all duration-150 ease-linear text-3xl font-semibold">
+            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold max-md:hidden transition-all duration-150 ease-linear text-3xl font-semibold">
               Campus Connect
             </h1>
           </Link>

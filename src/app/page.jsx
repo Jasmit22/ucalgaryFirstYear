@@ -84,17 +84,17 @@ export default function Home() {
         <div className="hero-overlay bg-opacity-60 backdrop-blur-xs"></div>
         <div className="hero-content text-neutral-content text-center">
           <div>
-            <h1 className="mb-5 text-4xl md:text-6xl font-extrabold text-ucalgaryGold uppercase">
+            <h1 className="mb-5 text-5xl md:text-7xl font-extrabold text-ucalgaryGold uppercase">
               Explore the University of Calgary
             </h1>
-            <h2 className="text-lg md:text-2xl mb-5">
+            <h2 className="text-xl md:text-3xl px-4 mb-5">
               Your go-to resource for navigating campus life.
             </h2>
             <Link
               className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
               href={"/"}
             >
-              Get started now.
+              Get started now
             </Link>
           </div>
         </div>

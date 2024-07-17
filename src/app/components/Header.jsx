@@ -9,11 +9,14 @@ export default function Header() {
   useEffect(() => {
     document.addEventListener("scroll", () => {
       const header = document.querySelector("header");
+      const text = document.querySelector(".campus-connect-text");
 
       if (window.scrollY > 5) {
         header.classList.add("scrolled");
+        text.classList.add("hiding");
       } else {
         header.classList.remove("scrolled");
+        text.classList.remove("hiding");
       }
     });
   });
@@ -27,7 +30,7 @@ export default function Header() {
             className="text-2xl font-bold flex gap-3 items-center ml-4"
           >
             <Image src={gradientLogo2} alt="CampusConnect Logo" width={50} />
-            <h1 className="hover:text-ucalgaryGold transition-all duration-150 ease-linear text-3xl font-semibold">
+            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold transition-all duration-150 ease-linear text-3xl font-semibold">
               Campus Connect
             </h1>
           </Link>

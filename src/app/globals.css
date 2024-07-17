@@ -43,24 +43,15 @@ a {
 }
 
 header {
-  transition: background-color 1s ease-in;
+  transition: background-color 0.5s ease-in;
 }
 
 header.scrolled {
   background-color: #d5011d;
 }
 
-header .gradient-holder {
-  background-image: -webkit-linear-gradient(
-    top,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0)
-  );
-  transition: background-image 1s ease-in-out;
-}
-
-header.scrolled .gradient-holder {
-  background-image: none;
+.hiding {
+  display: flex;
 }
 
 /* Don't get rid of this, very helpful for debugging */

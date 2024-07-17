@@ -8,6 +8,9 @@ module.exports = {
   plugins: [require("daisyui")],
   theme: {
     extend: {
+      backdropBlur: {
+        xs: "3px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

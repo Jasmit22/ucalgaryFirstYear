@@ -1,7 +1,10 @@
-import Link from "next/link";
+"use client";
+import { useState } from "react";
 import FeatureCard from "./components/FeatureCard";
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
   const studySVG = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -90,12 +93,9 @@ export default function Home() {
             <h2 className="text-xl md:text-3xl px-4 mb-5">
               Your go-to resource for navigating campus life.
             </h2>
-            <Link
-              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
-              href={"/"}
-            >
+            <button className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl">
               Get started now
-            </Link>
+            </button>
           </div>
         </div>
       </div>
@@ -135,6 +135,27 @@ export default function Home() {
       <div className="flex w-full flex-col">
         <div className="divider mt-0 mb-5"></div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-gray-800 bg-opacity-75 absolute inset-0"></div>
+          <div className="bg-white p-5 rounded-lg z-10 max-w-lg w-full mx-5">
+            <h3 className="text-3xl text-black text-center font-bold mb-2">
+              Disclaimer
+            </h3>
+            <p className="mb-4 text-center text-black">
+              This website is not affiliated with the University of Calgary. It
+              is created for informational purposes only.
+            </p>
+            <button
+              className="btn bg-ucalgaryGold hover:bg-ucalgaryGold text-black border-none hover:px-8 transition-all duration-150 ease-in-out font-bold shadow-2xl flex justify-center mx-auto"
+              onClick={() => setIsModalOpen(false)}
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

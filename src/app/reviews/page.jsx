@@ -54,7 +54,7 @@ const testReviewList = [
     tag: ["Computer Science", "Required"],
   },
 ];
-const page = () => {
+const Page = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredReviews, setFilteredReviews] = useState(testReviewList);
 
@@ -71,12 +71,12 @@ const page = () => {
     setFilteredReviews(filtered);
   };
   return (
-    <div className="p-10 gap-20">
-      <div className="text-black text-5xl pt-10 text-center">
+    <div className="p-10 gap-20 mb-12">
+      <div className="text-black font-extrabold text-5xl pt-10 text-center">
         Course Reviews
       </div>
       <div className="self-end w-full flex justify-end">
-        <label className="input bg-white border-2 border-black flex items-center gap-2 text-black">
+        <label className="input bg-white border-2 border-gray-200 flex items-center gap-2 text-black">
           <input
             type="text"
             className="grow bg-ucalgaryLightGrey p-2 rounded-md"
@@ -107,10 +107,10 @@ const page = () => {
             href={`/reviews/${testReviews.course}`}
             key={testReviews.course}
           >
-            <div class="hover:scale-105 card card-compact text-black w-96 shadow-xl group border-2">
-              <div class="card-body">
+            <div className="hover:scale-105 card card-compact text-black w-96 shadow-xl group border-2 transition-all duration-150 ease-in-out">
+              <div className="card-body">
                 <h2
-                  class={`card-title text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 group-hover:bg-opacity-95 ${
+                  className={`card-title font-bold text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                     testReviews.rating < 40
                       ? "bg-ucalgaryRed"
                       : testReviews.rating < 70
@@ -120,20 +120,21 @@ const page = () => {
                 >
                   {testReviews.course}
                 </h2>
-                <p className="font-bold text-base">{testReviews.desc}</p>
-
+                <p className="font-bold text-base text-center flex justify-center">
+                  {testReviews.desc}
+                </p>
                 <p className="text-center border-t-2 font-semibold text-xl pt-3 pb-1 border-ucalgaryLightGrey">
                   {testReviews.rating < 40
-                    ? "Worst of the worst!!"
+                    ? "Difficult"
                     : testReviews.rating < 70
                     ? "Middling"
-                    : "Top shelf"}
+                    : "Enjoyable"}
                 </p>
                 <div className="flex justify-evenly">
                   <div className="flex items-center flex-col">
                     <p>Overal Rating</p>
                     <p
-                      className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 group-hover:bg-opacity-95 ${
+                      className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                         testReviews.rating < 40
                           ? "bg-ucalgaryRed"
                           : testReviews.rating < 70
@@ -148,7 +149,7 @@ const page = () => {
                   <div className="flex items-center flex-col">
                     <p>Time Commitment</p>
                     <p
-                      className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 group-hover:bg-opacity-95 ${
+                      className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                         testReviews.time < 40
                           ? "bg-ucalgaryRed"
                           : testReviews.time < 70
@@ -177,4 +178,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

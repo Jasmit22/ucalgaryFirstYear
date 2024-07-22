@@ -94,9 +94,9 @@ const Page = () => {
         </div>
             
       </div>
-    <div
+      <div
         className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
-    >
+      >
         {studySpots.map((studySpot, key) => {
           return (
             <div
@@ -124,8 +124,23 @@ const Page = () => {
           );
         })}
       </div>
-  </div>
-    
+      <div
+        className="flex flex-col m-auto justify-center items-center"
+      >
+        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryLightOrange border-4 rounded-full shadow-xl mt-12 mb-12 uclag">
+          <h2 className="text-3xl font-bold text-black mb-5 mt-10 rad px-20">
+            Need More Program Details?
+          </h2>
+          <Link
+              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
+              href="https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
+            >
+              Find More Details Here!
+          </Link>
+        </div>
+            
+      </div>
+  </div> 
   );
 };
 

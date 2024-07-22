@@ -132,7 +132,7 @@ const Page = () => {
                 </p>
                 <div className="flex justify-evenly">
                   <div className="flex items-center flex-col">
-                    <p>Overal Rating</p>
+                    <p>Overall Rating</p>
                     <p
                       className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                         testReviews.rating < 40

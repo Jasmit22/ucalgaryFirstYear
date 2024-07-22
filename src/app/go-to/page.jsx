@@ -1,7 +1,25 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function GoToPage() {
+  const showPosition = (position) => {
+    console.log("Latitude: " + position.coords.latitude);
+    console.log("Longitude: " + position.coords.longitude);
+  };
+
+  const error = (error) => {
+    console.log("Error: " + error.message);
+  };
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, error);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  };
+
   return (
     <div className="flex flex-col gap-5">
       <div
@@ -21,6 +39,7 @@ export default function GoToPage() {
             <Link
               className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-5 font-bold"
               href="#content"
+              onClick={getLocation}
             >
               Explore Now
             </Link>

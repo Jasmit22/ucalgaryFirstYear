@@ -2,7 +2,7 @@ import axios from "axios";
 
 /*
  * EXAMPLE USAGE:
- * http://localhost:3000/api/transit/get-route?fromPlace=45.51487167249841,%20-73.56092863046088&toPlace=45.526168077787894,-73.59506067289408
+ * http://localhost:3000/api/transit/get-route?fromPlace=51.081244860182046,%20-114.00623692976038&toPlace=51.08257975812788,%20-114.1356959741007
  */
 
 export async function GET(req) {

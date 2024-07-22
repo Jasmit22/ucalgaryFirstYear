@@ -104,16 +104,16 @@ const Page = () => {
       >
         {filteredReviews.map((testReviews) => (
           <Link
-            href={`/reviews/${testReviews.course}`}
+            href={`/reviews/${encodeURIComponent(testReviews.course)}`}
             key={testReviews.course}
           >
             <div className="hover:scale-105 card card-compact text-black w-96 shadow-xl group border-2 transition-all duration-150 ease-in-out">
               <div className="card-body">
                 <h2
                   className={`card-title font-bold text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                    testReviews.rating < 40
+                    testReviews.rating < 50
                       ? "bg-ucalgaryRed"
-                      : testReviews.rating < 70
+                      : testReviews.rating < 80
                       ? "bg-ucalgaryGold"
                       : "bg-green-600"
                   }`}
@@ -124,9 +124,9 @@ const Page = () => {
                   {testReviews.desc}
                 </p>
                 <p className="text-center border-t-2 font-semibold text-xl pt-3 pb-1 border-ucalgaryLightGrey">
-                  {testReviews.rating < 40
+                  {testReviews.rating < 50
                     ? "Difficult"
-                    : testReviews.rating < 70
+                    : testReviews.rating < 80
                     ? "Middling"
                     : "Enjoyable"}
                 </p>
@@ -135,9 +135,9 @@ const Page = () => {
                     <p>Overall Rating</p>
                     <p
                       className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                        testReviews.rating < 40
+                        testReviews.rating < 50
                           ? "bg-ucalgaryRed"
-                          : testReviews.rating < 70
+                          : testReviews.rating < 80
                           ? "bg-ucalgaryGold"
                           : "bg-green-600"
                       }`}
@@ -150,9 +150,9 @@ const Page = () => {
                     <p>Time Commitment</p>
                     <p
                       className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                        testReviews.time < 40
+                        testReviews.time < 50
                           ? "bg-ucalgaryRed"
-                          : testReviews.time < 70
+                          : testReviews.time < 80
                           ? "bg-ucalgaryGold"
                           : "bg-green-600"
                       }`}

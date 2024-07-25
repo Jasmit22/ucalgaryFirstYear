@@ -5,6 +5,7 @@ import "./globals.css";
 // Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SessionProvider from "./components/SessionProvider";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -23,9 +24,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${poppins.className}`}>
-        <Header />
-        {children}
-        <Footer />
+        <SessionProvider>
+          <Header />
+          {children}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

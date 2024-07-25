@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
 import FeatureCard from "./components/FeatureCard";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const { data: session, status } = useSession();
 
   const studySVG = (
     <svg
@@ -93,9 +95,24 @@ export default function Home() {
             <h2 className="text-xl md:text-3xl px-4 mb-5">
               Your go-to resource for navigating campus life.
             </h2>
-            <button className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl">
-              Get started now
-            </button>
+
+            {status == "authenticated" ? (
+              <button
+                className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
+                onClick={() => signOut({ callbackUrl: "/" })}
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
+                onClick={() =>
+                  signIn(undefined, { callbackUrl: "http://localhost:3000/" })
+                }
+              >
+                Get started now
+              </button>
+            )}
           </div>
         </div>
       </div>

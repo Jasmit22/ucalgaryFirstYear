@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <header className="header fixed top-0 z-50 h-20 w-full">
       <div className="gradient-holder">
-        <nav className="flex items-center justify-between text-white py-4 px-4 z-50 text-lg cursor-pointer">
+        <nav className="flex items-center justify-between text-white py-4 px-4 z-50 text-lg">
           <Link
             href="/"
             className="text-2xl font-bold flex gap-3 items-center ml-4 hover:cursor-pointer"

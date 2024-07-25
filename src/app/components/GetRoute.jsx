@@ -2,17 +2,18 @@
 import { useState, useRef } from "react";
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
 
-const libraries = ["places"];
+const libraries = ["places"]; // Define libraries outside the component
 
 export default function GetRoute() {
   const [transitData, setTransitData] = useState(null);
+  const [loading, setLoading] = useState(false); // Add loading state
   const inputRef = useRef(null);
   const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: key,
-    libraries,
+    libraries, // Use the libraries array here
   });
 
   const handleOnPlacesChanged = () => {
@@ -25,12 +26,18 @@ export default function GetRoute() {
   };
 
   const fetchTransitData = async (fromPlace, toPlace) => {
-    const response = await fetch(
-      `/api/transit/get-route?fromPlace=${fromPlace}&toPlace=${toPlace}`
-    );
-    const data = await response.json();
-    console.log(data);
-    setTransitData(data);
+    setLoading(true); // Set loading to true
+    try {
+      const response = await fetch(
+        `/api/transit/get-route?fromPlace=${fromPlace}&toPlace=${toPlace}`
+      );
+      const data = await response.json();
+      setTransitData(data);
+    } catch (error) {
+      console.log("Error fetching transit data: ", error);
+    } finally {
+      setLoading(false); // Set loading to false
+    }
   };
 
   const error = (error) => {
@@ -49,25 +56,33 @@ export default function GetRoute() {
   }
 
   return (
-    <div className="w-full h-full shadow-xl border border-gray-200">
+    <div className="w-full h-full shadow-xl border flex-col border-gray-200 p-4">
       {isLoaded && (
-        <StandaloneSearchBox
-          onLoad={(ref) => (inputRef.current = ref)}
-          onPlacesChanged={handleOnPlacesChanged}
-        >
-          <input
-            type="text"
-            className="w-full bg-white border border-gray-300 rounded-md px-2 py-1 text-gray-400"
-            placeholder="Type your address here..."
-          />
-        </StandaloneSearchBox>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Enter your starting location here.{" "}
+            <span
+              onClick={handleOnPlacesChanged}
+              className="text-blue-500 cursor-pointer underline"
+            >
+              Or, use my location
+            </span>
+          </label>
+          <StandaloneSearchBox
+            onLoad={(ref) => (inputRef.current = ref)}
+            onPlacesChanged={handleOnPlacesChanged}
+          >
+            <input
+              type="text"
+              className="w-full bg-white border border-gray-300 rounded-md px-2 py-2 text-gray-700"
+              placeholder="Type your address here..."
+            />
+          </StandaloneSearchBox>
+        </div>
       )}
-      <button
-        onClick={() => handleOnPlacesChanged()}
-        className="bg-black text-white p-2 mt-2"
-      >
-        Get From My Location
-      </button>
+      {loading && <p className="text-blue-500">Loading...</p>}{" "}
+      {/* Conditionally render loading state */}
+      {transitData && <div>{/* Render transit data here */}</div>}
     </div>
   );
 }

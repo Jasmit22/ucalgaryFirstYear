@@ -29,11 +29,13 @@ export default function GoToPage() {
           </div>
         </div>
       </div>
-      <GetRoute />
       <div
         id="content"
-        className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10"
+        className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10 flex-col"
       >
+        <div className="w-3/4">
+          <GetRoute />
+        </div>
         <div className="flex">
           <figure>
             <Image

@@ -60,12 +60,12 @@ export default function GetRoute() {
       {isLoaded && (
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Enter your starting location here.{" "}
+            Enter your starting location,{" "}
             <span
               onClick={handleOnPlacesChanged}
               className="text-blue-500 cursor-pointer underline"
             >
-              Or, use my location
+              or use my location.
             </span>
           </label>
           <StandaloneSearchBox
@@ -75,7 +75,7 @@ export default function GetRoute() {
             <input
               type="text"
               className="w-full bg-white border border-gray-300 rounded-md px-2 py-2 text-gray-700"
-              placeholder="Type your address here..."
+              placeholder="Type here..."
             />
           </StandaloneSearchBox>
         </div>

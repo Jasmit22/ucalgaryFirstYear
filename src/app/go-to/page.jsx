@@ -33,7 +33,7 @@ export default function GoToPage() {
         id="content"
         className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10 flex-col"
       >
-        <div className="w-3/4">
+        <div className="w-3/4 max-md:w-full">
           <GetRoute />
         </div>
         <div className="flex">

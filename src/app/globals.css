@@ -50,6 +50,10 @@ header.scrolled {
   display: flex;
 }
 
+input {
+  background-color: white;
+}
+
 /* Don't get rid of this, very helpful for debugging */
 /* * {
   border: red solid 1px;

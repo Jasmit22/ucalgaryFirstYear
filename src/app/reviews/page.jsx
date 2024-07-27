@@ -54,6 +54,15 @@ const testReviewList = [
     tag: ["Computer Science", "Required"],
   },
 ];
+
+export const getRatingStuff = (num) => {
+  if (num < 50) return { color: "bg-ucalgaryRed", rating: "Difficult" };
+  if (num < 80) return { color: "bg-ucalgaryGold", rating: "Middling" };
+  if (num <= 100) return { color: "bg-green-600", rating: "Enjoyable" };
+
+  return { color: "bg-ucalgaryLightGrey", rating: "???" };
+};
+
 const Page = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredReviews, setFilteredReviews] = useState(testReviewList);
@@ -111,11 +120,7 @@ const Page = () => {
               <div className="card-body">
                 <h2
                   className={`card-title font-bold text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                    testReviews.rating < 50
-                      ? "bg-ucalgaryRed"
-                      : testReviews.rating < 80
-                      ? "bg-ucalgaryGold"
-                      : "bg-green-600"
+                    getRatingStuff(testReviews.rating).color
                   }`}
                 >
                   {testReviews.course}
@@ -124,22 +129,14 @@ const Page = () => {
                   {testReviews.desc}
                 </p>
                 <p className="text-center border-t-2 font-semibold text-xl pt-3 pb-1 border-ucalgaryLightGrey">
-                  {testReviews.rating < 50
-                    ? "Difficult"
-                    : testReviews.rating < 80
-                    ? "Middling"
-                    : "Enjoyable"}
+                  {getRatingStuff(testReviews.rating).rating}
                 </p>
                 <div className="flex justify-evenly">
                   <div className="flex items-center flex-col">
                     <p>Overall Rating</p>
                     <p
                       className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                        testReviews.rating < 50
-                          ? "bg-ucalgaryRed"
-                          : testReviews.rating < 80
-                          ? "bg-ucalgaryGold"
-                          : "bg-green-600"
+                        getRatingStuff(testReviews.rating).color
                       }`}
                     >
                       {" "}
@@ -150,11 +147,7 @@ const Page = () => {
                     <p>Time Commitment</p>
                     <p
                       className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                        testReviews.time < 50
-                          ? "bg-ucalgaryRed"
-                          : testReviews.time < 80
-                          ? "bg-ucalgaryGold"
-                          : "bg-green-600"
+                        getRatingStuff(testReviews.time).color
                       }`}
                     >
                       {testReviews.time}

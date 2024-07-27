@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { useState } from "react";
-import Link from "next/link";
+import MyReview from "./MyReview";
+import { getRatingStuff } from "../page";
 
 const testReviewList = [
   {
@@ -56,20 +56,10 @@ const testReviewList = [
 ];
 const Page = ({ params }) => {
   const { reviewsID } = params;
-
-  const numbers = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-
-  const [hoveredButton, setHoveredButton] = useState(null);
   const decodedCourseName = decodeURIComponent(reviewsID);
   const courseData = testReviewList.find(
     (course) => course.course === decodedCourseName
   );
-
-  const getColorClass = (num) => {
-    if (num < 50) return "bg-ucalgaryRed";
-    if (num < 80) return "bg-ucalgaryGold";
-    return "bg-green-600";
-  };
 
   if (!courseData) {
     return (
@@ -92,11 +82,7 @@ const Page = ({ params }) => {
             <p>Overall Rating</p>
             <p
               className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                courseData.rating < 50
-                  ? "bg-ucalgaryRed"
-                  : courseData.rating < 80
-                  ? "bg-ucalgaryGold"
-                  : "bg-green-600"
+                getRatingStuff(courseData.rating).color
               }`}
             >
               {" "}
@@ -107,11 +93,7 @@ const Page = ({ params }) => {
             <p>Time Commitment</p>
             <p
               className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                courseData.time < 50
-                  ? "bg-ucalgaryRed"
-                  : courseData.time < 80
-                  ? "bg-ucalgaryGold"
-                  : "bg-green-600"
+                getRatingStuff(courseData.rating).color
               }`}
             >
               {courseData.time}
@@ -119,74 +101,8 @@ const Page = ({ params }) => {
           </div>
         </div>
       </div>
-      <div className="flex text-black justify-evenly items-center w-2/4">
-        <div>
-          <div className="">
-            My Review:
-            {hoveredButton < 4
-              ? " Difficult"
-              : hoveredButton < 7
-              ? " Middling"
-              : " Enjoyable"}
-          </div>
-          {numbers.map((num, index) => {
-            let colorClass;
-            if (hoveredButton !== null && index <= hoveredButton) {
-              colorClass = getColorClass(numbers[hoveredButton]);
-            } else if (hoveredButton !== null && index > hoveredButton) {
-              colorClass = "bg-ucalgaryLightGrey";
-            } else {
-              colorClass = getColorClass(num);
-            }
-
-            return (
-              <button
-                key={num}
-                className={`${colorClass} p-2 w-10 ${
-                  hoveredButton !== null && index <= hoveredButton
-                    ? "bg-opacity-70"
-                    : "bg-opacity-40"
-                } hover:bg-opacity-70`}
-                onMouseEnter={() => setHoveredButton(index)}
-                onMouseLeave={() => setHoveredButton(null)}
-              >
-                {num}
-              </button>
-            );
-          })}
-        </div>
-        <div className="flex gap-10">
-          <div className="flex items-center flex-col">
-            <p>Overall Rating</p>
-            <p
-              className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                courseData.rating < 50
-                  ? "bg-ucalgaryRed"
-                  : courseData.rating < 80
-                  ? "bg-ucalgaryGold"
-                  : "bg-green-600"
-              }`}
-            >
-              {" "}
-              {courseData.rating}
-            </p>
-          </div>
-          <div className="flex items-center flex-col">
-            <p>Time Commitment</p>
-            <p
-              className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                courseData.time < 50
-                  ? "bg-ucalgaryRed"
-                  : courseData.time < 80
-                  ? "bg-ucalgaryGold"
-                  : "bg-green-600"
-              }`}
-            >
-              {courseData.time}
-            </p>
-          </div>
-        </div>
-      </div>
+      <MyReview type={"overall"} />
+      <MyReview type={"time"} />
     </div>
   );
 };

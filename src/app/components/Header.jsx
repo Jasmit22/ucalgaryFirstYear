@@ -46,7 +46,8 @@ export default function Header() {
             </h1>
           </Link>
           <div className="flex gap-4 items-center mr-4">
-            {["Dropdown 1", "Dropdown 2", "Dropdown 3"].map((label, index) => (
+            {/* Get rid of this map stuff when actually implementing, just copy paste twice and change the routes */}
+            {["Dropdown 1", "Dropdown 2"].map((label, index) => (
               <div key={index} className="relative">
                 <button
                   onClick={() => toggleDropdown(index)}

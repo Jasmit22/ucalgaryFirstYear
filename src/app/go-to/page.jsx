@@ -16,7 +16,7 @@ export default function GoToPage() {
             <h1 className="mb-5 text-5xl font-bold tracking-tight text-white">
               How do I get there?
             </h1>
-            <p className="mb-5">
+            <p className="mb-5 text-lg">
               Not everyone has experience with public transit. The City provides
               both bus and train services to get you to school.
             </p>
@@ -34,25 +34,10 @@ export default function GoToPage() {
         className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10 flex-col"
       >
         <div className="w-3/4 max-md:w-full">
+          <h1 className="font-bold text-3xl mb-3">
+            Need Transit directions from your location?
+          </h1>
           <GetRoute />
-        </div>
-        <div className="flex">
-          <figure>
-            <Image
-              className="w-full object-cover overflow-hidden"
-              src="/go-to/transit-app.png"
-              alt="Transit App"
-              width={100}
-              height={100}
-            />
-          </figure>
-          <div className="flex flex-col m-auto ml-6">
-            <h2 className="text-3xl font-bold">Download the Transit App</h2>
-            <p className="text-lg">
-              The transit app helps you plan your trip and gives you live
-              updates and estimated arrival times.
-            </p>
-          </div>
         </div>
       </div>
     </div>

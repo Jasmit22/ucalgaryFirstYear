@@ -58,7 +58,7 @@ const testReviewList = [
 export const getRatingStuff = (num) => {
   if (num < 50) return { color: "bg-ucalgaryRed", rating: "Difficult" };
   if (num < 80) return { color: "bg-ucalgaryGold", rating: "Middling" };
-  if (num <= 100) return { color: "bg-green-600", rating: "Enjoyable" };
+  if (num <= 100) return { color: "bg-green-600", rating: "Lighter Load" };
 
   return { color: "bg-ucalgaryLightGrey", rating: "???" };
 };

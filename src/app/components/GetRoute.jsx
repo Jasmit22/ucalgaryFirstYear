@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import { useJsApiLoader, StandaloneSearchBox } from "@react-google-maps/api";
+import Image from "next/image";
 
 const libraries = ["places"]; // Define libraries outside the component
 
@@ -33,6 +34,7 @@ export default function GetRoute() {
       );
       const data = await response.json();
       setTransitData(data);
+      console.log(data);
     } catch (error) {
       console.log("Error fetching transit data: ", error);
     } finally {
@@ -55,19 +57,33 @@ export default function GetRoute() {
     }
   }
 
+  const handleImageClick = () => {
+    window.open("https://transitapp.com/", "_blank");
+  };
+
   return (
     <div className="w-full h-full shadow-xl border flex-col border-gray-200 p-4">
       {isLoaded && (
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Enter your starting location,{" "}
-            <span
-              onClick={handleOnPlacesChanged}
-              className="text-blue-500 cursor-pointer underline"
-            >
-              or use my location.
-            </span>
-          </label>
+          <div className="flex items-center m-auto gap-4 mb-4 text-center align-middle">
+            <Image
+              src="/transit-api-badge.svg"
+              alt="Transit Badge"
+              width={100}
+              height={25}
+              onClick={handleImageClick} // Add onClick handler
+              className="cursor-pointer" // Add pointer cursor for better UX
+            />
+            <label className="block text-gray-700 text-lg">
+              Enter your starting location,{" "}
+              <span
+                onClick={handleOnPlacesChanged}
+                className="text-blue-500 cursor-pointer underline"
+              >
+                or use my location.
+              </span>
+            </label>
+          </div>
           <StandaloneSearchBox
             onLoad={(ref) => (inputRef.current = ref)}
             onPlacesChanged={handleOnPlacesChanged}

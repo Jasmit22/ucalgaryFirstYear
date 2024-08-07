@@ -62,13 +62,6 @@ export default function Home() {
             svg={<FiMapPin className="size-6" />}
           />
           <FeatureCard
-            title={"Active Student Forum"}
-            description={
-              "Join discussions, ask questions, and share experiences with peers."
-            }
-            svg={<FiMessageSquare className="size-6" />}
-          />
-          <FeatureCard
             title={"Course Ratings"}
             description={
               "Read reviews and ratings for various courses to make informed decisions."

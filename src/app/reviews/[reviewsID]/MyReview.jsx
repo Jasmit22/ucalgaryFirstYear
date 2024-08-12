@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getRatingStuff } from "../page";
+import { getRatingColour } from "../page";
 
 const MyReview = ({ courseName }) => {
   const numbers = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
@@ -13,11 +13,11 @@ const MyReview = ({ courseName }) => {
     activeType === "overall" ? "Overall Rating" : "Time Commitment";
 
   if (hoveredButton !== null) {
-    ratingStuff = getRatingStuff(numbers[hoveredButton]);
+    ratingStuff = getRatingColour(numbers[hoveredButton]);
   } else if (activeType === "overall" && overallRating !== null) {
-    ratingStuff = getRatingStuff(numbers[overallRating]);
+    ratingStuff = getRatingColour(numbers[overallRating]);
   } else if (activeType === "time" && overallTime !== null) {
-    ratingStuff = getRatingStuff(numbers[overallTime]);
+    ratingStuff = getRatingColour(numbers[overallTime]);
   }
 
   const handleSaveReview = async () => {
@@ -101,19 +101,19 @@ const MyReview = ({ courseName }) => {
             let colorClass;
 
             if (hoveredButton !== null && index <= hoveredButton) {
-              colorClass = getRatingStuff(numbers[hoveredButton]).color;
+              colorClass = getRatingColour(numbers[hoveredButton]).color;
             } else if (
               activeType === "overall" &&
               overallRating !== null &&
               index <= overallRating
             ) {
-              colorClass = getRatingStuff(numbers[overallRating]).color;
+              colorClass = getRatingColour(numbers[overallRating]).color;
             } else if (
               activeType === "time" &&
               overallTime !== null &&
               index <= overallTime
             ) {
-              colorClass = getRatingStuff(numbers[overallTime]).color;
+              colorClass = getRatingColour(numbers[overallTime]).color;
             } else {
               colorClass = "bg-ucalgaryLightGrey";
             }
@@ -163,7 +163,7 @@ const MyReview = ({ courseName }) => {
       <div className="flex justify-center">
         <button
           onClick={handleSaveReview}
-          className="px-6 py-2 bg-ucalgaryRed text-white rounded-xl transition-all duration-200 ease-in-out hover:bg-ucalgaryDarkOrange"
+          className="btn bg-ucalgaryRed text-white rounded-xl transition-all duration-200 ease-in-out hover:bg-ucalgaryGold hover:text-black"
         >
           Save Review
         </button>

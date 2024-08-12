@@ -41,7 +41,7 @@ export default function Header() {
               className="hover:-hue-rotate-15 transition-all duration-150 ease-linear hover:cursor-pointer"
               width={50}
             />
-            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold max-md:hidden transition-all duration-150 ease-linear text-3xl font-semibold hover:cursor-pointer">
+            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold max-md:hidden transition-all duration-150 ease-linear text-2xl font-semibold hover:cursor-pointer">
               Campus Connect
             </h1>
           </Link>

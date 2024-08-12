@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 
 // Define a Mongoose schema and model for reviews
 const reviewSchema = new mongoose.Schema({
-  ipAddress: { type: String, required: true }, // Using IP address as the identifier
   courseName: { type: String, required: true },
   overallRating: { type: Number, required: true },
   overallTime: { type: Number, required: true },
@@ -13,9 +12,67 @@ const reviewSchema = new mongoose.Schema({
 
 const Review = mongoose.models.Review || mongoose.model("Review", reviewSchema);
 
+// Define a Mongoose schema and model for courses
+const courseSchema = new mongoose.Schema({
+  courseName: { type: String, required: true },
+  // Add other course-specific fields as necessary
+});
+
+const Course = mongoose.models.Course || mongoose.model("Course", courseSchema);
+
+// Utility function to sanitize input
+const sanitizeInput = (input) => {
+  return input.replace(/[<>\/\\;]/g, "").trim();
+};
+
 export async function GET(req) {
-  await connectDB(); // Ensure the database is connected
-  return NextResponse.json({ message: "Connected to database" });
+  try {
+    await connectDB(); // Ensure the database is connected
+
+    // Perform an aggregation to calculate the average rating and time commitment for each course
+    const averages = await Course.aggregate([
+      {
+        $lookup: {
+          from: "reviews",
+          localField: "courseName",
+          foreignField: "courseName",
+          as: "courseReviews",
+        },
+      },
+      {
+        $unwind: {
+          path: "$courseReviews",
+          preserveNullAndEmptyArrays: true, // Keep courses with no reviews
+        },
+      },
+      {
+        $group: {
+          _id: "$courseName", // Group by course name
+          averageRating: { $avg: "$courseReviews.overallRating" }, // Calculate the average rating
+          averageTime: { $avg: "$courseReviews.overallTime" }, // Calculate the average time commitment
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          courseName: "$_id", // Rename _id to courseName
+          averageRating: { $round: ["$averageRating", 0] }, // Round the average rating to the nearest whole number
+          averageTime: { $round: ["$averageTime", 0] }, // Round the average time to the nearest whole number
+        },
+      },
+      {
+        $sort: { averageRating: -1 }, // Sort by averageRating in descending order
+      },
+    ]);
+
+    return NextResponse.json(averages, { status: 200 });
+  } catch (error) {
+    console.error("Error fetching course averages:", error);
+    return NextResponse.json(
+      { message: "Failed to fetch course averages." },
+      { status: 500 }
+    );
+  }
 }
 
 export async function POST(req) {
@@ -24,46 +81,20 @@ export async function POST(req) {
 
     const { courseName, overallRating, overallTime } = await req.json();
 
-    // Extract the IP address from the request headers
-    const ipAddress =
-      req.headers.get("x-forwarded-for") || req.headers.get("remote-addr");
-
     // Validate the incoming data
-    if (
-      !ipAddress ||
-      !courseName ||
-      overallRating == null ||
-      overallTime == null
-    ) {
+    if (!courseName || overallRating == null || overallTime == null) {
       return NextResponse.json(
         { message: "Missing required fields." },
         { status: 400 }
       );
     }
 
-    // Calculate the time 15 minutes ago from now
-    const fifteenMinutesAgo = new Date(Date.now() - 15 * 60 * 1000);
-
-    // Count how many reviews this IP address has submitted in the last 15 minutes
-    const reviewCount = await Review.countDocuments({
-      ipAddress: ipAddress,
-      createdAt: { $gte: fifteenMinutesAgo },
-    });
-
-    if (reviewCount >= 5) {
-      return NextResponse.json(
-        {
-          message:
-            "Rate limit exceeded. You can only submit 5 reviews every 15 minutes.",
-        },
-        { status: 429 }
-      );
-    }
+    // Sanitize the courseName input
+    const sanitizedCourseName = sanitizeInput(courseName);
 
     // Create a new review document
     const review = new Review({
-      ipAddress,
-      courseName,
+      courseName: sanitizedCourseName,
       overallRating,
       overallTime,
     });

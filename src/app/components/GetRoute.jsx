@@ -236,7 +236,7 @@ export default function GetRoute() {
                       Route {leg.route}
                     </div>
                     <div className="collapse-content">
-                      <p className="ml-1">
+                      <p>
                         Ride the bus for {Math.round(leg.duration / 60)} minutes
                         ({leg.intermediateStops.length + 1} stops). Exit at{" "}
                         {leg.to.name}.
@@ -261,7 +261,7 @@ export default function GetRoute() {
                       {leg.route} Line
                     </div>
                     <div className="collapse-content">
-                      <p className="ml-1">
+                      <p>
                         Ride the train for {Math.round(leg.duration / 60)}{" "}
                         minutes ({leg.intermediateStops.length + 1} stops). Exit
                         at {leg.to.name}.

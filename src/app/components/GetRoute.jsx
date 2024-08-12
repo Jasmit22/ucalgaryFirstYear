@@ -11,6 +11,7 @@ export default function GetRoute() {
   const [fromPlace, setFromPlace] = useState(null); // Add state for fromPlace
   const inputRef = useRef(null);
   const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const toPlace = "51.0785,-114.1319";
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -27,7 +28,7 @@ export default function GetRoute() {
     }
   };
 
-  const fetchTransitData = async (fromPlace, toPlace) => {
+  const fetchTransitData = async (fromPlace) => {
     setLoading(true); // Set loading to true
     try {
       const response = await fetch(
@@ -38,21 +39,15 @@ export default function GetRoute() {
       console.log(data);
     } catch (error) {
       console.log("Error fetching transit data: ", error);
+      setTransitData(null);
     } finally {
       setLoading(false); // Set loading to false
     }
   };
 
-  const error = (error) => {
-    console.log("Error: " + error.message);
-  };
-
   async function getLocationAndFetchRoute() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const toPlace = `${position.coords.latitude},${position.coords.longitude}`;
-        fetchTransitData(fromPlace, toPlace);
-      }, error);
+      fetchTransitData(fromPlace);
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
@@ -110,7 +105,31 @@ export default function GetRoute() {
       </button>
       {loading && <p className="text-black font-semibold mt-2">Loading...</p>}{" "}
       {/* Conditionally render loading state */}
-      {transitData && <div>{/* Render transit data here */}</div>}
+      {transitData && (
+        <div className="mt-4">
+          <h3 className="font-semibold text-lg">Transit Details:</h3>
+          <ul>
+            {transitData.plan?.itineraries[0]?.legs?.map((leg, index) => (
+              <li key={index} className="mb-2">
+                <p>
+                  <strong>{leg.mode}</strong> from{" "}
+                  {leg.from.name || `${leg.from.lat}, ${leg.from.lon}`} to{" "}
+                  {leg.to.name || `${leg.to.lat}, ${leg.to.lon}`}
+                </p>
+                <p>
+                  Distance: {leg.distance} meters, Duration:{" "}
+                  {Math.round(leg.duration / 60)} minutes
+                </p>
+                {leg.agencyName && (
+                  <p>
+                    Agency: {leg.agencyName}, Route: {leg.route}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

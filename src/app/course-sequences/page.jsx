@@ -1,7 +1,21 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const Page = () => {
+
+  const sequenceInfoList = [
+    {
+      title: "Table 1",
+      image: "/document-table.svg",
+      document: <TableOneDocument />    
+    }
+  ]
+
+  const [popUpOpen, setPopUpOpen] = useState(false);
+  const [popUpType, setPopUpType] = useState(null);
+
 
   const studySpots = [
     {
@@ -94,35 +108,50 @@ const Page = () => {
         </div>
             
       </div>
-      <div
+      <div 
         className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
       >
-        {studySpots.map((studySpot, key) => {
+        {!popUpOpen ?
+        sequenceInfoList.map((sequenceInfo, key) => {
           return (
             <div
               key={key}
-              className="card max-w-[450px] max-h-[450px] h-[450px] w-[450px] shadow-xl"
+              className="hover:scale-105 hover:cursor-pointer card card-compact text-black max-w-[450px] max-h-[450px] h-[450px] w-[450px] shadow-xl border-2 transition-all duration-150 ease-in-out "
+              onClick={() => {
+                setPopUpOpen(true);
+                setPopUpType(sequenceInfo.document);
+              }}
             >
-              <figure>
+              <figure className="mt-5 mb-1">
                 <Image
-                  className="w-full object-cover overflow-hidden"
-                  src={studySpot.image}
+                  className="w-full object-cover overflow-visible"
+                  src={sequenceInfo.image}
                   alt="Shoes"
                   width={500}
                   height={500}
                 />
               </figure>
-              <div className="card-body">
-                <h2 className="card-title">{studySpot.title}</h2>
-                <p>{studySpot.description}</p>
-                <div className="card-actions justify-end">
-                  <div className="badge badge-outline">{studySpot.tag[0]}</div>
-                  <div className="badge badge-outline">{studySpot.tag[1]}</div>
-                </div>
+              <div className="card-body align-middle items-center mb-1">
+                <h2 className="card-title text-3xl">
+                  {sequenceInfo.title}
+                </h2>
               </div>
             </div>
-          );
-        })}
+          )
+        })
+      :
+      <div className="flex flex-row justify-center flex-wrap w-full">
+        <div className="p-4">
+        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-4xl px-8 py-5 me-2 
+        mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 shadow-lg" onClick={() => {setPopUpOpen(false)}} >
+          X
+        </button>
+        </div>
+        <div className="card max-w-[1000px] max-h-[750px] h-[750px] w-[1000px] shadow-xl">
+          {popUpType && <div>{popUpType}</div>}
+        </div>
+      </div>
+      }
       </div>
       <div
         className="flex flex-col m-auto justify-center items-center"
@@ -143,5 +172,9 @@ const Page = () => {
   </div> 
   );
 };
+
+const TableOneDocument = () => {
+  return <div className="bg-ucalgaryRed">weofjeowjfojweofjewo</div>
+}
 
 export default Page;

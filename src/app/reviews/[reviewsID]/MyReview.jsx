@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { getRatingColour } from "../page";
+import CustomAlert from "../../components/CustomAlert"; // Import the custom alert component
 
 const MyReview = ({ courseName }) => {
   const numbers = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
@@ -7,6 +8,8 @@ const MyReview = ({ courseName }) => {
   const [overallRating, setOverallRating] = useState(null);
   const [overallTime, setOverallTime] = useState(null);
   const [activeType, setActiveType] = useState("overall");
+  const [alertMessage, setAlertMessage] = useState(""); // State for the custom alert message
+  const [alertType, setAlertType] = useState(""); // State for the custom alert type
   let ratingStuff = null;
 
   const reviewHeading =
@@ -22,7 +25,10 @@ const MyReview = ({ courseName }) => {
 
   const handleSaveReview = async () => {
     if (overallRating === null || overallTime === null) {
-      alert("Please provide both Overall Rating and Time Commitment.");
+      setAlertMessage(
+        "Please provide both Overall Rating and Time Commitment."
+      );
+      setAlertType("failure");
       return;
     }
 
@@ -42,8 +48,8 @@ const MyReview = ({ courseName }) => {
       });
 
       if (response.ok) {
-        alert("Review saved successfully!");
-        window.location.href = "/reviews";
+        setAlertMessage("Review saved successfully!");
+        setAlertType("success");
 
         // Reset the form
         setOverallRating(null);
@@ -51,11 +57,13 @@ const MyReview = ({ courseName }) => {
         setActiveType("overall");
       } else {
         console.log(response);
-        alert("Failed to save the review.");
+        setAlertMessage("Failed to save the review.");
+        setAlertType("failure");
       }
     } catch (error) {
       console.error("Error saving the review:", error);
-      alert("An error occurred while saving the review.");
+      setAlertMessage("An error occurred while saving the review.");
+      setAlertType("failure");
     }
   };
 
@@ -172,6 +180,13 @@ const MyReview = ({ courseName }) => {
           Save Review
         </button>
       </div>
+
+      {/* Custom Alert Modal */}
+      <CustomAlert
+        message={alertMessage}
+        type={alertType}
+        onClose={() => setAlertMessage("")}
+      />
     </div>
   );
 };

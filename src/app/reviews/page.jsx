@@ -87,6 +87,7 @@ const Page = () => {
 
   return (
     <div className="p-10 gap-20 mb-12 min-h-screen">
+      <div className="bg-ucalgaryRed fixed top-0 left-0 z-10 h-20 w-full"></div>
       <div className="text-black font-extrabold text-5xl pt-24 mb-10 text-center">
         Course Reviews
       </div>

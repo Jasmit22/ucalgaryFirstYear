@@ -43,6 +43,8 @@ const MyReview = ({ courseName }) => {
 
       if (response.ok) {
         alert("Review saved successfully!");
+        window.location.href = "/reviews";
+
         // Reset the form
         setOverallRating(null);
         setOverallTime(null);
@@ -102,6 +104,8 @@ const MyReview = ({ courseName }) => {
 
             if (hoveredButton !== null && index <= hoveredButton) {
               colorClass = getRatingColour(numbers[hoveredButton]).color;
+            } else if (index > hoveredButton && hoveredButton !== null) {
+              colorClass = "bg-ucalgaryLightGrey";
             } else if (
               activeType === "overall" &&
               overallRating !== null &&

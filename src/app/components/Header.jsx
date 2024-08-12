@@ -38,13 +38,6 @@ export default function Header() {
 
     const header = document.querySelector("header");
 
-    if (
-      typeof window !== "undefined" &&
-      window.location.pathname === "/reviews"
-    ) {
-      header.classList.add("scrolled"); // Apply background immediately if on /reviews
-    }
-
     document.addEventListener("scroll", handleScroll);
     document.addEventListener("click", handleClickOutside);
 

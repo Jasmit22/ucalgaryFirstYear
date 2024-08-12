@@ -60,7 +60,16 @@ const Page = ({ params }) => {
   const { courseName, averageRating, averageTime } = courseData;
 
   return (
-    <div className="gap-10 flex flex-col items-center min-h-screen m-auto justify-center bg-slate-200">
+    <div className="gap-10 flex flex-col items-center min-h-screen m-auto justify-center">
+      <div className="bg-ucalgaryRed fixed top-0 z-10 h-20 w-full"></div>
+      <div className="sm:w-2/3">
+        <button
+          onClick={() => (window.location.href = "/reviews")}
+          className="btn bg-ucalgaryRed text-white rounded-xl transition-all duration-200 ease-in-out hover:bg-ucalgaryGold hover:text-black"
+        >
+          {"<"} View all reviews
+        </button>
+      </div>
       <div className="text-black font-extrabold text-5xl text-center">
         {courseName}
       </div>
@@ -80,7 +89,7 @@ const Page = ({ params }) => {
             <p>Time Commitment</p>
             <p
               className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                getRatingColour(averageRating).color
+                getRatingColour(averageTime).color
               }`}
             >
               {averageTime !== null ? averageTime : "N/A"}

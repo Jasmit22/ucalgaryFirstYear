@@ -11,7 +11,9 @@ export default function GetRoute() {
   const [fromPlace, setFromPlace] = useState(null); // Add state for fromPlace
   const inputRef = useRef(null);
   const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-  const toPlace = "51.0785,-114.1319";
+  const toPlace = "51.0785,-114.1319"; // University of Calgary Coordinates
+
+  transitData ? console.log(transitData) : ""; // Keep for testing
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -107,11 +109,75 @@ export default function GetRoute() {
       {/* Conditionally render loading state */}
       {transitData && (
         <div className="mt-4">
-          <h3 className="font-semibold text-lg">Transit Details:</h3>
-          <ul>
+          <h3 className="font-semibold text-2xl mb-5 ml-1">Transit Details:</h3>
+          <ul className="flex flex-col gap-y-3">
             {transitData.plan?.itineraries[0]?.legs?.map((leg, index) => (
               <li key={index} className="mb-2">
-                <p>
+                {leg.mode == "WALK" ? (
+                  <div
+                    tabIndex={0}
+                    className="collapse collapse-arrow border-base-300 bg-gray-400 border"
+                  >
+                    <div
+                      className="collapse-title text-xl font-medium"
+                      style={{
+                        backgroundImage: "url(/go-to/WhiteWalk.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "2em",
+                        backgroundPosition: "0.5em center",
+                        paddingLeft: "3.5em", // Adjust this value based on the size of the image
+                      }}
+                    >
+                      Focus me to see content
+                    </div>
+                    <div className="collapse-content">
+                      <p>Random text</p>
+                    </div>
+                  </div>
+                ) : leg.mode == "BUS" ? (
+                  <div
+                    tabIndex={0}
+                    className="collapse collapse-arrow border-base-300 bg-amber-500 border"
+                  >
+                    <div
+                      className="collapse-title text-xl font-medium"
+                      style={{
+                        backgroundImage: "url(/go-to/WhiteBus.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "2em",
+                        backgroundPosition: "0.5em center",
+                        paddingLeft: "3.5em", // Adjust this value based on the size of the image
+                      }}
+                    >
+                      Focus me to see content
+                    </div>
+                    <div className="collapse-content">
+                      <p>Random text</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    tabIndex={0}
+                    className="collapse collapse-arrow border-base-300 bg-sky-500 border"
+                  >
+                    <div
+                      className="collapse-title text-xl font-medium"
+                      style={{
+                        backgroundImage: "url(/go-to/WhiteTramway.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "2em",
+                        backgroundPosition: "0.5em center",
+                        paddingLeft: "3.5em", // Adjust this value based on the size of the image
+                      }}
+                    >
+                      Focus me to see content
+                    </div>
+                    <div className="collapse-content">
+                      <p>Random text</p>
+                    </div>
+                  </div>
+                )}
+                {/* <p>
                   <strong>{leg.mode}</strong> from{" "}
                   {leg.from.name || `${leg.from.lat}, ${leg.from.lon}`} to{" "}
                   {leg.to.name || `${leg.to.lat}, ${leg.to.lon}`}
@@ -124,7 +190,7 @@ export default function GetRoute() {
                   <p>
                     Agency: {leg.agencyName}, Route: {leg.route}
                   </p>
-                )}
+                )} */}
               </li>
             ))}
           </ul>

@@ -37,7 +37,7 @@ export default function GetRoute() {
           const { latitude, longitude } = position.coords;
           const locationString = `${latitude},${longitude}`;
           setFromPlace(locationString); // Set the location as fromPlace
-          await fetchTransitData(fromPlace);
+          await fetchTransitData(locationString);
         },
         (error) => {
           console.error("Error fetching location:", error);

@@ -67,6 +67,20 @@ export default function GetRoute() {
     window.open("https://transitapp.com/", "_blank");
   };
 
+  const millisecondsToTime = (milliseconds) => {
+    const date = new Date(milliseconds);
+
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+
+    // Convert to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // The hour '0' should be '12'
+
+    return `${hours}:${minutes} ${ampm}`;
+  };
+
   return (
     <div className="w-full h-full shadow-xl border flex-col border-gray-200 p-4">
       {isLoaded && (
@@ -112,14 +126,22 @@ export default function GetRoute() {
           <h3 className="font-semibold text-2xl mb-5 ml-1">Transit Details:</h3>
           <ul className="flex flex-col gap-y-3">
             {transitData.plan?.itineraries[0]?.legs?.map((leg, index) => (
-              <li key={index} className="mb-2">
+              <li
+                key={index}
+                className="mb-2 flex flex-row gap-3 lg:gap-5 lg:ml-2"
+              >
+                <div>
+                  <div className="flex justify-center items-center py-5 w-full whitespace-nowrap">
+                    {millisecondsToTime(leg.startTime)}
+                  </div>
+                </div>
                 {leg.mode == "WALK" ? (
                   <div
                     tabIndex={0}
-                    className="collapse collapse-arrow border-base-300 bg-gray-400 border"
+                    className="collapse collapse-arrow border-base-300 bg-gray-500 border text-zinc-50 max-w-[1200px]"
                   >
                     <div
-                      className="collapse-title text-xl font-medium"
+                      className="collapse-title text-xl font-semibold"
                       style={{
                         backgroundImage: "url(/go-to/WhiteWalk.png)",
                         backgroundRepeat: "no-repeat",
@@ -128,19 +150,29 @@ export default function GetRoute() {
                         paddingLeft: "3.5em", // Adjust this value based on the size of the image
                       }}
                     >
-                      Focus me to see content
+                      Walk
                     </div>
                     <div className="collapse-content">
-                      <p>Random text</p>
+                      <p className="ml-1">
+                        Walk {leg.distance} meters for{" "}
+                        {Math.round(leg.duration / 60)} minutes
+                        {transitData.plan?.itineraries[0]?.legs[index + 1]?.from
+                          ?.name
+                          ? ` to ${
+                              transitData.plan?.itineraries[0]?.legs[index + 1]
+                                ?.from?.name
+                            }.`
+                          : "."}
+                      </p>
                     </div>
                   </div>
                 ) : leg.mode == "BUS" ? (
                   <div
                     tabIndex={0}
-                    className="collapse collapse-arrow border-base-300 bg-amber-500 border"
+                    className="collapse collapse-arrow border-base-300 bg-amber-500 border text-zinc-50 max-w-[1200px]"
                   >
                     <div
-                      className="collapse-title text-xl font-medium"
+                      className="collapse-title text-xl font-semibold"
                       style={{
                         backgroundImage: "url(/go-to/WhiteBus.png)",
                         backgroundRepeat: "no-repeat",
@@ -149,7 +181,7 @@ export default function GetRoute() {
                         paddingLeft: "3.5em", // Adjust this value based on the size of the image
                       }}
                     >
-                      Focus me to see content
+                      Route {leg.route}
                     </div>
                     <div className="collapse-content">
                       <p>Random text</p>
@@ -158,10 +190,10 @@ export default function GetRoute() {
                 ) : (
                   <div
                     tabIndex={0}
-                    className="collapse collapse-arrow border-base-300 bg-sky-500 border"
+                    className="collapse collapse-arrow border-base-300 bg-sky-500 border text-zinc-50 max-w-[1200px]"
                   >
                     <div
-                      className="collapse-title text-xl font-medium"
+                      className="collapse-title text-xl font-semibold"
                       style={{
                         backgroundImage: "url(/go-to/WhiteTramway.png)",
                         backgroundRepeat: "no-repeat",
@@ -170,7 +202,7 @@ export default function GetRoute() {
                         paddingLeft: "3.5em", // Adjust this value based on the size of the image
                       }}
                     >
-                      Focus me to see content
+                      {leg.route} Line
                     </div>
                     <div className="collapse-content">
                       <p>Random text</p>

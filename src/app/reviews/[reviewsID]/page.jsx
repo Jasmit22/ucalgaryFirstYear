@@ -2,6 +2,7 @@
 import React from "react";
 import MyReview from "./MyReview";
 import { getRatingStuff } from "../page";
+import Link from "next/link";
 
 const testReviewList = [
   {
@@ -63,20 +64,26 @@ const Page = ({ params }) => {
 
   if (!courseData) {
     return (
-      <div className="p-10 gap-20 mb-12">
-        <div className="text-black font-extrabold text-5xl pt-10 text-center">
+      <div className="mb-12 min-h-screen flex flex-col items-center justify-center">
+        <div className="text-black font-extrabold text-5xl text-center mb-4">
           Course Not Found
         </div>
+        <Link
+          href="/"
+          className="p-4 bg-ucalgaryGold rounded-2xl text-black font-bold"
+        >
+          Return Home
+        </Link>
       </div>
     );
   }
+
   return (
-    <div className="p-10 gap-20 mb-12 flex flex-col items-center">
-      <div className="text-black font-extrabold text-5xl pt-10 text-center">
+    <div className="gap-10 flex flex-col items-center min-h-screen m-auto justify-center bg-slate-200">
+      <div className="text-black font-extrabold text-5xl text-center">
         {courseData.course}
       </div>
-      <div className="flex text-black justify-evenly items-center w-2/4">
-        <div className="">User Reviews</div>
+      <div className="flex text-black justify-evenly items-center">
         <div className="flex gap-10">
           <div className="flex items-center flex-col">
             <p>Overall Rating</p>
@@ -101,8 +108,9 @@ const Page = ({ params }) => {
           </div>
         </div>
       </div>
-      <MyReview type={"overall"} />
-      <MyReview type={"time"} />
+      <div className="flex-col">
+        <MyReview courseName={courseData.course} />
+      </div>
     </div>
   );
 };

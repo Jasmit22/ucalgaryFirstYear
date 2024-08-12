@@ -20,7 +20,7 @@ export default function Home() {
             <h1 className="mb-5 text-5xl md:text-7xl font-extrabold text-ucalgaryGold uppercase">
               Explore the University of Calgary
             </h1>
-            <h2 className="text-xl md:text-3xl px-4 mb-5">
+            <h2 className="text-xl md:text-3xl px-4 mb-5 text-white">
               Your go-to resource for navigating campus life.
             </h2>
 

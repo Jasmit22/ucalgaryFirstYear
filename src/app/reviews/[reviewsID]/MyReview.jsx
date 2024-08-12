@@ -55,6 +55,7 @@ const MyReview = ({ courseName }) => {
         setOverallRating(null);
         setOverallTime(null);
         setActiveType("overall");
+        window.location.href = "/reviews";
       } else {
         console.log(response);
         setAlertMessage("Failed to save the review.");

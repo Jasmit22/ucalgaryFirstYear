@@ -119,9 +119,13 @@ export default function GetRoute() {
       >
         Submit
       </button>
-      {loading && <p className="text-black font-semibold mt-2">Loading...</p>}{" "}
+      <div className="flex w-full justify-center items-center">
+        {loading && (
+          <span className="loading loading-spinner loading-lg mb-5"></span>
+        )}{" "}
+      </div>
       {/* Conditionally render loading state */}
-      {transitData && (
+      {transitData && !loading && (
         <div className="mt-4">
           <h3 className="font-semibold text-2xl mb-5 ml-1">Transit Details:</h3>
           <ul className="flex flex-col gap-y-3">
@@ -131,7 +135,7 @@ export default function GetRoute() {
                 className="mb-2 flex flex-row gap-3 lg:gap-5 lg:ml-2"
               >
                 <div>
-                  <div className="flex justify-center items-center py-5 w-full whitespace-nowrap">
+                  <div className="flex justify-center items-center py-5 w-full whitespace-nowrap min-w-16">
                     {millisecondsToTime(leg.startTime)}
                   </div>
                 </div>
@@ -188,7 +192,7 @@ export default function GetRoute() {
                       Route {leg.route}
                     </div>
                     <div className="collapse-content">
-                      <p>
+                      <p className="ml-1">
                         Ride the bus for {Math.round(leg.duration / 60)} minutes
                         ({leg.intermediateStops.length + 1} stops). Exit at{" "}
                         {leg.to.name}.
@@ -213,7 +217,7 @@ export default function GetRoute() {
                       {leg.route} Line
                     </div>
                     <div className="collapse-content">
-                      <p>
+                      <p className="ml-1">
                         Ride the train for {Math.round(leg.duration / 60)}{" "}
                         minutes ({leg.intermediateStops.length + 1} stops). Exit
                         at {leg.to.name}.

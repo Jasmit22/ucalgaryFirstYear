@@ -65,7 +65,7 @@ const Page = ({ params }) => {
       <div className="sm:w-2/3">
         <button
           onClick={() => (window.location.href = "/reviews")}
-          className="btn bg-ucalgaryRed text-white rounded-xl transition-all duration-200 ease-in-out hover:bg-ucalgaryGold hover:text-black"
+          className="text-black rounded-xl transition-all duration-200 ease-in-out p-3"
         >
           {"<"} View all reviews
         </button>

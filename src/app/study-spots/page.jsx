@@ -75,7 +75,7 @@ export default function StudySpotsPage() {
       </div>
       <div
         id="content"
-        className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
+        className="py-28 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
       >
         {studySpots.map((studySpot, key) => {
           return (

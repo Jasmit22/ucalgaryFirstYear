@@ -35,8 +35,8 @@ const Page = ({ params }) => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg"></span>
+      <div className="min-h-screen flex items-center justify-center bg-slate-200">
+        <span className="loading loading-spinner loading-lg text-black"></span>
       </div>
     );
   }

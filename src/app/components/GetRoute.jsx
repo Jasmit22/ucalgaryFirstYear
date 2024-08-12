@@ -30,6 +30,24 @@ export default function GetRoute() {
     }
   };
 
+  const handleUseMyLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          const locationString = `${latitude},${longitude}`;
+          setFromPlace(locationString); // Set the location as fromPlace
+          await fetchTransitData(fromPlace);
+        },
+        (error) => {
+          console.error("Error fetching location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
+
   const fetchTransitData = async (fromPlace) => {
     setLoading(true); // Set loading to true
     try {
@@ -96,9 +114,12 @@ export default function GetRoute() {
             />
             <label className="block text-gray-700 text-lg">
               Enter your starting location,{" "}
-              <span className="text-blue-500 cursor-pointer underline">
+              <button
+                className="text-blue-500 cursor-pointer underline"
+                onClick={handleUseMyLocation}
+              >
                 or use my location.
-              </span>
+              </button>
             </label>
           </div>
           <StandaloneSearchBox

@@ -128,6 +128,29 @@ export default function GetRoute() {
       {transitData && !loading && (
         <div className="mt-4">
           <h3 className="font-semibold text-2xl mb-5 ml-1">Transit Details:</h3>
+          {transitData.plan?.itineraries.length == 0 ? (
+            <div
+              role="alert"
+              className="alert alert-error ml-1 max-w-screen-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Unable to fetch transit details. Please try again!</span>
+            </div>
+          ) : (
+            ""
+          )}
           <ul className="flex flex-col gap-y-3">
             {transitData.plan?.itineraries[0]?.legs?.map((leg, index) => (
               <li

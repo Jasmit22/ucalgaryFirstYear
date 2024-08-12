@@ -65,52 +65,50 @@ const Page = () => {
   return (
     <div className="flex flex-col gap-5 mb-10">
       <div
-      className="hero min-h-screen"
-      style={{ backgroundImage: "url(/ucalgary-signs.png)" }}
+        className="hero min-h-screen"
+        style={{ backgroundImage: "url(/ucalgary-signs.png)" }}
       >
-      <div className="hero-overlay bg-opacity-70 backdrop-blur-sm"></div>
-      <div className="hero-content text-neutral-content text-center">
-        <div className="max-w-lg">
-          <h1 className="mb-5 text-5xl font-bold tracking-tight text-white">
-            Course Sequencing
-          </h1>
-          <p className="mb-5 text-ucalgaryGold">
-            Understanding the ins-and-outs of your specific degree sequence can be difficult for a lot of first years.
-            Luckily, we have got you covered with a basic guide on course sequencing. 
-          </p>
-          <Link
+        <div className="hero-overlay bg-opacity-70 backdrop-blur-sm"></div>
+        <div className="hero-content text-neutral-content text-center">
+          <div className="max-w-lg">
+            <h1 className="mb-5 text-5xl font-bold tracking-tight text-white">
+              Course Sequencing
+            </h1>
+            <p className="mb-5 text-lg">
+              Understanding the ins-and-outs of your specific degree sequence
+              can be difficult for a lot of first years. Luckily, we have got
+              you covered with a basic guide on course sequencing.
+            </p>
+            <Link
               className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-5 font-bold"
               href="#content"
             >
               Explore Now
             </Link>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-        id="content" 
+      <div
+        id="content"
         className="flex flex-col m-auto justify-center items-center"
       >
-        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryGold border-2 rounded-full shadow-xl mt-12 mb-12">
+        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryGold border-2 rounded-full shadow-xl mt-28 mb-16">
           <h2 className="text-3xl font-bold text-black mb-5 mt-10 rad">
             Recommended Course Guides
           </h2>
           <p className="text-lg text-black mb-5 px-20">
-              The university provides numerous program guides for all Faculty
-              of Science students, including guides for specific specializations!
+            The university provides numerous program guides for all Faculty of
+            Science students, including guides for specific specializations!
           </p>
           <Link
-              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
-              href="https://science.ucalgary.ca/current-students/undergraduate/program-advising/program-guides"
-            >
-              Find Your Program Guides Here!
+            className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
+            href="https://science.ucalgary.ca/current-students/undergraduate/program-advising/program-guides"
+          >
+            Find Your Program Guides Here!
           </Link>
         </div>
-            
       </div>
-      <div 
-        className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
-      >
+      <div  className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4">
         {!popUpOpen ?
         sequenceInfoList.map((sequenceInfo, key) => {
           return (
@@ -153,23 +151,20 @@ const Page = () => {
       </div>
       }
       </div>
-      <div
-        className="flex flex-col m-auto justify-center items-center"
-      >
+      <div className="flex flex-col m-auto justify-center items-center">
         <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryLightOrange border-4 rounded-full shadow-xl mt-12 mb-12 uclag">
           <h2 className="text-3xl font-bold text-black mb-5 mt-10 rad px-20">
             Need More Program Details?
           </h2>
           <Link
-              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
-              href="https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
-            >
-              Find More Details Here!
+            className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
+            href="https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
+          >
+            Find More Details Here!
           </Link>
         </div>
-            
       </div>
-  </div> 
+    </div>
   );
 };
 

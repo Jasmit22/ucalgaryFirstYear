@@ -3,7 +3,6 @@ import { signIn } from "next-auth/react";
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
-import Image from "next/image";
 
 const SignUpPage = () => {
   const emailRef = useRef("");
@@ -34,7 +33,7 @@ const SignUpPage = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-ucalgaryRed to-ucalgaryLightOrange p-4">
-      <div className="flex w-full max-w-6xl bg-white shadow-2xl rounded-xl min-h-[500px]">
+      <div className="flex w-2/5 max-w-6xl bg-white shadow-2xl rounded-xl min-h-[500px]">
         <div className="flex flex-col justify-center items-center px-6 py-8 w-full">
           <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
             Sign Up
@@ -102,13 +101,6 @@ const SignUpPage = () => {
             </p>
           </div>
         </div>
-        <Image
-          src="/auth-images/sign-up-image.webp"
-          alt="Sign up"
-          width={600}
-          height={400}
-          className="max-md:hidden rounded-r-xl"
-        />
       </div>
     </div>
   );

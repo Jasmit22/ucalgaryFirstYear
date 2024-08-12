@@ -20,7 +20,7 @@ export default function Home() {
             <h1 className="mb-5 text-5xl md:text-7xl font-extrabold text-ucalgaryGold uppercase">
               Explore the University of Calgary
             </h1>
-            <h2 className="text-xl md:text-3xl px-4 mb-5">
+            <h2 className="text-xl md:text-3xl px-4 mb-5 text-white">
               Your go-to resource for navigating campus life.
             </h2>
 
@@ -60,13 +60,6 @@ export default function Home() {
               "Find the best routes and tips for getting around campus."
             }
             svg={<FiMapPin className="size-6" />}
-          />
-          <FeatureCard
-            title={"Active Student Forum"}
-            description={
-              "Join discussions, ask questions, and share experiences with peers."
-            }
-            svg={<FiMessageSquare className="size-6" />}
           />
           <FeatureCard
             title={"Course Ratings"}

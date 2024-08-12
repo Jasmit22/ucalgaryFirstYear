@@ -1,11 +1,17 @@
 "use client"; // This is a client component
 
 import Link from "next/link";
-import gradientLogo2 from "../../../public/campusconnect3.webp";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import gradientLogo2 from "../../../public/campusconnect3.webp";
 
 export default function Header() {
+  const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
+
+  const toggleDropdown = (index) => {
+    setOpenDropdownIndex(openDropdownIndex === index ? null : index);
+  };
+
   useEffect(() => {
     document.addEventListener("scroll", () => {
       const header = document.querySelector("header");
@@ -19,7 +25,7 @@ export default function Header() {
         text.classList.remove("hiding");
       }
     });
-  });
+  }, []);
 
   return (
     <header className="header fixed top-0 z-50 h-20 w-full">
@@ -35,10 +41,45 @@ export default function Header() {
               className="hover:-hue-rotate-15 transition-all duration-150 ease-linear hover:cursor-pointer"
               width={50}
             />
-            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold max-md:hidden transition-all duration-150 ease-linear text-3xl font-semibold hover:cursor-pointer">
+            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold max-md:hidden transition-all duration-150 ease-linear text-2xl font-semibold hover:cursor-pointer">
               Campus Connect
             </h1>
           </Link>
+          <div className="flex gap-4 items-center mr-4">
+            {/* Get rid of this map stuff when actually implementing, just copy paste twice and change the routes */}
+            {["Dropdown 1", "Dropdown 2"].map((label, index) => (
+              <div key={index} className="relative">
+                <button
+                  onClick={() => toggleDropdown(index)}
+                  className="bg-gray-700 text-white p-2 rounded-md"
+                >
+                  {label}
+                </button>
+                {openDropdownIndex === index && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-md">
+                    <Link
+                      href="/"
+                      className="block px-4 py-2 hover:bg-gray-200"
+                    >
+                      example
+                    </Link>
+                    <Link
+                      href="/"
+                      className="block px-4 py-2 hover:bg-gray-200"
+                    >
+                      example
+                    </Link>
+                    <Link
+                      href="/"
+                      className="block px-4 py-2 hover:bg-gray-200"
+                    >
+                      example
+                    </Link>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </nav>
       </div>
     </header>

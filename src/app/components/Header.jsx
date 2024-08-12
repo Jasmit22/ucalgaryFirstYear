@@ -1,31 +1,62 @@
-"use client"; // This is a client component
-
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { ChevronDownIcon } from "@heroicons/react/solid"; // Importing a down arrow icon from Heroicons
 import gradientLogo2 from "../../../public/campusconnect3.webp";
 
 export default function Header() {
   const [openDropdownIndex, setOpenDropdownIndex] = useState(null);
+  const dropdown1Ref = useRef(null);
+  const dropdown2Ref = useRef(null);
 
   const toggleDropdown = (index) => {
     setOpenDropdownIndex(openDropdownIndex === index ? null : index);
   };
 
+  const handleClickOutside = (event) => {
+    if (
+      dropdown1Ref.current &&
+      !dropdown1Ref.current.contains(event.target) &&
+      dropdown2Ref.current &&
+      !dropdown2Ref.current.contains(event.target)
+    ) {
+      setOpenDropdownIndex(null);
+    }
+  };
+
   useEffect(() => {
-    document.addEventListener("scroll", () => {
+    const handleScroll = () => {
       const header = document.querySelector("header");
-      const text = document.querySelector(".campus-connect-text");
 
       if (window.scrollY > 500) {
         header.classList.add("scrolled");
-        text.classList.add("hiding");
       } else {
         header.classList.remove("scrolled");
-        text.classList.remove("hiding");
       }
-    });
+    };
+
+    const header = document.querySelector("header");
+
+    if (
+      typeof window !== "undefined" &&
+      window.location.pathname === "/reviews"
+    ) {
+      header.classList.add("scrolled"); // Apply background immediately if on /reviews
+    }
+
+    document.addEventListener("scroll", handleScroll);
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
+
+  const handleLinkClick = () => {
+    setOpenDropdownIndex(null);
+  };
 
   return (
     <header className="header fixed top-0 z-50 h-20 w-full">
@@ -41,44 +72,79 @@ export default function Header() {
               className="hover:-hue-rotate-15 transition-all duration-150 ease-linear hover:cursor-pointer"
               width={50}
             />
-            <h1 className="campus-connect-text hidden hover:text-ucalgaryGold max-md:hidden transition-all duration-150 ease-linear text-2xl font-semibold hover:cursor-pointer">
-              Campus Connect
-            </h1>
           </Link>
-          <div className="flex gap-4 items-center mr-4">
-            {/* Get rid of this map stuff when actually implementing, just copy paste twice and change the routes */}
-            {["Dropdown 1", "Dropdown 2"].map((label, index) => (
-              <div key={index} className="relative">
-                <button
-                  onClick={() => toggleDropdown(index)}
-                  className="bg-gray-700 text-white p-2 rounded-md"
+          <div className="flex gap-8 items-center mr-4">
+            <div className="relative" ref={dropdown1Ref}>
+              <button
+                onClick={() => toggleDropdown(1)}
+                className="flex items-center text-white focus:outline-none"
+              >
+                Explore
+                <ChevronDownIcon
+                  className={`w-5 h-5 ml-1 transition-transform duration-300 ${
+                    openDropdownIndex === 1 ? "transform rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <div
+                className={`absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-md overflow-hidden transition-all duration-300 ease-in-out transform ${
+                  openDropdownIndex === 1
+                    ? "max-h-96 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <Link
+                  href="/go-to"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                  onClick={handleLinkClick}
                 >
-                  {label}
-                </button>
-                {openDropdownIndex === index && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-md">
-                    <Link
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-200"
-                    >
-                      example
-                    </Link>
-                    <Link
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-200"
-                    >
-                      example
-                    </Link>
-                    <Link
-                      href="/"
-                      className="block px-4 py-2 hover:bg-gray-200"
-                    >
-                      example
-                    </Link>
-                  </div>
-                )}
+                  Getting to School
+                </Link>
+                <Link
+                  href="/study-spots"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                  onClick={handleLinkClick}
+                >
+                  Study Spots
+                </Link>
               </div>
-            ))}
+            </div>
+
+            <div className="relative" ref={dropdown2Ref}>
+              <button
+                onClick={() => toggleDropdown(2)}
+                className="flex items-center text-white focus:outline-none"
+              >
+                Courses
+                <ChevronDownIcon
+                  className={`w-5 h-5 ml-1 transition-transform duration-300 ${
+                    openDropdownIndex === 2 ? "transform rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <div
+                className={`absolute right-0 mt-2 w-48 bg-white text-black shadow-lg rounded-md overflow-hidden transition-all duration-300 ease-in-out transform ${
+                  openDropdownIndex === 2
+                    ? "max-h-96 opacity-100"
+                    : "max-h-0 opacity-0"
+                }`}
+              >
+                <Link
+                  href="/reviews"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                  onClick={handleLinkClick}
+                >
+                  Reviews
+                </Link>
+                <Link
+                  href="/course-sequences"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                  onClick={handleLinkClick}
+                >
+                  Sequences
+                </Link>
+              </div>
+            </div>
           </div>
         </nav>
       </div>

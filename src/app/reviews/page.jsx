@@ -87,7 +87,7 @@ const Page = () => {
 
   return (
     <div className="p-10 gap-20 mb-12 min-h-screen">
-      <div className="text-black font-extrabold text-5xl pt-16 mb-10 text-center">
+      <div className="text-black font-extrabold text-5xl pt-24 mb-10 text-center">
         Course Reviews
       </div>
       <div className="self-end w-full flex justify-between items-center px-10 max-md:px-0">

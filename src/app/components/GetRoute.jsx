@@ -163,6 +163,10 @@ export default function GetRoute() {
                                 ?.from?.name
                             }.`
                           : "."}
+                        {transitData.plan?.itineraries[0]?.legs[index + 1] ==
+                        transitData.plan?.itineraries[0]?.legs[-1]
+                          ? " Arrive at the University of Calgary."
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -184,7 +188,11 @@ export default function GetRoute() {
                       Route {leg.route}
                     </div>
                     <div className="collapse-content">
-                      <p>Random text</p>
+                      <p>
+                        Ride the bus for {Math.round(leg.duration / 60)} minutes
+                        ({leg.intermediateStops.length + 1} stops). Exit at{" "}
+                        {leg.to.name}.
+                      </p>
                     </div>
                   </div>
                 ) : (
@@ -205,24 +213,14 @@ export default function GetRoute() {
                       {leg.route} Line
                     </div>
                     <div className="collapse-content">
-                      <p>Random text</p>
+                      <p>
+                        Ride the train for {Math.round(leg.duration / 60)}{" "}
+                        minutes ({leg.intermediateStops.length + 1} stops). Exit
+                        at {leg.to.name}.
+                      </p>
                     </div>
                   </div>
                 )}
-                {/* <p>
-                  <strong>{leg.mode}</strong> from{" "}
-                  {leg.from.name || `${leg.from.lat}, ${leg.from.lon}`} to{" "}
-                  {leg.to.name || `${leg.to.lat}, ${leg.to.lon}`}
-                </p>
-                <p>
-                  Distance: {leg.distance} meters, Duration:{" "}
-                  {Math.round(leg.duration / 60)} minutes
-                </p>
-                {leg.agencyName && (
-                  <p>
-                    Agency: {leg.agencyName}, Route: {leg.route}
-                  </p>
-                )} */}
               </li>
             ))}
           </ul>

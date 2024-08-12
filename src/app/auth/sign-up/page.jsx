@@ -32,8 +32,8 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-ucalgaryRed to-ucalgaryLightOrange p-4">
-      <div className="flex w-2/5 max-w-6xl bg-white shadow-2xl rounded-xl min-h-[500px]">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-ucalgaryRed to-ucalgaryLightOrange p-4 max-md:p-6">
+      <div className="flex w-2/5 max-md:w-full max-w-6xl bg-white shadow-2xl rounded-xl min-h-[500px]">
         <div className="flex flex-col justify-center items-center px-6 py-8 w-full">
           <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
             Sign Up

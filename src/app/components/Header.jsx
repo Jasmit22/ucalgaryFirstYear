@@ -136,6 +136,13 @@ export default function Header() {
                 >
                   Sequences
                 </Link>
+                <Link
+                  href="/schedule-tips"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                  onClick={handleLinkClick}
+                >
+                  Schedule Tips
+                </Link>
               </div>
             </div>
           </div>

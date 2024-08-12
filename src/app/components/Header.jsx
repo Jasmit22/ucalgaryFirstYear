@@ -100,6 +100,13 @@ export default function Header() {
                 >
                   Study Spots
                 </Link>
+                <Link
+                  href="/faq"
+                  className="block px-4 py-2 hover:bg-gray-200"
+                  onClick={handleLinkClick}
+                >
+                  FAQ
+                </Link>
               </div>
             </div>
 

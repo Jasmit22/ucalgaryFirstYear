@@ -47,7 +47,7 @@ export default function footer() {
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
                 href="/go-to"
               >
-                Go To
+                Getting to School
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
@@ -65,21 +65,21 @@ export default function footer() {
             <div className="flex flex-col gap-2 font-medium">
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/reviews"
+                href="/study-spots"
               >
-                Reviews
+                Study Spots
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/course-sequences"
+                href="/"
               >
-                Course Sequencing
+                Example
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/schedule-tips"
+                href="/"
               >
-                Schedule Tips
+                Example
               </Link>
             </div>
           </div>

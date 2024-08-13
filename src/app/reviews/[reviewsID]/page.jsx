@@ -22,6 +22,7 @@ const Page = ({ params }) => {
           throw new Error("Failed to fetch course data");
         }
         const data = await response.json();
+
         setCourseData(data);
       } catch (err) {
         setError(err.message);
@@ -57,7 +58,7 @@ const Page = ({ params }) => {
     );
   }
 
-  const { courseName, averageRating, averageTime } = courseData;
+  const { courseName, averageRating, averageTime, reviewCount } = courseData;
 
   return (
     <div className="gap-10 flex flex-col items-center min-h-screen m-auto justify-center">
@@ -73,7 +74,7 @@ const Page = ({ params }) => {
       <div className="text-black font-extrabold text-5xl text-center">
         {courseName}
       </div>
-      <div className="flex text-black justify-evenly items-center">
+      <div className="flex flex-col text-black justify-evenly items-center">
         <div className="flex gap-10">
           <div className="flex items-center flex-col">
             <p>Overall Rating</p>
@@ -96,6 +97,7 @@ const Page = ({ params }) => {
             </p>
           </div>
         </div>
+        <div className="text-black pt-5">Based on {reviewCount} reviews</div>
       </div>
       <div className="flex-col">
         <MyReview courseName={courseName} />

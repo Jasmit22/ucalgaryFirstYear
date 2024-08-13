@@ -35,6 +35,8 @@ export async function GET(req, { params }) {
       );
     }
 
+    const reviewCount = await Review.countDocuments({ courseName: courseName });
+
     // Perform an aggregation to calculate the average rating and time commitment for the specific course
     const averages = await Review.aggregate([
       {
@@ -64,12 +66,18 @@ export async function GET(req, { params }) {
           courseName: courseName,
           averageRating: null,
           averageTime: null,
+          reviewCount: reviewCount,
         },
         { status: 200 }
       );
     }
 
-    return NextResponse.json(averages[0], { status: 200 });
+    const result = {
+      ...averages[0],
+      reviewCount: reviewCount,
+    };
+
+    return NextResponse.json(result, { status: 200 });
   } catch (error) {
     console.error("Error fetching course averages:", error);
     return NextResponse.json(

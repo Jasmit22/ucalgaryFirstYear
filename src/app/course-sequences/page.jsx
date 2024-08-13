@@ -7,60 +7,34 @@ const Page = () => {
 
   const sequenceInfoList = [
     {
-      title: "Table 1",
+      title: "Faculty Requirements",
+      image: "/product-requirements.jpg",
+      document: <FacultyRequirementsDocument />    
+    },
+    {
+      title: "Concentrations",
+      image: "/Degree-Completion-Program.jpg",
+      document: <Concentrations />
+    },
+    {
+      title: "Table 1 Courses",
       image: "/document-table.svg",
-      document: <TableOneDocument />    
+      document: <TableOneCourses />
+    },
+    {
+      title: "Honors",
+      image: "/delgado-honors-logo.jpg",
+      document: <Honors />
+    },
+    {
+      title: "Program Maximums",
+      image: "/maximum.jpg",
+      document: <ProgramMaximums />  
     }
   ]
 
   const [popUpOpen, setPopUpOpen] = useState(false);
   const [popUpType, setPopUpType] = useState(null);
-
-
-  const studySpots = [
-    {
-      title: "Taylor Family Digital Library",
-      description:
-        "A modern library offering various study spaces, from silent areas to collaborative rooms. It features extensive resources, including books, computers, and study rooms. The views from the upper floors are also a great bonus.",
-      image: "/tfdl-study.jpg",
-      tag: ["Modern", "Collaborative"],
-    },
-    {
-      title: "Atrium",
-      description:
-        "A spacious and bright area with ample seating, ideal for both group and individual study. The natural light and greenery create a refreshing atmosphere. It’s conveniently located near the Science Theatres, making it easy to pop in between classes.",
-      image: "/atrium-study.jpg",
-      tag: ["Bright", "Natural"],
-    },
-    {
-      title: "Scurfield Hall",
-      description:
-        "Scurfield Hall, home to the Haskayne School of Business, offers several study areas ideal for business students. There are quiet lounges and dedicated study rooms, perfect for individual work or group projects.",
-      image: "/scurfield-study.jpg",
-      tag: ["Business", "Central"],
-    },
-    {
-      title: "Hunter Student Commons",
-      description:
-        "The Hunter Student Commons is a vibrant and social study space. It offers a variety of seating options, from cozy nooks to large tables. The bustling atmosphere is perfect for group work or casual study sessions.",
-      image: "/hunter-student.jpg",
-      tag: ["Bright", "Collaborative"],
-    },
-    {
-      title: "Math Sciences Building",
-      description:
-        "A relatively quiet and focused study spot with many study spaces and computer labs, perfect for math and science students. The building's location and proximity to the science theatres make it a convenient and practical study spot.",
-      image: "/ms-study.jpg",
-      tag: ["Focused", "Resourceful"],
-    },
-    {
-      title: "Engineering Building",
-      description:
-        "The Engineering Building features unique study areas, including innovation labs and project rooms designed specifically for engineering students. The vibrant atmosphere and specialized spaces make it an ideal spot for hands-on learning and collaborative projects.",
-      image: "/eng-building-study.jpg",
-      tag: ["Modern", "Collaborative"],
-    },
-  ];
 
   return (
     <div className="flex flex-col gap-5 mb-10">
@@ -108,7 +82,7 @@ const Page = () => {
           </Link>
         </div>
       </div>
-      <div  className="mt-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4">
+      <div  className="mt-10 mb-10 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4">
         {!popUpOpen ?
         sequenceInfoList.map((sequenceInfo, key) => {
           return (
@@ -124,7 +98,7 @@ const Page = () => {
                 <Image
                   className="w-full object-cover overflow-visible"
                   src={sequenceInfo.image}
-                  alt="Shoes"
+                  alt="sequenceInfo"
                   width={500}
                   height={500}
                 />
@@ -140,7 +114,7 @@ const Page = () => {
       :
       <div className="flex flex-row justify-center flex-wrap w-full">
         <div className="p-4">
-        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-4xl px-8 py-5 me-2 
+        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-6xl px-8 py-5 me-2 
         mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 shadow-lg" onClick={() => {setPopUpOpen(false)}} >
           X
         </button>
@@ -168,8 +142,24 @@ const Page = () => {
   );
 };
 
-const TableOneDocument = () => {
+const FacultyRequirementsDocument = () => {
   return <div className="bg-ucalgaryRed">weofjeowjfojweofjewo</div>
+}
+
+const Concentrations = () => {
+  return <div className="bg-ucalgaryGold">weofjeowjfojweofjewo</div>
+}
+
+const TableOneCourses = () => {
+  return <div className="bg-ucalgaryDarkOrange">weofjeowjfojweofjewo</div>
+}
+
+const Honors = () => {
+  return <div className="bg-ucalgaryLightOrange">weofjeowjfojweofjewo</div>
+}
+
+const ProgramMaximums = () => {
+  return <div className="bg-ucalgaryLightGrey">weofjeowjfojweofjewo</div>
 }
 
 export default Page;

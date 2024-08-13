@@ -47,7 +47,7 @@ export default function footer() {
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
                 href="/go-to"
               >
-                Go To
+                Getting to School
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
@@ -71,15 +71,15 @@ export default function footer() {
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/"
+                href="/faq"
               >
-                Example
+                FAQ
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/"
+                href="/schedule-tips"
               >
-                Example
+                Schedule Tips
               </Link>
             </div>
           </div>

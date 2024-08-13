@@ -114,7 +114,7 @@ const Page = () => {
         </label>
         <button
           onClick={() => setModalOpen(true)}
-          className="btn bg-ucalgaryRed text-white ml-4"
+          className="btn bg-ucalgaryRed text-white ml-4 hover:bg-black"
         >
           Request Course
         </button>
@@ -202,8 +202,8 @@ const Page = () => {
                 <button
                   type="submit"
                   // Keep the hover stuff here, it is needed trust
-                  className={`btn bg-ucalgaryGold text-black hover:bg-ucalgaryGold ${
-                    !courseName ? "cursor-not-allowed" : ""
+                  className={`btn bg-ucalgaryGold text-black hover:bg-ucalgaryGold disabled:text-black ${
+                    !courseName ? "cursor-not-allowed " : ""
                   }`}
                   disabled={!courseName}
                 >

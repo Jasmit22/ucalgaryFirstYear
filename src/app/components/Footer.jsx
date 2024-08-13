@@ -65,21 +65,21 @@ export default function footer() {
             <div className="flex flex-col gap-2 font-medium">
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/study-spots"
+                href="/reviews"
               >
-                Study Spots
+                Reviews
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/"
+                href="/course-sequences"
               >
-                Example
+                Course Sequencing
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/"
+                href="/schedule-tips"
               >
-                Example
+                Schedule Tips
               </Link>
             </div>
           </div>

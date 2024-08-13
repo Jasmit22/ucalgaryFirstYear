@@ -37,7 +37,7 @@ export default function GetRoute() {
           const { latitude, longitude } = position.coords;
           const locationString = `${latitude},${longitude}`;
           setFromPlace(locationString); // Set the location as fromPlace
-          await fetchTransitData(fromPlace);
+          await fetchTransitData(locationString);
         },
         (error) => {
           console.error("Error fetching location:", error);
@@ -184,11 +184,11 @@ export default function GetRoute() {
                   </div>
                 </div>
                 {leg.mode == "WALK" ? (
-                  <div
+                  <details
                     tabIndex={0}
                     className="collapse collapse-arrow border-base-300 bg-gray-500 border text-zinc-50 max-w-[1200px]"
                   >
-                    <div
+                    <summary
                       className="collapse-title text-xl font-semibold"
                       style={{
                         backgroundImage: "url(/go-to/WhiteWalk.png)",
@@ -199,7 +199,7 @@ export default function GetRoute() {
                       }}
                     >
                       Walk
-                    </div>
+                    </summary>
                     <div className="collapse-content">
                       <p className="ml-1">
                         Walk {leg.distance} meters for{" "}
@@ -217,13 +217,13 @@ export default function GetRoute() {
                           : ""}
                       </p>
                     </div>
-                  </div>
+                  </details>
                 ) : leg.mode == "BUS" ? (
-                  <div
+                  <details
                     tabIndex={0}
                     className="collapse collapse-arrow border-base-300 bg-amber-500 border text-zinc-50 max-w-[1200px]"
                   >
-                    <div
+                    <summary
                       className="collapse-title text-xl font-semibold"
                       style={{
                         backgroundImage: "url(/go-to/WhiteBus.png)",
@@ -234,21 +234,21 @@ export default function GetRoute() {
                       }}
                     >
                       Route {leg.route}
-                    </div>
+                    </summary>
                     <div className="collapse-content">
-                      <p className="ml-1">
+                      <p>
                         Ride the bus for {Math.round(leg.duration / 60)} minutes
                         ({leg.intermediateStops.length + 1} stops). Exit at{" "}
                         {leg.to.name}.
                       </p>
                     </div>
-                  </div>
+                  </details>
                 ) : (
-                  <div
+                  <details
                     tabIndex={0}
                     className="collapse collapse-arrow border-base-300 bg-sky-500 border text-zinc-50 max-w-[1200px]"
                   >
-                    <div
+                    <summary
                       className="collapse-title text-xl font-semibold"
                       style={{
                         backgroundImage: "url(/go-to/WhiteTramway.png)",
@@ -259,15 +259,15 @@ export default function GetRoute() {
                       }}
                     >
                       {leg.route} Line
-                    </div>
+                    </summary>
                     <div className="collapse-content">
-                      <p className="ml-1">
+                      <p>
                         Ride the train for {Math.round(leg.duration / 60)}{" "}
                         minutes ({leg.intermediateStops.length + 1} stops). Exit
                         at {leg.to.name}.
                       </p>
                     </div>
-                  </div>
+                  </details>
                 )}
               </li>
             ))}

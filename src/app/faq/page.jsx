@@ -237,9 +237,12 @@ const Page = () => {
         Frequently Asked Questions
       </div>
 
-      {faq.map((item) => {
+      {faq.map((item, key) => {
         return (
-          <div className="collapse w-2/3 bg-white border-2 border-ucalgaryRed text-ucalgaryRed">
+          <div
+            className="collapse w-2/3 bg-white border-2 border-ucalgaryRed text-ucalgaryRed"
+            key={key}
+          >
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
               {item.question}

@@ -112,15 +112,17 @@ const Page = () => {
           )
         })
       :
-      <div className="flex flex-row justify-center flex-wrap w-full">
-        <div className="p-4">
-        <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-6xl px-8 py-5 me-2 
-        mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 shadow-lg" onClick={() => {setPopUpOpen(false)}} >
-          X
-        </button>
+      <div className="flex flex-row justify-center flex-wrap w-full mb-5">
+        <div className="pr-2">
+          <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-6xl px-11 py-20 me-2 
+           dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 shadow-lg" onClick={() => {setPopUpOpen(false)}} >
+            X
+          </button>
         </div>
-        <div className="card max-w-[1000px] max-h-[750px] h-[750px] w-[1000px] shadow-xl">
-          {popUpType && <div>{popUpType}</div>}
+        <div className="card max-w-[1200px] max-h-[900px] h-[900px] w-[1200px] shadow-xl border-slate-500">
+          <div className="p-5">
+            {popUpType && <div>{popUpType}</div>}
+          </div>
         </div>
       </div>
       }
@@ -151,7 +153,20 @@ const Concentrations = () => {
 }
 
 const TableOneCourses = () => {
-  return <div className="bg-ucalgaryDarkOrange">weofjeowjfojweofjewo</div>
+  return (
+    <div>
+      <div className="bg-ucalgaryDarkOrange">weofjeowjfojweofjewo</div>
+      <figure className="mt-5 mb-1">
+          <Image
+            className="w-full object-cover overflow-visible"
+            src="/table1.png"
+            alt="table1"
+            width={500}
+            height={500}
+          />
+        </figure>
+    </div>
+  )
 }
 
 const Honors = () => {

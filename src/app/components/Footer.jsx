@@ -51,35 +51,35 @@ export default function footer() {
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/course-sequences"
-              >
-                Course Sequences
-              </Link>
-              <Link
-                className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/reviews"
-              >
-                Course Reviews
-              </Link>
-            </div>
-            <div className="flex flex-col gap-2 font-medium">
-              <Link
-                className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
                 href="/study-spots"
               >
                 Study Spots
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/"
+                href="/faq"
               >
-                Example
+                FAQ
+              </Link>
+            </div>
+            <div className="flex flex-col gap-2 font-medium">
+              <Link
+                className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
+                href="/reviews"
+              >
+                Reviews
               </Link>
               <Link
                 className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-                href="/"
+                href="/course-sequences"
               >
-                Example
+                Course Sequencing
+              </Link>
+              <Link
+                className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
+                href="/schedule-tips"
+              >
+                Schedule Tips
               </Link>
             </div>
           </div>

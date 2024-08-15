@@ -18,12 +18,6 @@ const Page = () => {
     },
 
     {
-      question: "Is it important to learn to cook?",
-      answer:
-        "Yes, learning to cook can save you money and help you maintain a healthier lifestyle.",
-    },
-
-    {
       question: "Should I attend exam prep sessions?",
       answer:
         "Attend exam prep sessions only if they’re free. Develop your own study habits early, as upper-year courses won’t have prep sessions.",
@@ -43,12 +37,6 @@ const Page = () => {
     },
 
     {
-      question: "How important is it to stay organized?",
-      answer:
-        "Extremely important. Keep track of all deadlines and important dates using a planner or digital calendar. Professors won’t remind you about due dates, so it’s up to you to stay on top of them.",
-    },
-
-    {
       question: "How can I succeed academically in university?",
       answer:
         "Stay on top of your readings and start assignments early. Organizing files and choosing a note-taking method before the semester starts will help you stay focused. Getting up early every day can also boost productivity.",
@@ -58,25 +46,6 @@ const Page = () => {
       question: "How can I build a social life in university?",
       answer:
         "Look for opportunities to make friends, such as joining clubs or talking to classmates. A strong support system is crucial for mental well-being and academic success. Don’t be afraid to start conversations or join group activities.",
-    },
-
-    {
-      question: "What should I keep in mind about my grades and GPA?",
-      answer:
-        "Your grades and GPA are important, but they don’t define you. Focus on learning and personal growth, not just on achieving high grades.",
-    },
-
-    {
-      question:
-        "What should I do if I’m struggling in a course or with my major?",
-      answer:
-        "It’s okay to change your major if you’re not enjoying your classes. Speak to academic advisors, and explore different courses or study abroad opportunities.",
-    },
-    {
-      question:
-        "Can I get easy A’s in university like I did in high school without studying?",
-      answer:
-        "No, university is much more challenging than high school. You'll need to put in consistent effort and study regularly to achieve good grades.",
     },
 
     {
@@ -118,22 +87,9 @@ const Page = () => {
     },
 
     {
-      question: "What happens if I forget my unicard for an exam or test?",
-      answer:
-        "Forgetting your unicard can cause unnecessary stress. Make it a habit to always carry it with you, especially during exams. Check your bag the night before to ensure you have everything you need.",
-    },
-
-    {
       question: "How important is it to read the course outline?",
       answer:
         "Reading the course outline is essential. It contains important information about the course, including grading policies, due dates, and expectations. Don't skip it.",
-    },
-
-    {
-      question:
-        "Why is it important to understand academic integrity policies?",
-      answer:
-        "Understanding academic integrity is critical. Misconduct, even unintentional, can lead to severe consequences like failing grades or expulsion. Familiarize yourself with the policies to avoid any issues.",
     },
 
     {
@@ -149,21 +105,9 @@ const Page = () => {
     },
 
     {
-      question: "Is it okay to start assignments the day before they’re due?",
-      answer:
-        "Procrastinating on assignments is a common mistake. Start early to give yourself time to research, write, and revise. This will improve the quality of your work and reduce stress.",
-    },
-    {
       question: "Should I buy textbooks before the semester starts?",
       answer:
         "Don't buy textbooks unless you're absolutely sure you'll need them and can't find alternative sources. You'll save hundreds of dollars this way.",
-    },
-
-    {
-      question:
-        "How important is it to invest in experiences outside of academics?",
-      answer:
-        "Investing in yourself through experiences like international exchange, new hobbies, or research projects is invaluable. Don't wait until you feel 'ready'—start exploring opportunities early to avoid missing out.",
     },
 
     {
@@ -176,20 +120,6 @@ const Page = () => {
       question: "Are GPA boosters effective?",
       answer:
         "GPA boosters are often a myth. Focus on understanding the material and doing your best rather than relying on 'easy' courses to inflate your GPA.",
-    },
-
-    {
-      question:
-        "Is it worth joining First Year Scholars or the honours program?",
-      answer:
-        "Many students find that First Year Scholars and some honours programs, like in actuarial science, aren’t worth the time and effort. Consider other opportunities that align more closely with your goals.",
-    },
-
-    {
-      question:
-        "Is it beneficial to major in something just because my friends are?",
-      answer:
-        "No, majoring in something just because your friends are in it is a mistake. Choose a major based on your interests and strengths, not peer pressure.",
     },
 
     {

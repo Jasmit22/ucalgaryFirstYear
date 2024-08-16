@@ -88,13 +88,13 @@ const Page = () => {
           return (
             <div
               key={key}
-              className="hover:scale-105 hover:cursor-pointer card card-compact text-black max-w-[450px] max-h-[450px] h-[450px] w-[450px] shadow-xl border-2 transition-all duration-150 ease-in-out "
+              className="hover:scale-105 hover:cursor-pointer card card-compact text-black max-w-[450px] max-h-[450px] h-[400px] w-[400px] shadow-xl border-2 transition-all duration-150 ease-in-out "
               onClick={() => {
                 setPopUpOpen(true);
                 setPopUpType(sequenceInfo.document);
               }}
             >
-              <figure className="mt-5 mb-1">
+              <figure className="mt-5 mb-1 w-full h-5/6">
                 <Image
                   className="w-full object-cover overflow-visible"
                   src={sequenceInfo.image}
@@ -119,7 +119,7 @@ const Page = () => {
             X
           </button>
         </div>
-        <div className="card max-w-[1200px] max-h-[900px] h-[900px] w-[1200px] shadow-inner">
+        <div className="card max-w-[1200px] max-h-[900px] w-[1200px] shadow-inner">
           <div className="p-5 overflow-y-scroll">
             {popUpType && <div>{popUpType}</div>}
           </div>
@@ -127,8 +127,8 @@ const Page = () => {
       </div>
       }
       </div>
-      <div className="flex flex-col m-auto justify-center items-center">
-        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryLightOrange border-4 rounded-full shadow-xl mt-12 mb-12 uclag">
+      <div className="flex flex-col m-auto justify-center items-center w-3/5">
+        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryLightOrange border-4 rounded-full shadow-xl mt-12 mb-12">
           <h2 className="text-3xl font-bold text-black mb-5 mt-10 rad px-20">
             Need More Program Details?
           </h2>
@@ -145,11 +145,109 @@ const Page = () => {
 };
 
 const FacultyRequirementsDocument = () => {
-  return <div className="bg-ucalgaryRed">weofjeowjfojweofjewo</div>
+  return (
+    <div>
+      <h1>
+        The Faculty of Science has provided numerous degree requirements a student must fulfill to graduate. 
+        <br />
+        <br />
+        The following requirements are MAJOR DEGREE 
+        REQUIREMENTS. To find second degree requirements, click the following link, find the program you are looking to get a second degree for, and view
+        the second degree requirements under Faculty Requirements. 
+        <br />
+        <br />
+        To find second degree requirements, <Link href={"https://calendar.ucalgary.ca/programs/CPSCBSC"} className="btn bg-ucalgaryRed hover:bg-yellow-500
+      text-gray-100 border-none btn-circle w-32 mb-5">Click Here!</Link>
+      </h1>
+      <br />
+      <br />
+      <h1>
+        Students in science programs must present an approved list of courses completed with passing grades to graduate. These lists can be found in their program
+        details. Furthermore, their program must satisfy the following conditions:
+      </h1>
+      <ul className="list-inside list-decimal mt-10">
+        <li className="mb-10">
+          The student's program must contain at least 120 units - 40 courses - with a maximum of 48 units - 16 courses - at the 200 level. 
+          <br />
+          200 level courses are known as junior courses. 
+        </li>
+        <li className="mb-10">
+          The program must contain at least 48 units in a science field, but the maximum allowable course limits are specified in program details for each degree.
+          <br />
+          Only 6 units - 2 courses - in the major field may have a "D" or "D+".
+        </li>
+        <li className="mb-10">
+          The GPA calculated at the end of the program must be at least 2.00, and the GPA for courses in the major field must also be at least 2.00. The program may not
+          contain more than 18 units - 6 courses - with a "D" or "D+" grade.
+        </li>
+        <li className="mb-10">
+          There is a breadth requirement in the Faculty of Science. The program must contain at least 54 units - 18 courses - from outside the major field. Of these 18, 18 units - 6 courses -
+          must be courses from faculties outside of the Faculty of Science. There must be at least 6 units - 2 courses - from the Faculty of Arts. 
+        </li>
+        <li className="mb-10">
+          There is a breadth requirement in the Faculty of Science. The program must contain at least 54 units - 18 courses - from outside the major field. Of these 18, 18 units - 6 courses -
+          must be courses from faculties outside of the Faculty of Science. There must be at least 6 units - 2 courses - from the Faculty of Arts. 
+          <br />
+          <br />
+          18 units from other faculties must not be from the courses listed in Table 1. To view Table 1, go to our Table 1 section. 
+        </li>
+        <li className="mb-10">
+          Program must include the specified courses listed in the Program Details for the program that the student wants to do. 
+        </li>
+        <li className="mb-10">
+          No more than 60 units - 20 courses - done in other institutions are acceptable for transfer credits, with a maximum of 24 units - 8 courses - done in other institutions may be
+          counted toward the major field.  
+        </li>
+        <li className="mb-10">
+          No credit will be granted for Physical Activity courses such as Dance Education, Outdoor Pursuits, and Physical Education. 
+        </li>
+      </ul>
+      <h1>
+        For more information about faculty regulations or for general program requirements, <Link href={"https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"} className="btn bg-ucalgaryDarkOrange hover:bg-yellow-500
+      text-gray-100 border-none btn-circle w-32 mb-5">
+        Click Here!
+        </Link>
+      </h1>
+    </div>
+  )
 }
 
 const Concentrations = () => {
-  return <div className="bg-ucalgaryGold">weofjeowjfojweofjewo</div>
+  return (
+    <div>
+      <h1>
+        Concentrations are a specific track of courses within a major. Students opting for a concentration will need to take specific courses in an order
+        which encompass the area within a major that they wish to specialize in.  
+      </h1>
+      <br></br>
+      <h1>
+        When a student completes a concentration, they will still receive the same BSc/BSc Honours degree as any other student in the major, but they shall have a concentration
+        denotion on their transcript. 
+      </h1>
+      <br></br>
+      <h1>
+        Concentrations can be very useful for students when they are seeking indepth learning on one part of their major. However, it is not a requirement
+        to do a concentration and students can still opt for a general learning in their major. 
+      </h1>
+      <br />
+      <h1>
+        The Faculty of Science offers concentrations for many of its programs and also offers program guides for these concentrations.
+        <br />
+        <br />To find these
+        guides, <Link href={"https://science.ucalgary.ca/current-students/undergraduate/program-advising/program-guides"} className="btn bg-ucalgaryGold hover:bg-yellow-500
+      text-gray-100 border-none btn-circle w-32 mb-5">
+        Click Here!
+      </Link>
+      </h1>
+      <br />
+      <h1>
+        For more information about what concentrations are available to you, <Link href="https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
+        className="btn bg-ucalgaryGold hover:bg-yellow-500
+        text-gray-100 border-none btn-circle w-32">Click Here!</Link> <br /> <br />
+        For the link above, find your program and scroll to the concentrations tab if available.
+      </h1>
+    </div>
+  )
 }
 
 const TableOneCourses = () => {
@@ -178,7 +276,7 @@ const TableOneCourses = () => {
         <br></br>
         <br></br>
         <h1>
-          For more information on Table 1, <Link href={"https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"} className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-10">
+          For more information on Table 1, <Link href={"https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"} className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-2">
             Click Me!
           </Link>
         </h1>
@@ -262,7 +360,7 @@ const ProgramMaximums = () => {
       <br></br>
       <br></br>
       <ul className="list-decimal list-inside">
-        <li className="mb-20">
+        <li className="mb-28">
           <h1>
           Junior courses in the University of Calgary are 200 level courses. These courses are intended to be taken in first year, but
           may be taken at any point during the students program.

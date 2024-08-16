@@ -128,32 +128,19 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        {/* <div className="flex w-full justify-center gap-5 lg:gap-10 mt-5 flex-wrap">
-          <FeatureCard
-            title={"Best Study Spots"}
-            description={"Discover the top study spots tailored to your needs."}
-            svg={<FiBook className="size-6" />}
-          />
-          <FeatureCard
-            title={"Campus Guide"}
-            description={
-              "Find the best routes and tips for getting around campus."
-            }
-            svg={<FiMapPin className="size-6" />}
-          />
-          <FeatureCard
-            title={"Course Ratings"}
-            description={
-              "Read reviews and ratings for various courses to make informed decisions."
-            }
-            svg={<FiStar className="size-6" />}
-          />
-          <FeatureCard
-            title={"Informative FAQ"}
-            description={"Get answers to common questions for new students."}
-            svg={<FiCompass className="size-6" />}
-          />
-        </div> */}
+        <div className="flex flex-col m-auto justify-center items-center md:w-3/5">
+          <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryLightOrange border-4 rounded-full shadow-xl lg:mt-12 lg:mb-12">
+            <h2 className="text-lg md:text-xl lg:text-3xl font-bold text-black mb-5 mt-10 rad px-20">
+              Need More Details?
+            </h2>
+            <Link
+              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
+              href="https://www.ucalgary.ca/student-services/orientation"
+            >
+              Find More Details Here!
+            </Link>
+          </div>
+        </div>
       </div>
 
       {isModalOpen && (

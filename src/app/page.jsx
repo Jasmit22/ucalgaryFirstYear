@@ -1,15 +1,18 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState } from "react";
 import FeatureCard from "./components/FeatureCard";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { FiBook, FiMapPin, FiMessageSquare, FiStar } from "react-icons/fi";
+import { FiBook, FiMapPin, FiStar, FiCompass } from "react-icons/fi";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const { data: session, status } = useSession();
 
   return (
-    <main>
+    <main className="flex flex-col">
       <div
         className="min-h-screen hero"
         style={{ backgroundImage: "url(/tfdl.jpg)" }}
@@ -44,11 +47,88 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center my-10 text-gray-800 gap-5 mx-5">
-        <h1 className="text-2xl md:text-4xl font-bold flex justify-center mt-5">
-          Why Use CampusConnect?
+      <div className="flex flex-col items-center mt-12 mb-20 text-gray-800 gap-10 mx-5">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold flex justify-center mt-5 tracking-tight">
+          Why CampusConnect?
         </h1>
-        <div className="flex w-full justify-center gap-5 lg:gap-10 mt-5 flex-wrap">
+        <div className="flex flex-col lg:flex-row mt-7 md:mt-12 lg:mt-20 gap-5 md:gap-10 lg:gap-36 xl:gap-52 items-center lg:items-start font-semibold">
+          <Image
+            src={"/svg/studySpots.svg"}
+            alt=""
+            width={1000}
+            height={1000}
+            className="w-52 lg:w-80"
+          />
+          <div className="flex flex-col lg:mt-8">
+            <h2 className="text-lg md:text-xl lg:text-3xl tracking-wide">
+              Best Study Spots
+            </h2>
+            <p className="mt-2 md:mt-3 lg:mt-4 tracking-normal leading-relaxed lg:tracking-wide lg:leading-loose text-md max-w-sm font-medium">
+              Discover the top study spots tailored to your needs. Whether you
+              prefer a quiet space in the library or a vibrant café atmosphere,
+              there's a perfect spot for everyone.
+            </p>
+            <Link
+              className="btn bg-ucalgaryRed text-white border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl mt-3 md:mt-5"
+              href={"/study-spots"}
+            >
+              View Study Spots
+            </Link>
+          </div>
+        </div>
+        <div className="flex flex-col lg:flex-row mt-7 md:mt-12 lg:mt-20 gap-5 md:gap-10 lg:gap-36 xl:gap-52 items-center lg:items-start font-semibold">
+          <Image
+            src={"/svg/map.svg"}
+            alt=""
+            width={1000}
+            height={1000}
+            className="block w-52 lg:w-80 lg:hidden"
+          />
+          <div className="flex flex-col">
+            <h2 className="text-lg md:text-xl lg:text-3xl tracking-wide">
+              Campus Guide
+            </h2>
+            <p className="mt-2 md:mt-3 lg:mt-4 tracking-normal leading-relaxed lg:tracking-wide lg:leading-loose text-md max-w-sm font-medium">
+              Navigate the University of Calgary campus with ease by following
+              our comprehensive directions. Whether you're trying to locate
+              classrooms, dining areas, or key campus landmarks, we've got the
+              tips and shortcuts to help you get there smoothly.
+            </p>
+          </div>
+          <Image
+            src={"/svg/map.svg"}
+            alt=""
+            width={1000}
+            height={1000}
+            className="hidden w-52 lg:w-80 lg:block"
+          />
+        </div>
+        <div className="flex flex-col lg:flex-row mt-7 md:mt-12 lg:mt-20 gap-5 md:gap-10 lg:gap-36 xl:gap-52 items-center lg:items-start font-semibold">
+          <Image
+            src={"/svg/review.svg"}
+            alt=""
+            width={1000}
+            height={1000}
+            className="w-52 lg:w-80"
+          />
+          <div className="flex flex-col">
+            <h2 className="text-lg md:text-xl lg:text-3xl tracking-wide">
+              Course Ratings
+            </h2>
+            <p className="mt-2 md:mt-3 lg:mt-4 tracking-normal leading-relaxed lg:tracking-wide lg:leading-loose text-md max-w-sm font-medium">
+              Explore detailed course ratings to help you choose the right
+              classes at the University of Calgary. Gain insight into student
+              experiences, and course difficulty to make informed decisions.
+            </p>
+            <Link
+              className="btn bg-ucalgaryRed text-white border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl mt-3 md:mt-5"
+              href={"/reviews"}
+            >
+              View Ratings
+            </Link>
+          </div>
+        </div>
+        {/* <div className="flex w-full justify-center gap-5 lg:gap-10 mt-5 flex-wrap">
           <FeatureCard
             title={"Best Study Spots"}
             description={"Discover the top study spots tailored to your needs."}
@@ -68,10 +148,12 @@ export default function Home() {
             }
             svg={<FiStar className="size-6" />}
           />
-        </div>
-      </div>
-      <div className="flex w-full flex-col">
-        <div className="divider mt-0 mb-5"></div>
+          <FeatureCard
+            title={"Informative FAQ"}
+            description={"Get answers to common questions for new students."}
+            svg={<FiCompass className="size-6" />}
+          />
+        </div> */}
       </div>
 
       {isModalOpen && (

@@ -1,9 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { getRatingColour } from "../page";
-import Link from "next/link";
+import React, { useState } from "react";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Page = () => {
+  const [openItems, setOpenItems] = useState([]);
+
+  const toggleItem = (index) => {
+    setOpenItems((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    );
+  };
+
   const faq = [
     {
       question: "How should I prioritize my time in university?",
@@ -172,18 +180,35 @@ const Page = () => {
       </div>
 
       {faq.map((item, key) => {
+        const isOpen = openItems.includes(key);
         return (
           <div
             className="collapse w-2/3 bg-white border-2 border-ucalgaryRed text-ucalgaryRed"
             key={key}
           >
-            <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">
+            <input
+              type="checkbox"
+              className="hidden"
+              checked={isOpen}
+              onChange={() => toggleItem(key)}
+            />
+            <div
+              className="collapse-title text-xl font-medium flex justify-between items-center cursor-pointer"
+              onClick={() => toggleItem(key)}
+            >
               {item.question}
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                className={`transform transition-transform ${
+                  isOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </div>
-            <div className="collapse-content">
-              <p className="text-black">{item.answer}</p>
-            </div>
+            {isOpen && (
+              <div className="collapse-content">
+                <p className="text-black">{item.answer}</p>
+              </div>
+            )}
           </div>
         );
       })}

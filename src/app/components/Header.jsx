@@ -70,7 +70,7 @@ export default function Header() {
             <div className="relative" ref={dropdown1Ref}>
               <button
                 onClick={() => toggleDropdown(1)}
-                className="flex items-center text-white focus:outline-none"
+                className="flex items-center text-white focus:outline-none font-semibold tracking-tight"
               >
                 Explore
                 <ChevronDownIcon
@@ -120,7 +120,7 @@ export default function Header() {
             <div className="relative" ref={dropdown2Ref}>
               <button
                 onClick={() => toggleDropdown(2)}
-                className="flex items-center text-white focus:outline-none"
+                className="flex items-center text-white focus:outline-none font-semibold tracking-tight"
               >
                 Courses
                 <ChevronDownIcon

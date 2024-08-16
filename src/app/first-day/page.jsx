@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 
 export default function FirstDayPage() {
@@ -89,15 +90,47 @@ export default function FirstDayPage() {
           className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
         >
           <div className="collapse-title text-xl font-semibold">
-            Should I go to orientation?
+            Where can I buy food?
           </div>
           <div className="collapse-content tracking-normal leading-relaxed">
             <p>
-              There is no obligation to stay with your orientation group. If you
-              enjoy what the University has put together, stick around.
-              Otherwise, make sure to take a look around campus. Try to locate
-              your classes now, as it will save you a lot of time and stress on
-              your first day.
+              Mac Hall is the go-to destination if you&apos;re hungry. Again,
+              beware that it will be packed. There are other locations scattered
+              around campus, including multiple coffee shops, which you are sure
+              to find if you explore.
+            </p>
+          </div>
+        </div>
+        <div
+          tabIndex={0}
+          className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
+        >
+          <div className="collapse-title text-xl font-semibold">
+            I&apos;m driving, where should I park?
+          </div>
+          <div className="collapse-content tracking-normal leading-relaxed">
+            <p>
+              Parking is quite expensive. You can park at Brentwood station but
+              again, it will be packed. Plan ahead and don&apos;t bank on the
+              free parking at Brentwood.
+            </p>
+          </div>
+        </div>
+        <div
+          tabIndex={0}
+          className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
+        >
+          <div className="collapse-title text-xl font-semibold">
+            What type of laptop do I need?
+          </div>
+          <div className="collapse-content tracking-normal leading-relaxed">
+            <p>
+              For most students, a lightweight, affordable laptop with basic
+              specs will be sufficient for tasks like writing papers, browsing
+              the web, and attending virtual classes. However, if you're
+              studying engineering, computer science, or any program requiring
+              heavy software, you'll need a more powerful device with higher
+              processing power and memory.
             </p>
           </div>
         </div>

@@ -26,20 +26,83 @@ export default function FirstDayPage() {
           </div>
         </div>
       </div>
-      <div className="mt-20 text-black flex flex-col gap-10 items-center w-3/4">
+      <div
+        id="content"
+        className="text-black flex flex-col gap-7 items-center w-full"
+      >
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black">
+          Common Questions
+        </h1>
         <div
           tabIndex={0}
-          className="collapse collapse-arrow border-base-300 bg-base-200 border"
+          className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
         >
-          <div className="collapse-title text-xl font-medium">
-            Focus me to see content
+          <div className="collapse-title text-xl font-semibold">
+            Should I go to orientation?
           </div>
-          <div className="collapse-content">
-            <p>tabindex={0} attribute is necessary to make the div focusable</p>
+          <div className="collapse-content tracking-normal leading-relaxed">
+            <p>
+              There is no obligation to stay with your orientation group. If you
+              enjoy what the University has put together, stick around.
+              Otherwise, make sure to take a look around campus. Try to locate
+              your classes now, as it will save you a lot of time and stress on
+              your first day.
+            </p>
+          </div>
+        </div>
+        <div
+          tabIndex={0}
+          className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
+        >
+          <div className="collapse-title text-xl font-semibold">
+            What do I need?
+          </div>
+          <div className="collapse-content tracking-normal leading-relaxed">
+            <p>
+              You shouldn&apos;t need much. If you are taking notes on paper,
+              bring a notebook and pen. If you are using a laptop, make sure it
+              is charged and ready to go. Bring a water bottle and a snack to
+              keep you going throughout the day. University isn&apos;t like high
+              school, professors won&apos;t be telling you to get off your phone
+              or monitor your devices.
+            </p>
+          </div>
+        </div>
+        <div
+          tabIndex={0}
+          className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
+        >
+          <div className="collapse-title text-xl font-semibold">
+            When do I need to come to class?
+          </div>
+          <div className="collapse-content tracking-normal leading-relaxed">
+            <p>
+              Come around 30 minutes to an hour early. Firstly, the campus is
+              packed at the start of the semester. Secondly, you will want to
+              confirm the location of your classes if you haven&apos;t already.
+              It&apos;s better to be early than late.
+            </p>
+          </div>
+        </div>
+        <div
+          tabIndex={0}
+          className="collapse collapse-arrow bg-ucalgaryGold border-amber-400 border-2 text-gray-800 max-w-96 lg:max-w-screen-lg"
+        >
+          <div className="collapse-title text-xl font-semibold">
+            Should I go to orientation?
+          </div>
+          <div className="collapse-content tracking-normal leading-relaxed">
+            <p>
+              There is no obligation to stay with your orientation group. If you
+              enjoy what the University has put together, stick around.
+              Otherwise, make sure to take a look around campus. Try to locate
+              your classes now, as it will save you a lot of time and stress on
+              your first day.
+            </p>
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         id="content"
         className="py-28 text-black flex gap-8 flex-grow flex-wrap justify-center items-center max-md:mx-4"
       >
@@ -89,7 +152,7 @@ export default function FirstDayPage() {
             parking at Brentwood.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

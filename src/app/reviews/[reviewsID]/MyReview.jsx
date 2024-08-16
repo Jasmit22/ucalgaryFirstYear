@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getRatingColour } from "../page";
 import CustomAlert from "../../components/CustomAlert"; // Import the custom alert component
 
@@ -10,6 +10,8 @@ const MyReview = ({ courseName }) => {
   const [activeType, setActiveType] = useState("overall");
   const [alertMessage, setAlertMessage] = useState(""); // State for the custom alert message
   const [alertType, setAlertType] = useState(""); // State for the custom alert type
+
+  const [reviewDone, setReviewDone] = useState(false);
   let ratingStuff = null;
 
   const reviewHeading =
@@ -22,6 +24,21 @@ const MyReview = ({ courseName }) => {
   } else if (activeType === "time" && overallTime !== null) {
     ratingStuff = getRatingColour(numbers[overallTime]);
   }
+
+  useEffect(() => {
+    const reviews = JSON.parse(localStorage.getItem("reviewed"));
+
+    if (reviews && reviews.length > 0) {
+      const reviewFound = reviews.find(
+        (review) => review.courseName === courseName
+      );
+      setReviewDone(reviewFound);
+      if (reviewFound !== undefined) {
+        setOverallRating(numbers.indexOf(reviewFound.overallRating)); // Convert value to index
+        setOverallTime(numbers.indexOf(reviewFound.overallTime)); // Convert value to index
+      }
+    }
+  });
 
   const handleSaveReview = async () => {
     if (overallRating === null || overallTime === null) {
@@ -50,6 +67,11 @@ const MyReview = ({ courseName }) => {
       if (response.ok) {
         setAlertMessage("Review saved successfully!");
         setAlertType("success");
+
+        const reviewedArray =
+          JSON.parse(localStorage.getItem("reviewed")) || [];
+        reviewedArray.push(reviewData);
+        localStorage.setItem("reviewed", JSON.stringify(reviewedArray));
 
         // Reset the form
         setOverallRating(null);
@@ -148,6 +170,7 @@ const MyReview = ({ courseName }) => {
                 onMouseEnter={() => setHoveredButton(index)}
                 onMouseLeave={() => setHoveredButton(null)}
                 onClick={() => handleRatingClick(index)}
+                disabled={reviewDone}
               >
                 {num}
               </button>
@@ -174,12 +197,18 @@ const MyReview = ({ courseName }) => {
       </div>
 
       <div className="flex justify-center">
-        <button
-          onClick={handleSaveReview}
-          className="btn bg-ucalgaryRed text-white rounded-xl transition-all duration-200 ease-in-out hover:bg-ucalgaryGold hover:text-black"
-        >
-          Save Review
-        </button>
+        {!reviewDone && (
+          <button
+            onClick={handleSaveReview}
+            className="btn bg-ucalgaryRed text-white rounded-xl transition-all duration-200 ease-in-out hover:bg-ucalgaryGold hover:text-black"
+          >
+            Save Review
+          </button>
+        )}
+
+        {reviewDone && (
+          <div className="text-black">You have already reviewed this!</div>
+        )}
       </div>
 
       {/* Custom Alert Modal */}

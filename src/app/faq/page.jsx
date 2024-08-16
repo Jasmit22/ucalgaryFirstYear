@@ -107,7 +107,7 @@ const Page = () => {
     {
       question: "Should I buy textbooks before the semester starts?",
       answer:
-        "Don't buy textbooks unless you're absolutely sure you'll need them and can't find alternative sources. You'll save hundreds of dollars this way.",
+        "Don't buy textbooks unless you're absolutely sure you'll need them and can't find alternative sources. You'll save hundreds of dollars this way. :)",
     },
 
     {
@@ -119,25 +119,35 @@ const Page = () => {
     {
       question: "Are GPA boosters effective?",
       answer:
-        "GPA boosters are often a myth. Focus on understanding the material and doing your best rather than relying on 'easy' courses to inflate your GPA.",
+        "GPA boosters are often a myth. Focus on understanding the material and doing your best rather than relying on 'easy' courses to inflate your GPA. The real GPA boosters are the courses that you are genuinely interested in.",
     },
 
     {
       question: "How helpful is joining a club related to my major?",
       answer:
-        "Joining a club related to your major is extremely helpful. It can provide networking opportunities, enhance your understanding of the field, and connect you with like-minded peers.",
+        "Joining a club related to your major can provide networking opportunities, enhance your understanding of the field, and connect you with like-minded peers. Join Club's week, near the beginning of the Fall semester to find the right club for you!",
     },
 
     {
       question: "Is it useful to have an upper-year mentor?",
       answer:
-        "Yes, having an upper-year mentor can be very beneficial, especially when planning your career path or navigating university challenges.",
+        "Yes, having an upper-year mentor can be very beneficial, especially when planning your career path or navigating university challenges. The Science Mentorship program is a great way to find a mentor in the Faculty of Science.",
     },
 
     {
       question: "How valuable are U of C’s Career Services?",
       answer:
         "U of C’s Career Services is an amazing resource. Take full advantage of it for resume building, job search assistance, and career planning.",
+    },
+    {
+      question: "Is it worth joining First Year Scholars program?",
+      answer:
+        "Many students find that First Year Scholars, isn't worth the time and effort if you aren't planning on applying to Scholars Academy after first year. Only do this program if you are planning on doing Scholars Academy.",
+    },
+    {
+      question: "Is it worth joining Scholars Academy program?",
+      answer:
+        "This program gives many more better opportunities than the First Year Scholars program and is worth joining!",
     },
 
     {

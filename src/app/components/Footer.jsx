@@ -31,9 +31,9 @@ export default function footer() {
             </Link>
             <Link
               className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
-              href="/contact"
+              href="/about"
             >
-              Contact
+              About
             </Link>
           </div>
         </div>

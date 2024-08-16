@@ -105,12 +105,6 @@ const Page = () => {
     },
 
     {
-      question: "Should I buy textbooks before the semester starts?",
-      answer:
-        "Don't buy textbooks unless you're absolutely sure you'll need them and can't find alternative sources. You'll save hundreds of dollars this way. :)",
-    },
-
-    {
       question: "How can I build a social network at university?",
       answer:
         "Just talk to people. Whether in class or around campus, making connections early on can significantly enhance your university experience. Don’t be afraid to strike up conversations.",
@@ -142,12 +136,12 @@ const Page = () => {
     {
       question: "Is it worth joining First Year Scholars program?",
       answer:
-        "Many students find that First Year Scholars, isn't worth the time and effort if you aren't planning on applying to Scholars Academy after first year. Only do this program if you are planning on doing Scholars Academy.",
+        "The First Year Scholars program has its benefits, such as an exclusive study space and workshops, and it's usually for students with a 90+ entering average. However, it requires a significant time commitment, including meeting with advisors every semester and attending workshops.",
     },
     {
       question: "Is it worth joining Scholars Academy program?",
       answer:
-        "This program gives many more better opportunities than the First Year Scholars program and is worth joining!",
+        "The Scholars Academy program offers many more opportunities, such as scholarships, mentorships, and networking events. It's particularly beneficial for those planning to apply to graduate, medical, or law school, as it provides tailored advice and opportunities to enhance your application. The program also offers chances to represent the university and participate in service projects, which can boost your profile.",
     },
 
     {

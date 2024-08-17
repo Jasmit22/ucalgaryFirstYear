@@ -156,12 +156,19 @@ const Page = () => {
                     >
                       {sanitizeInput(review.courseName)}
                     </h2>
-                    <p className="text-center border-t-2 font-semibold text-xl pt-3 pb-1 border-ucalgaryLightGrey">
-                      {getRatingColour(review.averageRating).averageRating}
-                    </p>
+
                     <div className="flex justify-evenly">
                       <div className="flex items-center flex-col gap-2">
-                        <p>Overall Rating</p>
+                        <div className="text-center">
+                          <p>Overall Rating</p>
+                          <span className=" font-semibold text-xl">
+                            {
+                              getRatingColour(review.averageRating)
+                                .averageRating
+                            }
+                          </span>
+                        </div>
+
                         <p
                           className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                             getRatingColour(review.averageRating).color
@@ -176,7 +183,13 @@ const Page = () => {
                         )}
                       </div>
                       <div className="flex items-center flex-col gap-2">
-                        <p>Time Commitment</p>
+                        <div className="text-center">
+                          <p>Time Commitment</p>
+                          <span className=" font-semibold text-xl ">
+                            {getRatingColour(review.averageTime).commitment}
+                          </span>
+                        </div>
+
                         <p
                           className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                             getRatingColour(review.averageTime).color

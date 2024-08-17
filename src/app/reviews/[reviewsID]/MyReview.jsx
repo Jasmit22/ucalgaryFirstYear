@@ -38,7 +38,7 @@ const MyReview = ({ courseName }) => {
         setOverallTime(numbers.indexOf(reviewFound.overallTime)); // Convert value to index
       }
     }
-  });
+  }, [overallRating, overallTime]);
 
   const handleSaveReview = async () => {
     if (overallRating === null || overallTime === null) {

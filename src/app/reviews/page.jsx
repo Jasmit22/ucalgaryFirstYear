@@ -120,53 +120,85 @@ const Page = () => {
             <span className="loading loading-spinner loading-lg text-black"></span>
           </div>
         ) : (
-          filteredReviews.map((review) => (
-            <Link
-              href={`/reviews/${encodeURIComponent(
-                sanitizeInput(review.courseName)
-              )}`}
-              key={review.courseName}
-            >
-              <div className="hover:scale-105 card card-compact text-black w-96 shadow-xl group border-2 transition-all duration-150 ease-in-out">
-                <div className="card-body">
-                  <h2
-                    className={`card-title font-bold text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                      getRatingColour(review.averageRating).color
-                    }`}
-                  >
-                    {sanitizeInput(review.courseName)}
-                  </h2>
-                  <p className="text-center border-t-2 font-semibold text-xl pt-3 pb-1 border-ucalgaryLightGrey">
-                    {getRatingColour(review.averageRating).averageRating}
-                  </p>
-                  <div className="flex justify-evenly">
-                    <div className="flex items-center flex-col">
-                      <p>Overall Rating</p>
-                      <p
-                        className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                          getRatingColour(review.averageRating).color
-                        }`}
-                      >
-                        {review.averageRating != null
-                          ? review.averageRating
-                          : "-"}
-                      </p>
+          filteredReviews.map((review) => {
+            const reviewsDone = JSON.parse(localStorage.getItem("reviewed"));
+            let reviewFound;
+            let yourOverallTime = " ";
+            let yourOverallReview = " ";
+            if (reviewsDone && reviewsDone.length > 0) {
+              reviewFound = reviewsDone.find(
+                (reviews) => reviews.courseName === review.courseName
+              );
+
+              if (reviewFound) {
+                yourOverallTime = reviewFound.overallTime;
+                yourOverallReview = reviewFound.overallRating;
+              }
+            }
+
+            return (
+              <Link
+                href={`/reviews/${encodeURIComponent(
+                  sanitizeInput(review.courseName)
+                )}`}
+                key={review.courseName}
+              >
+                <div
+                  className={`${
+                    reviewFound ? "border-2 border-green-500" : ""
+                  } hover:scale-105 card card-compact text-black w-96 shadow-xl group border-2 transition-all duration-150 ease-in-out`}
+                >
+                  <div className="card-body flex gap-5">
+                    <h2
+                      className={`card-title font-bold text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
+                        getRatingColour(review.averageRating).color
+                      }`}
+                    >
+                      {sanitizeInput(review.courseName)}
+                    </h2>
+                    <p className="text-center border-t-2 font-semibold text-xl pt-3 pb-1 border-ucalgaryLightGrey">
+                      {getRatingColour(review.averageRating).averageRating}
+                    </p>
+                    <div className="flex justify-evenly">
+                      <div className="flex items-center flex-col gap-5">
+                        <p>Overall Rating</p>
+                        <p
+                          className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
+                            getRatingColour(review.averageRating).color
+                          }`}
+                        >
+                          {review.averageRating != null
+                            ? review.averageRating
+                            : "-"}
+                        </p>
+                        {reviewFound && (
+                          <div>Your rating: {yourOverallReview}</div>
+                        )}
+                      </div>
+                      <div className="flex items-center flex-col gap-5">
+                        <p>Time Commitment</p>
+                        <p
+                          className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
+                            getRatingColour(review.averageTime).color
+                          }`}
+                        >
+                          {review.averageTime != null
+                            ? review.averageTime
+                            : "-"}
+                        </p>
+                        {reviewFound && (
+                          <div>Your rating: {yourOverallTime}</div>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex items-center flex-col">
-                      <p>Time Commitment</p>
-                      <p
-                        className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
-                          getRatingColour(review.averageTime).color
-                        }`}
-                      >
-                        {review.averageTime != null ? review.averageTime : "-"}
-                      </p>
-                    </div>
+                    {!reviewFound && (
+                      <div className="text-center">Not yet rated</div>
+                    )}
                   </div>
                 </div>
-              </div>
-            </Link>
-          ))
+              </Link>
+            );
+          })
         )}
       </div>
 

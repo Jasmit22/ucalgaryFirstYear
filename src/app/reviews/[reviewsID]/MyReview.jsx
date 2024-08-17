@@ -127,7 +127,7 @@ const MyReview = ({ courseName }) => {
 
       <div className="flex mb-2 text-black items-center max-md:px-10 md:flex-row flex-col">
         <div className="mr-10 max-md:mr-4">
-          <p className="flex justify-start">{reviewHeading}:</p>
+          <p className="flex justify-start md:pt-0 pt-4">{reviewHeading}:</p>
 
           <div className="flex flex-row justify-between pt-4">
             <span>Stale</span>
@@ -183,7 +183,7 @@ const MyReview = ({ courseName }) => {
           })}
         </div>
         <div className="flex">
-          <div className="flex items-center flex-col pt-10">
+          <div className="flex items-center flex-col md:pt-10 pt-4">
             <p className="text-center">Your Review:</p>
             <p
               className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out duration-200 ${

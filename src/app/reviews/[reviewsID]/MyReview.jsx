@@ -132,16 +132,16 @@ const MyReview = ({ courseName }) => {
           <div className="flex flex-row justify-between pt-4">
             {activeType === "overall" && (
               <>
-                <span>Stale</span>
-                <span>Middling</span>
-                <span>Great</span>
+                <span>{getRatingColour(0).averageRating}</span>
+                <span>{getRatingColour(70).averageRating}</span>
+                <span>{getRatingColour(100).averageRating}</span>
               </>
             )}
             {activeType !== "overall" && (
               <>
-                <span>Overwhelming</span>
-                <span>Reasonable</span>
-                <span>Minimal</span>
+                <span>{getRatingColour(0).commitment}</span>
+                <span>{getRatingColour(70).commitment}</span>
+                <span>{getRatingColour(100).commitment}</span>
               </>
             )}
           </div>
@@ -209,7 +209,12 @@ const MyReview = ({ courseName }) => {
                 ? numbers[overallTime]
                 : ""}
             </p>
-            {ratingStuff && <p>{ratingStuff.averageRating}</p>}
+            {ratingStuff && activeType === "overall" && (
+              <p>{ratingStuff.averageRating}</p>
+            )}
+            {ratingStuff && activeType !== "overall" && (
+              <p>{ratingStuff.commitment}</p>
+            )}
             {!ratingStuff && <p>--</p>}
           </div>
         </div>

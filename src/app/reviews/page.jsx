@@ -157,7 +157,7 @@ const Page = () => {
                       {sanitizeInput(review.courseName)}
                     </h2>
 
-                    <div className="flex justify-evenly">
+                    <div className="flex justify-evenly border-t-2 pt-3 pb-1 border-ucalgaryLightGrey ">
                       <div className="flex items-center flex-col gap-2">
                         <div className="text-center">
                           <p>Overall Rating</p>

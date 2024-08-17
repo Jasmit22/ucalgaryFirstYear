@@ -214,7 +214,7 @@ const Page = () => {
     <div className="pb-24 gap-5 flex flex-col items-center min-h-screen m-auto justify-center">
       <div className="bg-ucalgaryRed fixed top-0 z-10 h-20 w-full"></div>
       <div className="text-black font-extrabold text-5xl text-center pt-32 mb-10">
-        First Day Questions
+        First Day FAQ
       </div>
       {firstDay.map((item, key) => {
         const isOpen = openItems.includes(key);

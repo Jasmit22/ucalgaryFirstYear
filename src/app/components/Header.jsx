@@ -61,7 +61,7 @@ export default function Header() {
           >
             <Image
               src={gradientLogo2}
-              alt="CampusConnect Logo"
+              alt="Calgary First Year Logo"
               className="hover:-hue-rotate-15 transition-all duration-150 ease-linear hover:cursor-pointer"
               width={50}
             />

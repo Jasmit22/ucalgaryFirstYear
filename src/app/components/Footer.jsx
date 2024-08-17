@@ -13,7 +13,7 @@ export default function footer() {
         >
           <Image
             src={whiteLogo}
-            alt="CampusConnect Logo"
+            alt="Calgary First Year Logo"
             className="hover:-hue-rotate-15 transition-all duration-150 ease-linear hover:cursor-pointer"
             width={75}
           />

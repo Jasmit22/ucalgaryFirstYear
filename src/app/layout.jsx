@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Campus Connect",
+  title: "Calgary First Year",
   description: "Guidance for first year students at the University of Calgary",
   icons: {
     icon: "/favicon.ico",

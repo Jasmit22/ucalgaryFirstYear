@@ -36,7 +36,7 @@ export default function Home() {
           id="content"
           className="text-3xl md:text-4xl lg:text-5xl font-bold flex justify-center mt-5 tracking-tight"
         >
-          Why CampusConnect?
+          Why Calgary First Year?
         </h1>
         <div className="flex flex-col lg:flex-row mt-7 md:mt-12 gap-5 md:gap-10 lg:gap-36 xl:gap-52 items-center lg:items-start font-semibold">
           <Image

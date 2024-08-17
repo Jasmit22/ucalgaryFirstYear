@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import MyReview from "./MyReview";
-import { getRatingColour } from "../page";
+import { getRatingColour } from "../utils"; // Adjust the import path if necessary
 import Link from "next/link";
 
 const Page = ({ params }) => {

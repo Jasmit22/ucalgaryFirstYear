@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRatingColour } from "../page";
+import { getRatingColour } from "../utils";
 import CustomAlert from "../../components/CustomAlert"; // Import the custom alert component
 
 const MyReview = ({ courseName }) => {

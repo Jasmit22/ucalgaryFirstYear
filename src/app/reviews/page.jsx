@@ -1,7 +1,9 @@
+// src/app/reviews/page.jsx
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import "daisyui";
+import { getRatingColour } from "./utils"; // Adjust the import path if necessary
 
 // Utility function to sanitize input
 const sanitizeInput = (input) => {
@@ -9,19 +11,10 @@ const sanitizeInput = (input) => {
   return sanitized;
 };
 
-export const getRatingColour = (num) => {
-  if (num == null) return { color: "bg-ucalgaryLightGrey", averageRating: "-" };
-  if (num < 50) return { color: "bg-ucalgaryRed", averageRating: "Stale" };
-  if (num < 80) return { color: "bg-ucalgaryGold", averageRating: "Middling" };
-  if (num <= 100) return { color: "bg-green-600", averageRating: "Great" };
-
-  return { color: "bg-ucalgaryLightGrey", averageRating: "???" };
-};
-
 const Page = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [reviews, setReviews] = useState([]); // Store the full list of reviews
-  const [filteredReviews, setFilteredReviews] = useState([]); // Store the filtered reviews
+  const [reviews, setReviews] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [courseName, setCourseName] = useState("");
   const [requestSuccess, setRequestSuccess] = useState(false);
@@ -32,8 +25,8 @@ const Page = () => {
       try {
         const response = await fetch("/api/reviews");
         const data = await response.json();
-        setReviews(data); // Store the full list in 'reviews'
-        setFilteredReviews(data); // Initialize 'filteredReviews' with the full list
+        setReviews(data);
+        setFilteredReviews(data);
       } catch (error) {
         console.error("Failed to fetch reviews:", error);
       } finally {
@@ -49,7 +42,6 @@ const Page = () => {
     setSearchInput(value);
 
     if (value === "") {
-      // If the search input is empty, show all reviews
       setFilteredReviews(reviews);
     } else {
       const filtered = reviews.filter((review) =>
@@ -201,7 +193,6 @@ const Page = () => {
               <div className="modal-action mt-4">
                 <button
                   type="submit"
-                  // Keep the hover stuff here, it is needed trust
                   className={`btn bg-ucalgaryGold text-black hover:bg-ucalgaryGold disabled:text-black ${
                     !courseName ? "cursor-not-allowed " : ""
                   }`}

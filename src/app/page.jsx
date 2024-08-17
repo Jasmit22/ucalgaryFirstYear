@@ -1,15 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState } from "react";
-import FeatureCard from "./components/FeatureCard";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { FiBook, FiMapPin, FiStar, FiCompass } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const { data: session, status } = useSession();
 
   return (
     <main className="flex flex-col">
@@ -26,29 +22,20 @@ export default function Home() {
             <h2 className="text-xl md:text-3xl px-4 mb-5 text-white">
               Your go-to resource for navigating campus life.
             </h2>
-
-            {status == "authenticated" ? (
-              <button
-                className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
-                onClick={() => signOut({ callbackUrl: "/" })}
-              >
-                Logout
-              </button>
-            ) : (
-              <button
-                className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
-                onClick={() =>
-                  signIn(undefined, { callbackUrl: "http://localhost:3000/" })
-                }
-              >
-                Get started now
-              </button>
-            )}
+            <Link
+              className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl"
+              href="#content"
+            >
+              Get started now
+            </Link>
           </div>
         </div>
       </div>
       <div className="flex flex-col items-center mt-12 mb-20 text-gray-800 gap-10 mx-5">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold flex justify-center mt-5 tracking-tight">
+        <h1
+          id="content"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold flex justify-center mt-5 tracking-tight"
+        >
           Why CampusConnect?
         </h1>
         <div className="flex flex-col lg:flex-row mt-7 md:mt-12 gap-5 md:gap-10 lg:gap-36 xl:gap-52 items-center lg:items-start font-semibold">

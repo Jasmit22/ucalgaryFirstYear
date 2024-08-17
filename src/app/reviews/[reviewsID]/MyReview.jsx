@@ -125,14 +125,25 @@ const MyReview = ({ courseName }) => {
         </div>
       </div>
 
-      <div className="flex mb-2 text-black items-center max-md:px-10 md:flex-row flex-col">
+      <div className="flex mb-2 text-black items-center max-md:px-6 md:flex-row flex-col">
         <div className="mr-10 max-md:mr-4">
           <p className="flex justify-start md:pt-0 pt-4">{reviewHeading}:</p>
 
           <div className="flex flex-row justify-between pt-4">
-            <span>Stale</span>
-            <span>Middling</span>
-            <span>Great</span>
+            {activeType === "overall" && (
+              <>
+                <span>Stale</span>
+                <span>Middling</span>
+                <span>Great</span>
+              </>
+            )}
+            {activeType !== "overall" && (
+              <>
+                <span>Overwhelming</span>
+                <span>Reasonable</span>
+                <span>Minimal</span>
+              </>
+            )}
           </div>
 
           {numbers.map((num, index) => {

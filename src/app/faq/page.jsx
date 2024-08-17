@@ -166,6 +166,14 @@ const Page = () => {
     },
 
     {
+      question: "Any final tips?",
+      answer:
+        "Enjoy your university experience. Keep your hobbies alive and explore campus life. University should be a part of your life, not your entire life. Stay in touch with academic advisors to navigate any challenges.",
+    },
+  ];
+
+  const firstDay = [
+    {
       question: "Should I go to orientation?",
       answer:
         "There is no obligation to stay with your orientation group. If you enjoy what the University has put together, stick around. Otherwise, make sure to take a look around campus. Try to locate your classes now, as it will save you a lot of time and stress on your first day.",
@@ -200,21 +208,50 @@ const Page = () => {
       answer:
         "For most students, a lightweight, affordable laptop with basic specs will be sufficient for tasks like writing papers, browsing the web, and attending virtual classes. However, if you're studying engineering, computer science, or any program requiring heavy software, you'll need a more powerful device with higher processing power and memory.",
     },
-
-    {
-      question: "Any final tips?",
-      answer:
-        "Enjoy your university experience. Keep your hobbies alive and explore campus life. University should be a part of your life, not your entire life. Stay in touch with academic advisors to navigate any challenges.",
-    },
   ];
 
   return (
     <div className="pb-24 gap-5 flex flex-col items-center min-h-screen m-auto justify-center">
       <div className="bg-ucalgaryRed fixed top-0 z-10 h-20 w-full"></div>
       <div className="text-black font-extrabold text-5xl text-center pt-32 mb-10">
+        First Day Questions
+      </div>
+      {firstDay.map((item, key) => {
+        const isOpen = openItems.includes(key);
+        return (
+          <div
+            className="collapse w-2/3 bg-white border-2 border-ucalgaryRed text-ucalgaryRed"
+            key={key}
+          >
+            <input
+              type="checkbox"
+              className="hidden"
+              checked={isOpen}
+              onChange={() => toggleItem(key)}
+            />
+            <div
+              className="collapse-title text-xl font-medium flex justify-between items-center cursor-pointer"
+              onClick={() => toggleItem(key)}
+            >
+              {item.question}
+              <FontAwesomeIcon
+                icon={faChevronDown}
+                className={`transform transition-transform ${
+                  isOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </div>
+            {isOpen && (
+              <div className="collapse-content">
+                <p className="text-black">{item.answer}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
+      <div className="text-black font-extrabold text-5xl text-center pt-16 mb-10">
         Frequently Asked Questions
       </div>
-
       {faq.map((item, key) => {
         const isOpen = openItems.includes(key);
         return (

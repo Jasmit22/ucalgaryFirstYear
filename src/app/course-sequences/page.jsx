@@ -8,27 +8,27 @@ const Page = () => {
   const sequenceInfoList = [
     {
       title: "Faculty Requirements",
-      image: "/product-requirements.jpg",
+      image: "/facultyrequirements.webp",
       document: <FacultyRequirementsDocument />,
     },
     {
       title: "Concentrations",
-      image: "/Degree-Completion-Program.jpg",
+      image: "/concentrations.webp",
       document: <Concentrations />,
     },
     {
       title: "Table 1 Courses",
-      image: "/document-table.svg",
+      image: "/table1.webp",
       document: <TableOneCourses />,
     },
     {
       title: "Honours",
-      image: "/delgado-honors-logo.jpg",
+      image: "/honours.webp",
       document: <Honours />,
     },
     {
       title: "Program Maximums",
-      image: "/maximum.jpg",
+      image: "/maximum.webp",
       document: <ProgramMaximums />,
     },
   ];
@@ -94,27 +94,27 @@ const Page = () => {
                   setPopUpType(sequenceInfo.document);
                 }}
               >
-                <figure className="mt-5 mb-1 w-full h-5/6">
+                <figure>
                   <Image
-                    className="w-full object-cover overflow-visible"
+                    className="object-contain"
                     src={sequenceInfo.image}
                     alt="sequenceInfo"
-                    width={500}
-                    height={500}
+                    width={1000}
+                    height={1000}
                   />
                 </figure>
                 <div className="card-body align-middle items-center mb-1">
-                  <h2 className="card-title text-3xl">{sequenceInfo.title}</h2>
+                  <h2 className="card-title text-3xl mt-2">{sequenceInfo.title}</h2>
                 </div>
               </div>
             );
           })
         ) : (
-          <div className="flex flex-row justify-center flex-wrap w-full mb-5">
+          <div className="flex flex-row justify-center flex-wrap w-full">
             <div className="pr-2">
               <button
-                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-6xl px-11 py-20 me-2 
-           dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 shadow-lg"
+                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg mb-6 lg:mb-0 text-4xl px-11 py-6 me-2 
+              dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 shadow-2xl"
                 onClick={() => {
                   setPopUpOpen(false);
                 }}
@@ -137,7 +137,7 @@ const Page = () => {
           </h2>
           <Link
             className="btn bg-ucalgaryRed text-gray-100 border-none hover:bg-red-800 btn-circle btn-wide mb-10"
-            href="https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"
+            href="https://calendar.ucalgary.ca/"
           >
             Find More Details Here!
           </Link>
@@ -155,95 +155,87 @@ const FacultyRequirementsDocument = () => {
         student must fulfill to graduate.
         <br />
         <br />
-        The following requirements are MAJOR DEGREE REQUIREMENTS. To find second
+        <span className="font-bold">The following requirements are MAJOR DEGREE REQUIREMENTS.</span> To find second
         degree requirements, click the following link, find the program you are
         looking to get a second degree for, and view the second degree
         requirements under Faculty Requirements.
         <br />
         <br />
-        To find second degree requirements,{" "}
-        <Link
-          href={"https://calendar.ucalgary.ca/programs/CPSCBSC"}
-          className="btn bg-ucalgaryRed hover:bg-yellow-500
-      text-gray-100 border-none btn-circle w-32 mb-5"
-        >
-          Click Here!
-        </Link>
+        <div className="flex flex-col items-center mt-4">
+          <Link
+            href={"https://calendar.ucalgary.ca/programs?page=1&pq="}
+            className="btn bg-ucalgaryRed hover:bg-orange-500 text-gray-100 border-none btn-circle w-2/5 mb-5"
+          >
+            View Second Degree Requirements
+          </Link>
+        </div>
       </h1>
       <br />
       <br />
       <h1>
         Students in science programs must present an approved list of courses
         completed with passing grades to graduate. These lists can be found in
-        their program details. Furthermore, their program must satisfy the
+        their program details. 
+      </h1>
+        <br />
+        <br />
+      <h1 className="text-center text-lg font-bold">
+        The student's program must satisfy the
         following conditions:
       </h1>
       <ul className="list-inside list-decimal mt-10">
         <li className="mb-10">
-          The student's program must contain at least 120 units - 40 courses -
-          with a maximum of 48 units - 16 courses - at the 200 level.
-          <br />
-          200 level courses are known as junior courses.
+        The student's program must contain <span className="font-bold"> at least 120 units - 40 courses -
+        </span> with a maximum of <span className="font-bold">48 units - 16 courses - at the 200 level.</span>
         </li>
         <li className="mb-10">
-          The program must contain at least 48 units in a science field, but the
+          The program must contain <span className="font-bold">at least 48 units in a science field</span>, but the
           maximum allowable course limits are specified in program details for
-          each degree.
-          <br />
-          Only 6 units - 2 courses - in the major field may have a "D" or "D+".
+          each degree. Only 6 units - 2 courses - in the major field may have a "D" or "D+".
         </li>
         <li className="mb-10">
-          The GPA calculated at the end of the program must be at least 2.00,
+          The <span className="font-bold">GPA</span> calculated at the end of the program must be <span className="font-bold">at least 2.00</span>,
           and the GPA for courses in the major field must also be at least 2.00.
           The program may not contain more than 18 units - 6 courses - with a
           "D" or "D+" grade.
         </li>
         <li className="mb-10">
           There is a breadth requirement in the Faculty of Science. The program
-          must contain at least 54 units - 18 courses - from outside the major
-          field. Of these 18, 18 units - 6 courses - must be courses from
-          faculties outside of the Faculty of Science. There must be at least 6
-          units - 2 courses - from the Faculty of Arts.
-        </li>
-        <li className="mb-10">
-          There is a breadth requirement in the Faculty of Science. The program
-          must contain at least 54 units - 18 courses - from outside the major
-          field. Of these 18, 18 units - 6 courses - must be courses from
-          faculties outside of the Faculty of Science. There must be at least 6
+          must contain 
+          <span className="font-bold"> at least 54 units - 18 courses - from outside the major
+          field.</span> Of these 18, <span className="font-bold">18 units - 6 courses - must be courses from
+          faculties outside of the Faculty of Science.</span> There must be at least 6
           units - 2 courses - from the Faculty of Arts.
           <br />
           <br />
-          18 units from other faculties must not be from the courses listed in
+          18 units - 6 courses - from other faculties must not be from the courses listed in
           Table 1. To view Table 1, go to our Table 1 section.
         </li>
         <li className="mb-10">
-          Program must include the specified courses listed in the Program
-          Details for the program that the student wants to do.
+          Program must include the <span className="font-bold">specified courses listed in the Program
+          Details</span> for the program that the student wants to do.
         </li>
         <li className="mb-10">
-          No more than 60 units - 20 courses - done in other institutions are
+          <span className="font-bold">No more than 60 units - 20 courses - done in other institutions</span> are
           acceptable for transfer credits, with a maximum of 24 units - 8
           courses - done in other institutions may be counted toward the major
           field.
         </li>
         <li className="mb-10">
-          No credit will be granted for Physical Activity courses such as Dance
+          <span className="font-bold">No credit will be granted for Physical Activity courses</span> such as Dance
           Education, Outdoor Pursuits, and Physical Education.
         </li>
       </ul>
-      <h1>
-        For more information about faculty regulations or for general program
-        requirements,{" "}
+      <div className="flex flex-col items-center">
         <Link
           href={
             "https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"
           }
-          className="btn bg-ucalgaryDarkOrange hover:bg-yellow-500
-      text-gray-100 border-none btn-circle w-32 mb-5"
+          className="btn bg-ucalgaryDarkOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-2/5 mb-5"
         >
-          Click Here!
+          View More Information on Faculty Regulations
         </Link>
-      </h1>
+      </div>
     </div>
   );
 };
@@ -259,9 +251,9 @@ const Concentrations = () => {
       </h1>
       <br></br>
       <h1>
-        When a student completes a concentration, they will still receive the
-        same BSc/BSc Honours degree as any other student in the major, but they
-        shall have a concentration denotion on their transcript.
+        When a student completes a concentration, they will still <span className="font-bold">receive the
+        same BSc/BSc Honours degree as any other student in the major</span>, but they
+        shall have a <span className="font-bold">concentration denotion on their transcript.</span>
       </h1>
       <br></br>
       <h1>
@@ -274,33 +266,29 @@ const Concentrations = () => {
       <h1>
         The Faculty of Science offers concentrations for many of its programs
         and also offers program guides for these concentrations.
-        <br />
-        <br />
-        To find these guides,{" "}
-        <Link
-          href={
-            "https://science.ucalgary.ca/current-students/undergraduate/program-advising/program-guides"
-          }
-          className="btn bg-ucalgaryGold hover:bg-yellow-500
-      text-gray-100 border-none btn-circle w-32 mb-5"
-        >
-          Click Here!
-        </Link>
       </h1>
+      <div className="flex flex-col items-center mt-10">
+        <Link
+            href={
+              "https://science.ucalgary.ca/current-students/undergraduate/program-advising/program-guides"
+            }
+            className="btn bg-ucalgaryRed hover:bg-orange-500 text-gray-100 border-none btn-circle w-2/5 mb-5"
+        >
+            View Concentration Guides
+        </Link>
+      </div>
       <br />
-      <h1>
-        For more information about what concentrations are available to you,{" "}
+      <div className="flex flex-col items-center mb-5">
         <Link
           href="https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
-          className="btn bg-ucalgaryGold hover:bg-yellow-500
-        text-gray-100 border-none btn-circle w-32"
+          className="btn bg-ucalgaryDarkOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-3/5"
         >
-          Click Here!
-        </Link>{" "}
+          View Further Information On Concentrations
+        </Link>
         <br /> <br />
         For the link above, find your program and scroll to the concentrations
         tab if available.
-      </h1>
+      </div>
     </div>
   );
 };
@@ -309,39 +297,35 @@ const TableOneCourses = () => {
   return (
     <div>
       <div>
-        <h1 className="text-black">
-          The Faculty of Science requires students to take at least 54 units -
-          18 courses - outside of their major. Of those 54, 18 units - 6 courses
+        <h1 className="text-black mb-7">
+          The Faculty of Science requires students to <span className="font-bold">take at least 54 units -
+          18 courses - outside of their major.</span> Of those 54, 18 units - 6 courses
           - must be from faculties outside the Faculty of Science.
         </h1>
-        <br></br>
-        <h1>
-          The following courses in Table 1 below may NOT be used to satisfy the
+        <h1 className="mb-7">
+          The following courses in Table 1 below may <span className="font-bold">NOT</span> be used to satisfy the
           requirement of the 18 courses outside the Faculty of Science.
         </h1>
       </div>
-      <figure className="mt-5 mb-1">
+      <figure className="mt-5 mb-14">
         <Image
           className="w-full object-cover overflow-visible"
-          src="/table1.png"
+          src="/tableImage.PNG"
           alt="table1"
-          width={500}
-          height={500}
+          width={1000}
+          height={1000}
         />
       </figure>
-      <br></br>
-      <br></br>
-      <h1>
-        For more information on Table 1,{" "}
+      <div className="w-full flex flex-col items-center">
         <Link
           href={
             "https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"
           }
-          className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-2"
+          className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-2/5 mb-2 "
         >
-          Click Me!
+          View More Information on Table 1
         </Link>
-      </h1>
+      </div>
     </div>
   );
 };
@@ -360,54 +344,40 @@ const Honours = () => {
       </h1>
       <br></br>
       <h1>
-        When a student graduates in a honours program, they will have an honours
-        designation noted on their degree.
+        When a student graduates in a honours program, <span className="font-bold">they will have an honours
+        designation noted on their degree.</span>
       </h1>
       <br></br>
-      <h1>
+      <h1 className="mb-20">
         The requirements for honours programs are the same as major programs,
         with a few changes. To see the major degree programs, go to Faculty
         Requirements.
       </h1>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h1>Additional Requirements for Honours</h1>
-      <br></br>
-      <br></br>
-      <ul className="list-inside list-decimal mb-6">
+      <h1 className="font-bold text-lg text-center mb-8">Additional Requirements for Honours</h1>
+      <ul className="list-inside list-decimal mb-5">
         <li className="mb-16">
-          <h1>
             Honours programs require students to maintain a higher GPA. Every
             year, academic performance is reviewed for all honours students and
-            these students must maintain a minimum GPA of 3.30 over all courses
-            completed. A minimum GPA of 3.30 is also required over the last 90
+            these students<span className="font-bold"> must maintain a minimum GPA of 3.30 over all courses
+            completed.</span> A minimum GPA of 3.30 is also required over the last 90
             units - 30 courses - at the time of graduation.
-          </h1>
         </li>
         <li className="mb-16">
-          <h1>
-            It is required that the program must contain 54 units - 18 courses -
-            and no more than 78 units - 26 courses - in the major field.
-          </h1>
+            It is required that the program <span className="font-bold">must contain 54 units - 18 courses -</span> and no more than 78 units - 26 courses - in the major field.
         </li>
         <li>
-          <h1>
             Students in a honours program must complete the requirements
             outlined the specific honours program details.
-          </h1>
-          <br></br>
-          <h1>
-            To find these specific requirements,{" "}
+          <div className="flex flex-col items-center mt-8">
             <Link
               href={
                 "https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
               }
-              className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-10"
+              className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-2/5 mb-10"
             >
-              Click Here!
+              View Specific Program Requirements
             </Link>
-          </h1>
+          </div>
         </li>
       </ul>
       <h1>
@@ -418,20 +388,16 @@ const Honours = () => {
         the non-honours BSc Major Requirements instead, they will be
         automatically rewarded the BSc Major.
       </h1>
-      <br></br>
-      <br></br>
-      <br></br>
-      <h1>
-        To learn more about Honours programs,{" "}
+      <div className="flex flex-col items-center mt-8">
         <Link
           href={
             "https://ucalgary.ca/news/understanding-honours-options-faculty-science"
           }
-          className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-10"
+          className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-2/5 mb-5"
         >
-          Click Here!
+          View More About Honours Programs
         </Link>
-      </h1>
+      </div>
     </div>
   );
 };
@@ -439,37 +405,36 @@ const Honours = () => {
 const ProgramMaximums = () => {
   return (
     <div>
-      <h1 className="text-black">
+      <h1 className="text-black mb-20">
         The Faculty of Science enforces a few maximums on student programs. It
         is important to understand and know of these maximums as they can impact
         a students program sequence, and even increase the number of years
         required before graduation if not taken into account.
       </h1>
-      <br></br>
-      <br></br>
-      <br></br>
       <ul className="list-decimal list-inside">
-        <li className="mb-28">
-          <h1>
+        <li className="mb-20">
+            The Faculty of Science LIMITS the number of junior courses in a
+            student's program to 48 units - 16 courses. <span className="font-bold">
+              You may only take 16 courses at the 200 level.
+            </span>
+            <br />
+            <br />
             Junior courses in the University of Calgary are 200 level courses.
             These courses are intended to be taken in first year, but may be
             taken at any point during the students program.
-          </h1>
-          <br></br>
-          <h1>
-            The Faculty of Science LIMITS the number of junior courses in a
-            student's program to 48 units - 16 courses. You may only take 16
-            courses at the 200 level.
-          </h1>
         </li>
         <li className="mb-20">
+            The Faculty of Science restricts the number of <span className="font-bold">
+              "D" or "D+ grades
+            </span> acceptable in a student's program to be <span className="font-bold">no more than 18 units - 6
+            courses. </span>
+          <br></br>
+          <br />
           <h1>
-            The Faculty of Science restricts the number of 'D' or 'D+' grades
-            acceptable in a student's program to be no more than 18 units - 6
-            courses. Also, no more than 6 units - 2 courses - with a 'D' or 'D+'
+            Also, no more than 6 units - 2 courses - with a 'D' or 'D+'
             grade is acceptable in the major field.
           </h1>
-          <br></br>
+          <br />
           <h1>
             A minimum of a 'C+' grade is required within prerequisite courses to
             be able to advance into future courses. For example, a 'C+' grade is
@@ -482,52 +447,51 @@ const ProgramMaximums = () => {
             courses, especially in major field courses.
           </h1>
           <br></br>
-          <h1>
-            For specific information on a course,{" "}
+          <div className="flex flex-col items-center">
             <Link
               href={"https://calendar.ucalgary.ca/courses?page=1&cq"}
-              className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-10"
+              className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-2/5 mt-7"
             >
-              Click Me!
+              View Course Information
             </Link>
-          </h1>
+          </div>
         </li>
         <li className="mb-20">
-          <h1>
             The Faculty of Science restricts the amount of transfer credits that
-            a student can use for their program. A maximum of 60 units - 20
-            courses - of transfer credit may be counted toward the degree. No
-            more than 24 units - 8 courses - of transfer credit may be used for
+            a student can use for their program.
+            <br />
+            <br /> 
+            <span className="font-bold">A maximum of 60 units - 20 courses - of transfer credit may be counted toward the degree. </span>
+            <br />
+            <br />
+            No more than 24 units - 8 courses - of transfer credit may be used for
             the major field.
-          </h1>
+            <br />
           <br></br>
           <h1>
             The faculty has declared a minimum of 60 units - 20 courses - must
             be completed at the University of Calgary.
           </h1>
           <br></br>
-          <h1>
-            To learn more about transfer credit, including high school advanced
-            credit,{" "}
+          <div className="flex flex-col items-center mt-6">
             <Link
               href={
                 "https://ucalgary.ca/future-students/undergraduate/transfer-credit"
               }
-              className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-32 mb-10"
+              className=" btn bg-ucalgaryDarkOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-2/5"
             >
-              Click Me!
+              View Information on Transfer Credit
             </Link>
-          </h1>
+          </div>
         </li>
-        <li>
-          <h1>
-            Students in the Faculty of Science are allowed 5 years counted from
+        <li className="mb-5">
+            Students in the Faculty of Science are allowed <span className="font-bold">5 years counted from
             the time of entry into their program to complete all program
-            requirements and graduate. Students within Internship Programs or
-            Co-opoerative Education have 6 years counted from the time of entry
+            requirements and graduate</span>. Students within <span className="font-bold">Internship Programs or
+            Co-opoerative Education have 6 years </span>counted from the time of entry
             into the program to complete all program requirements and graduate.
-          </h1>
           <br></br>
+          <br />
           <h1>
             If a student exceeds this 5-year limit for any reason, including
             failing prerequisite classes or taking a break, they must consult

@@ -148,7 +148,7 @@ const Page = () => {
                     reviewFound ? "border-2 border-green-500" : ""
                   } hover:scale-105 card card-compact text-black w-96 shadow-xl group border-2 transition-all duration-150 ease-in-out`}
                 >
-                  <div className="card-body flex gap-5">
+                  <div className="card-body flex gap-2">
                     <h2
                       className={`card-title font-bold text-4xl flex justify-center p-10 rounded-lg bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
                         getRatingColour(review.averageRating).color
@@ -160,7 +160,7 @@ const Page = () => {
                       {getRatingColour(review.averageRating).averageRating}
                     </p>
                     <div className="flex justify-evenly">
-                      <div className="flex items-center flex-col gap-5">
+                      <div className="flex items-center flex-col gap-2">
                         <p>Overall Rating</p>
                         <p
                           className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${
@@ -175,7 +175,7 @@ const Page = () => {
                           <div>Your rating: {yourOverallReview}</div>
                         )}
                       </div>
-                      <div className="flex items-center flex-col gap-5">
+                      <div className="flex items-center flex-col gap-2">
                         <p>Time Commitment</p>
                         <p
                           className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out delay-150 duration-200 ${

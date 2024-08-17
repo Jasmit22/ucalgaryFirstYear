@@ -166,6 +166,42 @@ const Page = () => {
     },
 
     {
+      question: "Should I go to orientation?",
+      answer:
+        "There is no obligation to stay with your orientation group. If you enjoy what the University has put together, stick around. Otherwise, make sure to take a look around campus. Try to locate your classes now, as it will save you a lot of time and stress on your first day.",
+    },
+
+    {
+      question: "What do I need for class?",
+      answer:
+        "You shouldn't need much. If you are taking notes on paper, bring a notebook and pen. If you are using a laptop, make sure it is charged and ready to go. Bring a water bottle and a snack to keep you going throughout the day. University isn't like high school, professors won't be telling you to get off your phone or monitor your devices.",
+    },
+
+    {
+      question: "When do I need to come to class?",
+      answer:
+        "Come around 30 minutes to an hour early. Firstly, the campus is packed at the start of the semester. Secondly, you will want to confirm the location of your classes if you haven't already. It's better to be early than late.",
+    },
+
+    {
+      question: "Where can I buy food on campus?",
+      answer:
+        "Mac Hall is the go-to destination if you're hungry. Again, beware that it will be packed. There are other locations scattered around campus, including multiple coffee shops, which you are sure to find if you explore.",
+    },
+
+    {
+      question: "I'm driving, where should I park?",
+      answer:
+        "Parking is quite expensive. You can park at Brentwood station but again, it will be packed. Plan ahead and don't bank on the free parking at Brentwood.",
+    },
+
+    {
+      question: "What type of laptop do I need?",
+      answer:
+        "For most students, a lightweight, affordable laptop with basic specs will be sufficient for tasks like writing papers, browsing the web, and attending virtual classes. However, if you're studying engineering, computer science, or any program requiring heavy software, you'll need a more powerful device with higher processing power and memory.",
+    },
+
+    {
       question: "Any final tips?",
       answer:
         "Enjoy your university experience. Keep your hobbies alive and explore campus life. University should be a part of your life, not your entire life. Stay in touch with academic advisors to navigate any challenges.",

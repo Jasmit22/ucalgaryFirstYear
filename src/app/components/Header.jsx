@@ -87,13 +87,6 @@ export default function Header() {
                 }`}
               >
                 <Link
-                  href="/first-day"
-                  className="block px-4 py-2 hover:bg-gray-200"
-                  onClick={handleLinkClick}
-                >
-                  Your First Day
-                </Link>
-                <Link
                   href="/go-to"
                   className="block px-4 py-2 hover:bg-gray-200"
                   onClick={handleLinkClick}

@@ -20,7 +20,7 @@ export default function footer() {
         </Link>
         <div className="flex flex-col gap-5">
           <h1 className="text-xl font-bold pb-2 text-white border-ucalgaryGold border-b-4">
-            Campus Connect
+            Calgary First Year
           </h1>
           <div className="flex flex-col gap-2 font-medium">
             <Link

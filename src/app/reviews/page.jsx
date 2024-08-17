@@ -172,7 +172,7 @@ const Page = () => {
                             : "-"}
                         </p>
                         {reviewFound && (
-                          <div>Your rating: {yourOverallReview}</div>
+                          <div>Your review: {yourOverallReview}</div>
                         )}
                       </div>
                       <div className="flex items-center flex-col gap-2">
@@ -187,7 +187,7 @@ const Page = () => {
                             : "-"}
                         </p>
                         {reviewFound && (
-                          <div>Your rating: {yourOverallTime}</div>
+                          <div>Your review: {yourOverallTime}</div>
                         )}
                       </div>
                     </div>

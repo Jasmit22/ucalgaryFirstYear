@@ -100,7 +100,7 @@ const MyReview = ({ courseName }) => {
 
   return (
     <div className="p-4 rounded-xl shadow-md bg-slate-100">
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center">
         <div className="relative inline-flex">
           <button
             onClick={() => setActiveType("overall")}
@@ -125,11 +125,16 @@ const MyReview = ({ courseName }) => {
         </div>
       </div>
 
-      <div className="flex mb-2 text-black items-center max-md:px-10">
+      <div className="flex mb-2 text-black items-center max-md:px-10 md:flex-row flex-col">
         <div className="mr-10 max-md:mr-4">
-          <p className="flex justify-start">
-            {reviewHeading}: {ratingStuff ? ratingStuff.rating : ""}
-          </p>
+          <p className="flex justify-start">{reviewHeading}:</p>
+
+          <div className="flex flex-row justify-between pt-4">
+            <span>Stale</span>
+            <span>Middling</span>
+            <span>Great</span>
+          </div>
+
           {numbers.map((num, index) => {
             let colorClass;
 
@@ -178,7 +183,8 @@ const MyReview = ({ courseName }) => {
           })}
         </div>
         <div className="flex">
-          <div className="flex items-center flex-col">
+          <div className="flex items-center flex-col pt-10">
+            <p className="text-center">Your Review:</p>
             <p
               className={`w-20 h-20 flex justify-center items-center rounded-xl text-4xl font-bold text-center bg-opacity-70 transition ease-in-out duration-200 ${
                 ratingStuff ? ratingStuff.color : "bg-ucalgaryLightGrey"
@@ -192,6 +198,8 @@ const MyReview = ({ courseName }) => {
                 ? numbers[overallTime]
                 : ""}
             </p>
+            {ratingStuff && <p>{ratingStuff.averageRating}</p>}
+            {!ratingStuff && <p>--</p>}
           </div>
         </div>
       </div>

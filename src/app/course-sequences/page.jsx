@@ -1,34 +1,42 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBookOpen,
+  faLayerGroup,
+  faTable,
+  faGraduationCap,
+  faChartBar,
+} from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const Page = () => {
   const sequenceInfoList = [
     {
       title: "Faculty Requirements",
-      image: "/facultyrequirements.webp",
+      icon: faBookOpen,
       document: <FacultyRequirementsDocument />,
     },
     {
       title: "Concentrations",
-      image: "/concentrations.webp",
+      icon: faLayerGroup,
       document: <Concentrations />,
     },
     {
       title: "Courses Table",
-      image: "/table1.webp",
+      icon: faTable,
       document: <TableOneCourses />,
     },
     {
       title: "Honours",
-      image: "/honours.webp",
+      icon: faGraduationCap,
       document: <Honours />,
     },
     {
       title: "Program Maximums",
-      image: "/maximum.webp",
+      icon: faChartBar,
       document: <ProgramMaximums />,
     },
   ];
@@ -66,7 +74,7 @@ const Page = () => {
         id="content"
         className="flex flex-col m-auto justify-center items-center max-md:px-10"
       >
-        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryGold border-2 rounded-full max-md:rounded-3xl shadow-xl mt-24 lg:mb-8">
+        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryRed border-2 rounded-full max-md:rounded-3xl shadow-xl mt-24 lg:mb-8">
           <h2 className="text-lg md:text-xl lg:text-3xl font-bold text-black mb-5 mt-10 rad">
             Recommended Course Guides
           </h2>
@@ -88,19 +96,16 @@ const Page = () => {
             return (
               <div
                 key={key}
-                className="hover:scale-105 hover:cursor-pointer card card-compact text-black max-w-[450px] max-h-[450px] h-[400px] w-[400px] shadow-xl border-2 transition-all duration-150 ease-in-out "
+                className="hover:scale-105 hover:cursor-pointer card card-compact text-black max-w-[450px] max-h-[450px] h-[400px] w-[400px] shadow-xl border-2 transition-all duration-150 ease-in-out"
                 onClick={() => {
                   setPopUpOpen(true);
                   setPopUpType(sequenceInfo.document);
                 }}
               >
-                <figure>
-                  <Image
-                    className="object-contain"
-                    src={sequenceInfo.image}
-                    alt="sequenceInfo"
-                    width={1000}
-                    height={1000}
+                <figure className="flex justify-center items-center h-full">
+                  <FontAwesomeIcon
+                    icon={sequenceInfo.icon}
+                    className="text-[7rem] text-ucalgaryRed"
                   />
                 </figure>
                 <div className="card-body align-middle items-center mb-1">
@@ -112,22 +117,32 @@ const Page = () => {
             );
           })
         ) : (
-          <div className="flex flex-row justify-center flex-wrap w-full max-md:justify-start">
-            <div className="pr-2">
-              <button
-                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 text-xl rounded-lg mb-2 lg:mb-0 px-4 py-2
-              dark:bg-red-600 dark:hover:bg-red-700 shadow-2xl"
-                onClick={() => {
-                  setPopUpOpen(false);
-                }}
-              >
-                X
-              </button>
-            </div>
-            <div className="card max-w-[1200px] max-h-[700px] w-[1200px] border border-gray-200 shadow-2xl">
-              <div className="p-5 overflow-y-scroll">
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="relative bg-white w-full max-w-4xl mx-auto rounded-lg shadow-lg overflow-hidden">
+              <div className="absolute top-0 right-0 p-4">
+                <button
+                  className="text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-full p-2 shadow-lg z-50"
+                  onClick={() => setPopUpOpen(false)}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="p-8 pr-12 overflow-y-auto max-h-[80vh]">
                 {popUpType && (
-                  <div className="px-10 py-4 max-md:px-4">{popUpType}</div>
+                  <div className="prose max-w-none">{popUpType}</div>
                 )}
               </div>
             </div>
@@ -157,16 +172,12 @@ const FacultyRequirementsDocument = () => {
       <h1>
         The Faculty of Science has provided numerous degree requirements a
         student must fulfill to graduate.
-        <br />
-        <br />
         <span className="font-bold">
           The following requirements are MAJOR DEGREE REQUIREMENTS.
         </span>{" "}
         To find second degree requirements, click the following link, find the
         program you are looking to get a second degree for, and view the second
         degree requirements under Faculty Requirements.
-        <br />
-        <br />
         <div className="flex flex-col items-center mt-4">
           <Link
             href={"https://calendar.ucalgary.ca/programs?page=1&pq="}
@@ -176,15 +187,13 @@ const FacultyRequirementsDocument = () => {
           </Link>
         </div>
       </h1>
-      <br />
-      <br />
+
       <h1>
         Students in science programs must present an approved list of courses
         completed with passing grades to graduate. These lists can be found in
         their program details.
       </h1>
-      <br />
-      <br />
+
       <h1 className="text-center text-lg font-bold">
         The student's program must satisfy the following conditions:
       </h1>
@@ -226,8 +235,6 @@ const FacultyRequirementsDocument = () => {
             Faculty of Science.
           </span>{" "}
           There must be at least 6 units - 2 courses - from the Faculty of Arts.
-          <br />
-          <br />
           18 units - 6 courses - from other faculties must not be from the
           courses listed in the Courses Table. To view the Courses Table, go to
           our Courses Table section.
@@ -259,9 +266,9 @@ const FacultyRequirementsDocument = () => {
           href={
             "https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"
           }
-          className="btn bg-ucalgaryDarkOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8 mb-5"
+          className="btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8 mb-5"
         >
-          View More Information on Faculty Regulations
+          View More on Faculty Regulations
         </Link>
       </div>
     </div>
@@ -296,7 +303,7 @@ const Concentrations = () => {
         requirement to do a concentration and students can still opt for a
         general learning in their major.
       </h1>
-      <br />
+
       <h1>
         The Faculty of Science offers concentrations for many of its programs
         and also offers program guides for these concentrations.
@@ -311,17 +318,16 @@ const Concentrations = () => {
           View Concentration Guides
         </Link>
       </div>
-      <br />
-      <div className="flex flex-col items-center mb-5">
+
+      <div className="flex flex-col items-center mb-5 mt-10">
+        For the link below, find your program and scroll to the concentrations
+        tab if available.
         <Link
           href="https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
-          className="btn bg-ucalgaryDarkOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8"
+          className="btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8 mt-4"
         >
-          View Further Information On Concentrations
+          View More On Concentrations
         </Link>
-        <br /> <br />
-        For the link above, find your program and scroll to the concentrations
-        tab if available.
       </div>
     </div>
   );
@@ -359,9 +365,9 @@ const TableOneCourses = () => {
           href={
             "https://calendar.ucalgary.ca/pages/6c62302fd2924d5e96f8801306dbd189"
           }
-          className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8 mb-2 "
+          className=" btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8 mb-2 "
         >
-          View More Information on Courses Table
+          View More on Courses Table
         </Link>
       </div>
     </div>
@@ -388,7 +394,7 @@ const Honours = () => {
         </span>
       </h1>
       <br></br>
-      <h1 className="mb-20">
+      <h1 className="mb-10">
         The requirements for honours programs are the same as major programs,
         with a few changes. To see the major degree programs, go to Faculty
         Requirements.
@@ -397,7 +403,7 @@ const Honours = () => {
         Additional Requirements for Honours
       </h1>
       <ul className="list-inside list-decimal mb-5">
-        <li className="mb-16">
+        <li className="mb-8">
           Honours programs require students to maintain a higher GPA. Every
           year, academic performance is reviewed for all honours students and
           these students
@@ -408,7 +414,7 @@ const Honours = () => {
           A minimum GPA of 3.30 is also required over the last 90 units - 30
           courses - at the time of graduation.
         </li>
-        <li className="mb-16">
+        <li className="mb-8">
           It is required that the program{" "}
           <span className="font-bold">
             must contain 54 units - 18 courses -
@@ -423,7 +429,7 @@ const Honours = () => {
               href={
                 "https://calendar.ucalgary.ca/programs?departments=SC&page=1&pq="
               }
-              className=" btn bg-ucalgaryGold hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8 mb-10"
+              className=" btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8 mb-4"
             >
               View Specific Program Requirements
             </Link>
@@ -443,7 +449,7 @@ const Honours = () => {
           href={
             "https://ucalgary.ca/news/understanding-honours-options-faculty-science"
           }
-          className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8 mb-5"
+          className=" btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8 mb-5"
         >
           View More About Honours Programs
         </Link>
@@ -455,37 +461,33 @@ const Honours = () => {
 const ProgramMaximums = () => {
   return (
     <div>
-      <h1 className="text-black mb-20">
+      <h1 className="text-black mb-8">
         The Faculty of Science enforces a few maximums on student programs. It
         is important to understand and know of these maximums as they can impact
         a students program sequence, and even increase the number of years
         required before graduation if not taken into account.
       </h1>
       <ul className="list-decimal list-inside">
-        <li className="mb-20">
+        <li className="mb-8">
           The Faculty of Science LIMITS the number of junior courses in a
           student's program to 48 units - 16 courses.{" "}
           <span className="font-bold">
             You may only take 16 courses at the 200 level.
           </span>
-          <br />
-          <br />
           Junior courses in the University of Calgary are 200 level courses.
           These courses are intended to be taken in first year, but may be taken
           at any point during the students program.
         </li>
-        <li className="mb-20">
+        <li className="mb-8">
           The Faculty of Science restricts the number of{" "}
           <span className="font-bold">"D" or "D+ grades</span> acceptable in a
           student's program to be{" "}
           <span className="font-bold">no more than 18 units - 6 courses. </span>
           <br></br>
-          <br />
           <h1>
             Also, no more than 6 units - 2 courses - with a 'D' or 'D+' grade is
             acceptable in the major field.
           </h1>
-          <br />
           <h1>
             A minimum of a 'C+' grade is required within prerequisite courses to
             be able to advance into future courses. For example, a 'C+' grade is
@@ -501,26 +503,21 @@ const ProgramMaximums = () => {
           <div className="flex flex-col items-center">
             <Link
               href={"https://calendar.ucalgary.ca/courses?page=1&cq"}
-              className=" btn bg-ucalgaryLightOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8 mt-7"
+              className=" btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8"
             >
               View Course Information
             </Link>
           </div>
         </li>
-        <li className="mb-20">
+        <li className="mb-8">
           The Faculty of Science restricts the amount of transfer credits that a
-          student can use for their program.
-          <br />
-          <br />
+          student can use for their program.{" "}
           <span className="font-bold">
             A maximum of 60 units - 20 courses - of transfer credit may be
             counted toward the degree.{" "}
           </span>
-          <br />
-          <br />
           No more than 24 units - 8 courses - of transfer credit may be used for
           the major field.
-          <br />
           <br></br>
           <h1>
             The faculty has declared a minimum of 60 units - 20 courses - must
@@ -532,7 +529,7 @@ const ProgramMaximums = () => {
               href={
                 "https://ucalgary.ca/future-students/undergraduate/transfer-credit"
               }
-              className=" btn bg-ucalgaryDarkOrange hover:bg-yellow-500 text-gray-100 border-none btn-circle w-fit px-8"
+              className=" btn bg-ucalgaryRed hover:bg-ucalgaryDarkOrange text-gray-100 border-none btn-circle w-fit px-8"
             >
               View Information on Transfer Credit
             </Link>
@@ -550,9 +547,7 @@ const ProgramMaximums = () => {
           </span>
           counted from the time of entry into the program to complete all
           program requirements and graduate.
-          <br></br>
-          <br />
-          <h1>
+          <h1 className="mt-2">
             If a student exceeds this 5-year limit for any reason, including
             failing prerequisite classes or taking a break, they must consult
             with the Head of the Department or Program Director who will decide

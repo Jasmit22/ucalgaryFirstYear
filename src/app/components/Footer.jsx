@@ -35,6 +35,12 @@ export default function footer() {
             >
               About
             </Link>
+            <Link
+              className="w-fit hover:text-ucalgaryGold transition-all duration-150 ease-linear"
+              href="/privacy-policy"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
         <div className="flex flex-col gap-5">

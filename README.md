@@ -23,3 +23,4 @@ Thank you to the official Transit app which granted us access to their API for t
 - A reviews page which stores each individual review and ensures each user can only leave 1 review.
 - A go-to page which customizes the route from a user's location to provide real time, detailed Transit data.
 - A compilation of informational pages from the University all put into 1 place.
+- Google Analytics / API integration.

@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SessionProvider from "./components/SessionProvider";
+import Script from "next/script";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -23,6 +24,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-PPTFBBFW31"
+        ></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || []; function gtag()
+          {dataLayer.push(arguments);}
+          gtag('js', new Date()); gtag('config', 'G-PPTFBBFW31');
+          `}
+        </Script>
+      </head>
       <body className={`${poppins.className}`}>
         <SessionProvider>
           <Header />

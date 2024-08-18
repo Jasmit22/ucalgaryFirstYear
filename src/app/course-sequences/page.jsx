@@ -9,6 +9,7 @@ import {
   faTable,
   faGraduationCap,
   faChartBar,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 
@@ -74,7 +75,18 @@ const Page = () => {
         id="content"
         className="flex flex-col m-auto justify-center items-center max-md:px-10"
       >
-        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryRed border-2 rounded-full max-md:rounded-3xl shadow-xl mt-24 lg:mb-8">
+        <div
+          className="bg-yellow-200 text-yellow-800 p-4 rounded-md flex items-center justify-center mb-5 mt-24"
+          role="alert"
+        >
+          <FontAwesomeIcon icon={faExclamationTriangle} className="mr-2" />
+          <span>
+            This information pertains mainly to the Faculty of Science, however,
+            there is reference to other faculties and lots of the information
+            should be applicable elsewhere.
+          </span>
+        </div>
+        <div className="flex flex-col m-auto justify-center items-center w-full border-ucalgaryRed border-2 rounded-full max-md:rounded-3xl shadow-xl lg:mb-8">
           <h2 className="text-lg md:text-xl lg:text-3xl font-bold text-black mb-5 mt-10 rad">
             Recommended Course Guides
           </h2>
@@ -171,7 +183,7 @@ const FacultyRequirementsDocument = () => {
     <div>
       <h1>
         The Faculty of Science has provided numerous degree requirements a
-        student must fulfill to graduate.
+        student must fulfill to graduate.{" "}
         <span className="font-bold">
           The following requirements are MAJOR DEGREE REQUIREMENTS.
         </span>{" "}
@@ -188,7 +200,7 @@ const FacultyRequirementsDocument = () => {
         </div>
       </h1>
 
-      <h1>
+      <h1 className="mt-8">
         Students in science programs must present an approved list of courses
         completed with passing grades to graduate. These lists can be found in
         their program details.

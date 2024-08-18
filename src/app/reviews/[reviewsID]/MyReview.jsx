@@ -126,7 +126,7 @@ const MyReview = ({ courseName }) => {
       </div>
 
       <div className="flex mb-2 text-black items-center max-md:px-6 md:flex-row flex-col">
-        <div className="mr-10 max-md:mr-4">
+        <div className="mr-0 md:mr-10 ">
           <p className="flex justify-start md:pt-0 pt-4">{reviewHeading}:</p>
 
           <div className="flex flex-row justify-between pt-4">
@@ -172,7 +172,7 @@ const MyReview = ({ courseName }) => {
             return (
               <button
                 key={num}
-                className={`${colorClass} p-2 w-10 ${
+                className={`${colorClass} md:p-2 p-0 md:w-10 md:h-10 w-7 h-7 ${
                   (hoveredButton !== null && index <= hoveredButton) ||
                   (activeType === "overall" &&
                     overallRating !== null &&
@@ -188,7 +188,7 @@ const MyReview = ({ courseName }) => {
                 onClick={() => handleRatingClick(index)}
                 disabled={reviewDone}
               >
-                {num}
+                <span className="md:text-base text-xs">{num}</span>
               </button>
             );
           })}

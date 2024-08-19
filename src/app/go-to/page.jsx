@@ -39,10 +39,10 @@ export default function GoToPage() {
           </h1>
           <GetRoute />
         </div>
-        <div className="flex flex-col text-black w-3/4 max-md:w-full">
+        <div className="flex flex-col text-black w-3/4 max-md:w-full gap-y-5">
           <h1 className="font-bold text-3xl mb-3">Common Questions</h1>
-          <div className="flex flex-col gap-5 lg:flex-row justify-between">
-            <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-5 xl:flex-row justify-between">
+            <div className="flex flex-col gap-2">
               <div className="chat chat-start">
                 <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
                   Do you have to pay for transit?
@@ -66,7 +66,7 @@ export default function GoToPage() {
                 </div>
               </div>
             </div>
-            <figure className="lg:max-w-xl">
+            <figure className="hidden xl:block xl:max-w-xl">
               <Image
                 src="/ctrain.jpeg"
                 alt="Ctrain"
@@ -76,6 +76,50 @@ export default function GoToPage() {
               />
             </figure>
           </div>
+          <div className="flex flex-col gap-5 xl:flex-row justify-between">
+            <figure className="hidden xl:block xl:max-w-xl">
+              <Image
+                src="/universityStation.jpg"
+                alt="University Station"
+                width={1000}
+                height={1000}
+                className="rounded-lg"
+              />
+            </figure>
+            <div className="flex flex-col gap-2">
+              <div className="chat chat-start">
+                <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
+                  Can I opt out of the UPass if I drive to campus?
+                </div>
+              </div>
+              <div className="chat chat-end">
+                <div className="chat-bubble bg-ucalgaryRed text-white">
+                  No, full-time students are automatically enrolled in the UPass
+                  program and cannot opt out, even if they prefer to drive.
+                </div>
+              </div>
+              <div className="chat chat-start">
+                <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
+                  Can I share my UPass with a friend or family member?
+                </div>
+              </div>
+              <div className="chat chat-end">
+                <div className="chat-bubble bg-ucalgaryRed text-white">
+                  No, the UPass is non-transferable and must only be used by the
+                  student to whom it is issued.
+                </div>
+              </div>
+            </div>
+          </div>
+          <figure className="xl:hidden">
+            <Image
+              src="/ctrain.jpeg"
+              alt="Ctrain"
+              width={1000}
+              height={1000}
+              className="rounded-lg"
+            />
+          </figure>
         </div>
       </div>
     </div>

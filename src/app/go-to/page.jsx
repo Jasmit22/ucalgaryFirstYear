@@ -39,7 +39,7 @@ export default function GoToPage() {
           </h1>
           <GetRoute />
         </div>
-        <div className="flex flex-col text-black w-3/4 max-md:w-full gap-y-5">
+        <div className="flex flex-col text-black w-3/4 max-md:w-full my-8 gap-y-5">
           <h1 className="font-bold text-3xl mb-3">Common Questions</h1>
           <div className="flex flex-col gap-5 xl:flex-row justify-between">
             <div className="flex flex-col gap-2">
@@ -72,18 +72,18 @@ export default function GoToPage() {
                 alt="Ctrain"
                 width={1000}
                 height={1000}
-                className="rounded-lg"
+                className="rounded-2xl"
               />
             </figure>
           </div>
-          <div className="flex flex-col gap-5 xl:flex-row justify-between">
+          <div className="flex flex-col gap-5 xl:flex-row justify-between xl:mt-16">
             <figure className="hidden xl:block xl:max-w-xl">
               <Image
                 src="/universityStation.jpg"
                 alt="University Station"
                 width={1000}
                 height={1000}
-                className="rounded-lg"
+                className="rounded-2xl"
               />
             </figure>
             <div className="flex flex-col gap-2">

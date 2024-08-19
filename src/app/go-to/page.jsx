@@ -45,13 +45,24 @@ export default function GoToPage() {
             <div className="flex flex-col gap-3">
               <div className="chat chat-start">
                 <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
-                  That&apos;s never been done in the history of the Jedi.
-                  It&apos;s insulting!
+                  Do you have to pay for transit?
                 </div>
               </div>
               <div className="chat chat-end">
                 <div className="chat-bubble bg-ucalgaryRed text-white">
-                  Calm down, Anakin.
+                  No, your UPass is included in your student fees, which gives
+                  you unlimited access to Calgary Transit services.
+                </div>
+              </div>
+              <div className="chat chat-start">
+                <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
+                  How far is University Station from campus?
+                </div>
+              </div>
+              <div className="chat chat-end">
+                <div className="chat-bubble bg-ucalgaryRed text-white">
+                  University Station is located right next to the University of
+                  Calgary campus, just a 5 minute walk away.
                 </div>
               </div>
             </div>

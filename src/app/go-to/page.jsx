@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import GetRoute from "../components/GetRoute";
+import Image from "next/image";
 
 export default function GoToPage() {
   return (
@@ -37,6 +38,33 @@ export default function GoToPage() {
             Need Transit directions from your location?
           </h1>
           <GetRoute />
+        </div>
+        <div className="flex flex-col text-black w-3/4 max-md:w-full">
+          <h1 className="font-bold text-3xl mb-3">Common Transit Questions</h1>
+          <div className="flex gap-3 justify-between">
+            <div className="flex flex-col gap-3">
+              <div className="chat chat-start">
+                <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
+                  That's never been done in the history of the Jedi. It's
+                  insulting!
+                </div>
+              </div>
+              <div className="chat chat-end">
+                <div className="chat-bubble bg-ucalgaryRed text-white">
+                  Calm down, Anakin.
+                </div>
+              </div>
+            </div>
+            <figure className="lg:max-w-xl">
+              <Image
+                src="/ctrain.jpeg"
+                alt="Ctrain"
+                width={1000}
+                height={1000}
+                className="rounded-lg"
+              />
+            </figure>
+          </div>
         </div>
       </div>
     </div>

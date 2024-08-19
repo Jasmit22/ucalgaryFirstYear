@@ -45,8 +45,8 @@ export default function GoToPage() {
             <div className="flex flex-col gap-3">
               <div className="chat chat-start">
                 <div className="chat-bubble bg-ucalgaryDarkOrange text-white">
-                  That's never been done in the history of the Jedi. It's
-                  insulting!
+                  That&apos;s never been done in the history of the Jedi.
+                  It&apos;s insulting!
                 </div>
               </div>
               <div className="chat chat-end">

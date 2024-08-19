@@ -85,13 +85,31 @@ const Page = () => {
         break;
       case "Lowest Overall Rating":
         setFilterBy("Lowest Overall Rating");
-        filtered = [...reviews].sort(
-          (a, b) => a.averageRating - b.averageRating
-        );
+        filtered = [...reviews].sort((a, b) => {
+          const ratingA =
+            a.averageRating === "-" || a.averageRating == null
+              ? Infinity
+              : a.averageRating;
+          const ratingB =
+            b.averageRating === "-" || b.averageRating == null
+              ? Infinity
+              : b.averageRating;
+          return ratingA - ratingB;
+        });
         break;
       case "Most Time Consuming":
         setFilterBy("Most Time Consuming");
-        filtered = [...reviews].sort((a, b) => a.averageTime - b.averageTime);
+        filtered = [...reviews].sort((a, b) => {
+          const ratingA =
+            a.averageTime === "-" || a.averageTime == null
+              ? Infinity
+              : a.averageTime;
+          const ratingB =
+            b.averageTime === "-" || b.averageTime == null
+              ? Infinity
+              : b.averageTime;
+          return ratingA - ratingB;
+        });
         break;
       case "Least Time Consuming":
         setFilterBy("Least Time Consuming");

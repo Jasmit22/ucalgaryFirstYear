@@ -3,6 +3,7 @@ import React from "react";
 const page = () => {
   return (
     <div className="min-h-screen text-black py-28">
+      <div className="bg-ucalgaryRed fixed top-0 left-0 z-10 h-20 w-full"></div>
       <div className="text-center flex flex-col gap-8 px-16 max-lg:px-12 max-md:px-8">
         <h1 className="text-6xl font-bold mb-6">Calgary First Year</h1>
         <p className="text-xl leading-relaxed">

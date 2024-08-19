@@ -148,7 +148,6 @@ export default function GetRoute() {
       {/* Conditionally render loading state */}
       {transitData && !loading && (
         <div className="mt-4">
-          <h3 className="font-semibold text-2xl mb-5 ml-1">Transit Details:</h3>
           {transitData.plan?.itineraries.length == 0 ? (
             <div
               role="alert"
@@ -172,6 +171,11 @@ export default function GetRoute() {
           ) : (
             ""
           )}
+          <div className="flex">
+            <div className="flex justify-center items-center py-5 whitespace-nowrap font-semibold text-md lg:ml-2">
+              <h1>Depart At</h1>
+            </div>
+          </div>
           <ul className="flex flex-col gap-y-3">
             {transitData.plan?.itineraries[0]?.legs?.map((leg, index) => (
               <li

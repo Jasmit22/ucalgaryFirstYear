@@ -20,13 +20,16 @@ const Page = () => {
   const [requestSuccess, setRequestSuccess] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [filterBy, setFilterBy] = useState("None");
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
+
   useEffect(() => {
     const fetchReviews = async () => {
       try {
         const response = await fetch("/api/reviews");
         const data = await response.json();
         setReviews(data);
-        setFilteredReviews(data);
+        applyCurrentFilter(data);
       } catch (error) {
         console.error("Failed to fetch reviews:", error);
       } finally {
@@ -37,18 +40,80 @@ const Page = () => {
     fetchReviews();
   }, []);
 
+  useEffect(() => {
+    applyCurrentFilter(reviews);
+    handleFilter(filterBy);
+  }, [searchInput]);
+
   const handleSearchChange = (e) => {
     const value = sanitizeInput(e.target.value.toLowerCase());
     setSearchInput(value);
+  };
 
-    if (value === "") {
-      setFilteredReviews(reviews);
-    } else {
-      const filtered = reviews.filter((review) =>
-        sanitizeInput(review.courseName.toLowerCase()).includes(value)
-      );
-      setFilteredReviews(filtered);
+  const handleFilter = (e) => {
+    let filtered = [...reviews];
+    switch (e) {
+      case "None":
+        setFilterBy("None");
+        break;
+      case "My Reviewed":
+        setFilterBy("My Reviewed");
+        filtered = reviews.filter((review) => findReview(review));
+        break;
+      case "My Unreviewed":
+        setFilterBy("My Unreviewed");
+        filtered = reviews.filter((review) => !findReview(review));
+        break;
+      case "Alphabetical":
+        setFilterBy("Alphabetical");
+        filtered = [...reviews].sort((a, b) => {
+          if (a.courseName.toLowerCase() < b.courseName.toLowerCase())
+            return -1;
+          if (a.courseName.toLowerCase() > b.courseName.toLowerCase()) return 1;
+          return 0;
+        });
+        break;
+      case "No Ratings":
+        setFilterBy("No Ratings");
+        filtered = reviews.filter((review) => !review.averageRating);
+        break;
+      case "Highest Overall Rating":
+        setFilterBy("Highest Overall Rating");
+        filtered = [...reviews].sort(
+          (a, b) => b.averageRating - a.averageRating
+        );
+        break;
+      case "Lowest Overall Rating":
+        setFilterBy("Lowest Overall Rating");
+        filtered = [...reviews].sort(
+          (a, b) => a.averageRating - b.averageRating
+        );
+        break;
+      case "Most Time Consuming":
+        setFilterBy("Most Time Consuming");
+        filtered = [...reviews].sort((a, b) => a.averageTime - b.averageTime);
+        break;
+      case "Least Time Consuming":
+        setFilterBy("Least Time Consuming");
+        filtered = [...reviews].sort((a, b) => b.averageTime - a.averageTime);
+        break;
     }
+    applyCurrentFilter(filtered);
+    setDropdownVisible(false);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!isDropdownVisible);
+    console.log(!isDropdownVisible);
+  };
+
+  const applyCurrentFilter = (filtered) => {
+    if (searchInput) {
+      filtered = filtered.filter((review) =>
+        sanitizeInput(review.courseName.toLowerCase()).includes(searchInput)
+      );
+    }
+    setFilteredReviews(filtered);
   };
 
   const handleCourseRequest = async (e) => {
@@ -76,34 +141,100 @@ const Page = () => {
     }
   };
 
+  const findReview = (review) => {
+    const reviewsDone = JSON.parse(localStorage.getItem("reviewed"));
+    let reviewFound;
+    if (reviewsDone && reviewsDone.length > 0) {
+      reviewFound = reviewsDone.find(
+        (reviews) => reviews.courseName === review.courseName
+      );
+    }
+    return reviewFound;
+  };
+
   return (
     <div className="p-10 gap-20 mb-12 min-h-screen">
       <div className="bg-ucalgaryRed fixed top-0 left-0 z-10 h-20 w-full"></div>
       <div className="text-black font-extrabold text-5xl pt-24 mb-10 text-center">
         Course Reviews
       </div>
+
       <div className="self-end w-full flex justify-between items-center px-10 max-md:px-0">
-        <label className="input bg-white border-2 border-gray-200 flex items-center gap-2 text-black">
-          <input
-            type="text"
-            className="bg-ucalgaryLightGrey p-2 rounded-md max-md:w-24"
-            placeholder="Search"
-            value={searchInput}
-            onChange={handleSearchChange}
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="h-4 w-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
+        <div className="flex flex-row gap-5 items-center">
+          <label className="input bg-white border-2 border-gray-600 flex items-center gap-2 text-black">
+            <input
+              type="text"
+              className="bg-ucalgaryLightGrey p-2 rounded-md max-md:w-24"
+              placeholder="Search"
+              value={searchInput}
+              onChange={handleSearchChange}
             />
-          </svg>
-        </label>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="h-4 w-4 opacity-70"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </label>
+          <div className="relative bg-white text-black">
+            <button
+              className="btn m-1 bg-white hover:bg-white text-black w-56 border-gray-600"
+              onClick={toggleDropdown}
+            >
+              Filter: {filterBy}
+            </button>
+            {isDropdownVisible && (
+              <ul className="menu absolute visible bg-white rounded-box z-[1] w-52 p-2 shadow">
+                <li>
+                  <a onClick={() => handleFilter("None")}>Reset Filters</a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("My Reviewed")}>My Reviewed</a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("My Unreviewed")}>
+                    My Unreviewed
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("No Ratings")}>No Ratings</a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("Alphabetical")}>
+                    Alphabetical
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("Highest Overall Rating")}>
+                    Highest Overall Rating
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("Lowest Overall Rating")}>
+                    Lowest Overall Rating
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("Least Time Consuming")}>
+                    Least Time Consuming
+                  </a>
+                </li>
+                <li>
+                  <a onClick={() => handleFilter("Most Time Consuming")}>
+                    Most Time Consuming
+                  </a>
+                </li>
+              </ul>
+            )}
+          </div>
+        </div>
         <button
           onClick={() => setModalOpen(true)}
           className="btn bg-ucalgaryRed text-white ml-4 hover:bg-black"
@@ -121,19 +252,12 @@ const Page = () => {
           </div>
         ) : (
           filteredReviews.map((review) => {
-            const reviewsDone = JSON.parse(localStorage.getItem("reviewed"));
-            let reviewFound;
-            let yourOverallTime = " ";
-            let yourOverallReview = " ";
-            if (reviewsDone && reviewsDone.length > 0) {
-              reviewFound = reviewsDone.find(
-                (reviews) => reviews.courseName === review.courseName
-              );
-
-              if (reviewFound) {
-                yourOverallTime = reviewFound.overallTime;
-                yourOverallReview = reviewFound.overallRating;
-              }
+            const reviewFound = findReview(review);
+            let yourOverallTime;
+            let yourOverallReview;
+            if (reviewFound) {
+              yourOverallTime = reviewFound.overallTime;
+              yourOverallReview = reviewFound.overallRating;
             }
 
             return (

@@ -40,8 +40,8 @@ export default function GoToPage() {
           <GetRoute />
         </div>
         <div className="flex flex-col text-black w-3/4 max-md:w-full">
-          <h1 className="font-bold text-3xl mb-3">Common Transit Questions</h1>
-          <div className="flex gap-3 justify-between">
+          <h1 className="font-bold text-3xl mb-3">Common Questions</h1>
+          <div className="flex flex-col gap-5 lg:flex-row justify-between">
             <div className="flex flex-col gap-3">
               <div className="chat chat-start">
                 <div className="chat-bubble bg-ucalgaryDarkOrange text-white">

@@ -1,4 +1,3 @@
-// src/app/reviews/page.jsx
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -18,6 +17,7 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [courseName, setCourseName] = useState("");
   const [requestSuccess, setRequestSuccess] = useState(false);
+  const [requestFailed, setRequestFailed] = useState(false); // New state for failed request
   const [modalOpen, setModalOpen] = useState(false);
 
   const [filterBy, setFilterBy] = useState("None");
@@ -146,16 +146,21 @@ const Page = () => {
         },
         body: JSON.stringify({ courseName: sanitizedCourseName }),
       });
-
       if (response.ok) {
         setRequestSuccess(true);
         setCourseName("");
+        setRequestFailed(false); // Reset failed state if successful
         setTimeout(() => setRequestSuccess(false), 3000);
       } else {
-        console.error("Failed to submit course request.");
+        setRequestFailed(true); // Set failed state if request fails
+        setRequestSuccess(false); // Reset success state
+        setTimeout(() => setRequestFailed(false), 5000); // Hide message after 5 seconds
       }
     } catch (error) {
       console.error("Error submitting course request:", error);
+      setRequestFailed(true); // Handle any unexpected errors as a failure
+      setRequestSuccess(false); // Reset success state
+      setTimeout(() => setRequestFailed(false), 5000); // Hide message after 5 seconds
     }
   };
 
@@ -366,6 +371,12 @@ const Page = () => {
             {requestSuccess && (
               <p className="text-green-600 mt-4">
                 Request submitted successfully!
+              </p>
+            )}
+            {requestFailed && (
+              <p className="text-red-600 mt-4">
+                Unsuccessful. This is likely because the course already exists.
+                Please search for this course.
               </p>
             )}
             <form onSubmit={handleCourseRequest} className="mt-4">

@@ -2,6 +2,13 @@ import { connectDB } from "../../lib/db";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
+// Define a Mongoose schema and model for courses
+const courseSchema = new mongoose.Schema({
+  courseName: { type: String, required: true },
+});
+
+const Course = mongoose.models.Course || mongoose.model("Course", courseSchema);
+
 // Define a Mongoose schema and model for course requests
 const courseRequestSchema = new mongoose.Schema({
   courseName: { type: String, required: true },
@@ -17,6 +24,11 @@ const sanitizeInput = (input) => {
   return input.replace(/[<>\/\\;]/g, "").trim();
 };
 
+// Utility function to normalize course names for comparison
+const normalizeCourseName = (courseName) => {
+  return courseName.replace(/\s+/g, "").toLowerCase();
+};
+
 export async function POST(req) {
   try {
     await connectDB(); // Ensure the database is connected
@@ -30,17 +42,33 @@ export async function POST(req) {
       );
     }
 
-    // Sanitize the courseName input
+    // Sanitize and normalize the courseName input
     const sanitizedCourseName = sanitizeInput(courseName);
+    const normalizedCourseName = normalizeCourseName(sanitizedCourseName);
 
-    const courseRequest = new CourseRequest({
+    // Fetch all courses and check for a match with the normalized course name
+    const courses = await Course.find({});
+    const courseExists = courses.some(
+      (course) =>
+        normalizeCourseName(course.courseName) === normalizedCourseName
+    );
+
+    if (courseExists) {
+      return NextResponse.json(
+        { message: "Course is already included." },
+        { status: 409 }
+      );
+    }
+
+    // If no matching course found, add the new course
+    const newCourse = new Course({
       courseName: sanitizedCourseName,
     });
-    await courseRequest.save();
+    await newCourse.save();
 
     return NextResponse.json(
-      { message: "Course request submitted successfully." },
-      { status: 200 }
+      { message: "Course added successfully." },
+      { status: 201 }
     );
   } catch (error) {
     console.error("Error saving course request:", error);

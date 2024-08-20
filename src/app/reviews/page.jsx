@@ -183,8 +183,8 @@ const Page = () => {
       </div>
 
       <div className="self-end w-full flex justify-between items-center px-10 max-md:px-0">
-        <div className="flex flex-row gap-5 items-center">
-          <label className="input bg-white border-2 border-gray-600 flex items-center gap-2 text-black">
+        <div className="flex md:flex-row flex-col gap-5 items-center">
+          <label className="input  md:w-52 w-40 bg-white border-2 border-gray-600 flex items-center gap-2 text-black">
             <input
               type="text"
               className="bg-ucalgaryLightGrey p-2 rounded-md max-md:w-24"
@@ -208,7 +208,7 @@ const Page = () => {
           </label>
           <div className="relative bg-white text-black">
             <button
-              className="btn m-1 bg-white hover:bg-white text-black w-56 border-gray-600"
+              className="btn m-1 bg-white hover:bg-white text-black md:w-52 w-40 border-gray-600"
               onClick={toggleDropdown}
             >
               Filter: {filterBy}

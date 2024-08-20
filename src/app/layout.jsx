@@ -5,7 +5,6 @@ import "./globals.css";
 // Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SessionProvider from "./components/SessionProvider";
 import Script from "next/script";
 
 const poppins = Poppins({
@@ -38,11 +37,9 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className={`${poppins.className}`}>
-        <SessionProvider>
-          <Header />
-          {children}
-          <Footer />
-        </SessionProvider>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

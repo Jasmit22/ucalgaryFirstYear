@@ -1,6 +1,7 @@
 import { connectDB } from "../../lib/db";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
+import Filter from "bad-words"; // Import bad-words
 
 // Define a Mongoose schema and model for courses
 const courseSchema = new mongoose.Schema({
@@ -38,6 +39,17 @@ export async function POST(req) {
     if (!courseName) {
       return NextResponse.json(
         { message: "Course name is required." },
+        { status: 400 }
+      );
+    }
+
+    // Initialize the profanity filter
+    const filter = new Filter();
+
+    // Check for profanity in the course name
+    if (filter.isProfane(courseName)) {
+      return NextResponse.json(
+        { message: "Course name contains inappropriate language." },
         { status: 400 }
       );
     }

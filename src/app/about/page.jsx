@@ -1,12 +1,24 @@
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
 const page = () => {
   return (
     <div className="min-h-screen text-black py-28">
       <div className="bg-ucalgaryRed fixed top-0 left-0 z-10 h-20 w-full"></div>
       <div className="text-center flex flex-col gap-8 px-16 max-lg:px-12 max-md:px-8">
-        <h1 className="text-6xl font-bold mb-6">Calgary First Year</h1>
-        <p className="text-xl leading-relaxed">
+        <h1 className="text-6xl font-bold mt-6">Calgary First Year</h1>
+
+        {/* GitHub Logo */}
+        <a
+          href="https://github.com/Jasmit22/ucalgaryFirstYear"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex justify-center mt-4"
+        >
+          <FaGithub className="text-4xl" />
+        </a>
+
+        <p className="text-xl leading-relaxed mt-4">
           Calgary First Year helps first-year UofC students navigate life as
           school approaches. We know it can be a bit strange coming to
           university for the first time if you know nothing about it.

@@ -247,6 +247,31 @@ export default function GetRoute() {
                       </p>
                     </div>
                   </details>
+                ) : leg.route == "Red" ? (
+                  <details
+                    tabIndex={0}
+                    className="collapse collapse-arrow border-base-300 bg-red-500 border text-zinc-50 max-w-[1200px]"
+                  >
+                    <summary
+                      className="collapse-title text-xl font-semibold"
+                      style={{
+                        backgroundImage: "url(/go-to/WhiteTramway.png)",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "2em",
+                        backgroundPosition: "0.5em center",
+                        paddingLeft: "3.5em", // Adjust this value based on the size of the image
+                      }}
+                    >
+                      {leg.route} Line
+                    </summary>
+                    <div className="collapse-content">
+                      <p>
+                        Ride the train for {Math.round(leg.duration / 60)}{" "}
+                        minutes ({leg.intermediateStops.length + 1} stops). Exit
+                        at {leg.to.name}.
+                      </p>
+                    </div>
+                  </details>
                 ) : (
                   <details
                     tabIndex={0}

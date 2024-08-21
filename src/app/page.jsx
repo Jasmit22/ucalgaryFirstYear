@@ -56,7 +56,7 @@ export default function Home() {
               there's a perfect spot for everyone.
             </p>
             <Link
-              className="btn bg-ucalgaryRed text-white border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl mt-3 md:mt-5"
+              className="btn mx-auto lg:mx-0 bg-ucalgaryRed text-white border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl mt-3 md:mt-5"
               href={"/study-spots"}
             >
               View Study Spots
@@ -108,7 +108,7 @@ export default function Home() {
               experiences, and course difficulty to make informed decisions.
             </p>
             <Link
-              className="btn bg-ucalgaryRed text-white border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl mt-3 md:mt-5"
+              className="btn mx-auto lg:mx-0 bg-ucalgaryRed text-white border-none hover:bg-red-800 btn-wide mb-5 font-bold shadow-2xl mt-3 md:mt-5"
               href={"/reviews"}
             >
               View Ratings

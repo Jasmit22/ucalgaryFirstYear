@@ -1,7 +1,6 @@
 import { connectDB } from "../../lib/db";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-// import Filter from "bad-words"; // Import bad-words
 
 // Define a Mongoose schema and model for courses
 const courseSchema = new mongoose.Schema({
@@ -18,7 +17,7 @@ const courseRequestSchema = new mongoose.Schema({
 
 const CourseRequest =
   mongoose.models.CourseRequest ||
-  mongoose.model("CourseRequest", courseRequestSchema);
+  mongoose.model("courseRequest", courseRequestSchema);
 
 // Utility function to sanitize input
 const sanitizeInput = (input) => {
@@ -43,31 +42,24 @@ export async function POST(req) {
       );
     }
 
-    // Initialize the profanity filter
-    // const filter = new Filter();
-
-    // Check for profanity in the course name
-    // if (filter.isProfane(courseName)) {
-    //   return NextResponse.json(
-    //     { message: "Course name contains inappropriate language." },
-    //     { status: 400 }
-    //   );
-    // }
-
     // Sanitize and normalize the courseName input
     const sanitizedCourseName = sanitizeInput(courseName);
     const normalizedCourseName = normalizeCourseName(sanitizedCourseName);
 
     // Fetch all courses and check for a match with the normalized course name
-    const courses = await Course.find({});
-    const courseExists = courses.some(
-      (course) =>
-        normalizeCourseName(course.courseName) === normalizedCourseName
-    );
+    const courseExists = await Course.findOne({
+      courseName: new RegExp(`^${normalizedCourseName}$`, "i"),
+    });
+
+    // Add the course request regardless of whether the course already exists
+    const newCourseRequest = new CourseRequest({
+      courseName: sanitizedCourseName,
+    });
+    await newCourseRequest.save();
 
     if (courseExists) {
       return NextResponse.json(
-        { message: "Course is already included." },
+        { message: "Course is already included, but request was recorded." },
         { status: 409 }
       );
     }

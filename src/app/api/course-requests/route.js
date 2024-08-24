@@ -17,16 +17,16 @@ const courseRequestSchema = new mongoose.Schema({
 
 const CourseRequest =
   mongoose.models.CourseRequest ||
-  mongoose.model("courseRequest", courseRequestSchema);
+  mongoose.model("CourseRequest", courseRequestSchema);
 
 // Utility function to sanitize input
 const sanitizeInput = (input) => {
   return input.replace(/[<>\/\\;]/g, "").trim();
 };
 
-// Utility function to normalize course names for comparison
+// Utility function to normalize course names for comparison (without removing spaces)
 const normalizeCourseName = (courseName) => {
-  return courseName.replace(/\s+/g, "").toLowerCase();
+  return courseName.toLowerCase();
 };
 
 export async function POST(req) {
@@ -46,7 +46,7 @@ export async function POST(req) {
     const sanitizedCourseName = sanitizeInput(courseName);
     const normalizedCourseName = normalizeCourseName(sanitizedCourseName);
 
-    // Fetch all courses and check for a match with the normalized course name
+    // Check if the course already exists in the courses collection
     const courseExists = await Course.findOne({
       courseName: new RegExp(`^${normalizedCourseName}$`, "i"),
     });
@@ -64,14 +64,8 @@ export async function POST(req) {
       );
     }
 
-    // If no matching course found, add the new course
-    const newCourse = new Course({
-      courseName: sanitizedCourseName,
-    });
-    await newCourse.save();
-
     return NextResponse.json(
-      { message: "Course added successfully." },
+      { message: "Course request submitted successfully." },
       { status: 201 }
     );
   } catch (error) {

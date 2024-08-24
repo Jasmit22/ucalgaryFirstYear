@@ -4,7 +4,6 @@ import Link from "next/link";
 import "daisyui";
 import { getRatingColour } from "./utils"; // Adjust the import path if necessary
 
-// Utility function to sanitize input
 const sanitizeInput = (input) => {
   const sanitized = input.replace(/[<>\/\\;]/g, ""); // Remove potentially harmful characters
   return sanitized;
@@ -17,8 +16,9 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [courseName, setCourseName] = useState("");
   const [requestSuccess, setRequestSuccess] = useState(false);
-  const [requestFailed, setRequestFailed] = useState(false); // New state for failed request
+  const [requestFailed, setRequestFailed] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state to track submission status
 
   const [filterBy, setFilterBy] = useState("None");
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -119,6 +119,7 @@ const Page = () => {
 
   const handleCourseRequest = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // Set submitting state to true
     const sanitizedCourseName = sanitizeInput(courseName);
 
     try {
@@ -132,18 +133,20 @@ const Page = () => {
       if (response.ok) {
         setRequestSuccess(true);
         setCourseName("");
-        setRequestFailed(false); // Reset failed state if successful
+        setRequestFailed(false);
         setTimeout(() => setRequestSuccess(false), 3000);
       } else {
-        setRequestFailed(true); // Set failed state if request fails
-        setRequestSuccess(false); // Reset success state
-        setTimeout(() => setRequestFailed(false), 5000); // Hide message after 5 seconds
+        setRequestFailed(true);
+        setRequestSuccess(false);
+        setTimeout(() => setRequestFailed(false), 5000);
       }
     } catch (error) {
       console.error("Error submitting course request:", error);
-      setRequestFailed(true); // Handle any unexpected errors as a failure
-      setRequestSuccess(false); // Reset success state
-      setTimeout(() => setRequestFailed(false), 5000); // Hide message after 5 seconds
+      setRequestFailed(true);
+      setRequestSuccess(false);
+      setTimeout(() => setRequestFailed(false), 5000);
+    } finally {
+      setIsSubmitting(false); // Reset submitting state
     }
   };
 
@@ -364,16 +367,21 @@ const Page = () => {
                 <button
                   type="submit"
                   className={`btn bg-ucalgaryGold text-black hover:bg-ucalgaryGold disabled:text-black ${
-                    !courseName ? "cursor-not-allowed " : ""
+                    !courseName || isSubmitting ? "cursor-not-allowed " : ""
                   }`}
-                  disabled={!courseName}
+                  disabled={!courseName || isSubmitting}
                 >
-                  Submit Request
+                  {isSubmitting ? (
+                    <span className="loading loading-spinner"></span>
+                  ) : (
+                    "Submit Request"
+                  )}
                 </button>
                 <button
                   type="button"
                   className="btn bg-ucalgaryRed text-white"
                   onClick={() => setModalOpen(false)}
+                  disabled={isSubmitting} // Disable close button while submitting
                 >
                   Close
                 </button>

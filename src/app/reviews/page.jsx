@@ -56,26 +56,9 @@ const Page = () => {
       case "None":
         setFilterBy("None");
         break;
-      case "My Reviewed":
-        setFilterBy("My Reviewed");
-        filtered = reviews.filter((review) => findReview(review));
-        break;
       case "My Unreviewed":
         setFilterBy("My Unreviewed");
         filtered = reviews.filter((review) => !findReview(review));
-        break;
-      case "Alphabetical":
-        setFilterBy("Alphabetical");
-        filtered = [...reviews].sort((a, b) => {
-          if (a.courseName.toLowerCase() < b.courseName.toLowerCase())
-            return -1;
-          if (a.courseName.toLowerCase() > b.courseName.toLowerCase()) return 1;
-          return 0;
-        });
-        break;
-      case "No Ratings":
-        setFilterBy("No Ratings");
-        filtered = reviews.filter((review) => !review.averageRating);
         break;
       case "Highest Overall Rating":
         setFilterBy("Highest Overall Rating");
@@ -219,19 +202,8 @@ const Page = () => {
                   <a onClick={() => handleFilter("None")}>Reset Filters</a>
                 </li>
                 <li>
-                  <a onClick={() => handleFilter("My Reviewed")}>My Reviewed</a>
-                </li>
-                <li>
                   <a onClick={() => handleFilter("My Unreviewed")}>
                     My Unreviewed
-                  </a>
-                </li>
-                <li>
-                  <a onClick={() => handleFilter("No Ratings")}>No Ratings</a>
-                </li>
-                <li>
-                  <a onClick={() => handleFilter("Alphabetical")}>
-                    Alphabetical
                   </a>
                 </li>
                 <li>

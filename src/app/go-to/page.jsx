@@ -31,7 +31,7 @@ export default function GoToPage() {
       </div>
       <div
         id="content"
-        className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10 flex-col"
+        className="mt-10 text-black flex gap-8 justify-center items-center max-md:mx-4 mb-10 flex-col pt-28"
       >
         <div className="w-3/4 max-md:w-full">
           <h1 className="font-bold text-3xl mb-3">

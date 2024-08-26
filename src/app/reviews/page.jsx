@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import "daisyui";
 import { getRatingColour } from "./utils"; // Adjust the import path if necessary
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const sanitizeInput = (input) => {
   const sanitized = input.replace(/[<>\/\\;]/g, ""); // Remove potentially harmful characters
@@ -355,6 +357,14 @@ const Page = () => {
               </p>
             )}
             <form onSubmit={handleCourseRequest} className="mt-4">
+              <p className="mb-4 bg-yellow-200 text-yellow-800 flex items-center p-2 rounded">
+                <FontAwesomeIcon
+                  icon={faExclamationTriangle}
+                  className="mr-4 ml-2"
+                />
+                Have you tried using the search bar to ensure your course
+                isn&apos;t here?
+              </p>
               <input
                 type="text"
                 placeholder="Enter course name"

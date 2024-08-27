@@ -51,11 +51,12 @@ export async function POST(req) {
       courseName: new RegExp(`^${normalizedCourseName}$`, "i"),
     });
 
-    // Add the course request regardless of whether the course already exists
-    const newCourseRequest = new CourseRequest({
-      courseName: sanitizedCourseName,
-    });
-    await newCourseRequest.save();
+    if (!courseExists) {
+      const newCourseRequest = new CourseRequest({
+        courseName: sanitizedCourseName,
+      });
+      await newCourseRequest.save();
+    }
 
     if (courseExists) {
       return NextResponse.json(

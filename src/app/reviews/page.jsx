@@ -8,7 +8,7 @@ import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const sanitizeInput = (input) => {
   const sanitized = input.replace(/[<>\/\\;]/g, ""); // Remove potentially harmful characters
-  return sanitized;
+  return sanitized.toUpperCase(); // Convert the sanitized input to uppercase
 };
 
 const Page = () => {
@@ -48,7 +48,7 @@ const Page = () => {
   }, [searchInput]);
 
   const handleSearchChange = (e) => {
-    const value = sanitizeInput(e.target.value.toLowerCase());
+    const value = sanitizeInput(e.target.value);
     setSearchInput(value);
   };
 
@@ -113,7 +113,7 @@ const Page = () => {
   const applyCurrentFilter = (filtered) => {
     if (searchInput) {
       filtered = filtered.filter((review) =>
-        sanitizeInput(review.courseName.toLowerCase()).includes(searchInput)
+        sanitizeInput(review.courseName).includes(searchInput)
       );
     }
     setFilteredReviews(filtered);
@@ -369,7 +369,9 @@ const Page = () => {
                 type="text"
                 placeholder="Enter course name"
                 value={courseName}
-                onChange={(e) => setCourseName(sanitizeInput(e.target.value))}
+                onChange={(e) =>
+                  setCourseName(sanitizeInput(e.target.value.toUpperCase()))
+                }
                 className="input input-bordered w-full bg-gray-200 text-black"
                 required
               />

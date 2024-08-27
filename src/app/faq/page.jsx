@@ -194,7 +194,7 @@ const Page = () => {
     {
       question: "Where can I buy food on campus?",
       answer:
-        "Mac Hall is the go-to destination if you're hungry. Again, beware that it will be packed. There are other locations scattered around campus, including multiple coffee shops, which you are sure to find if you explore.",
+        "Mac Hall is the go-to destination if you're hungry. Again, beware that it will be packed for the first few weeks. There are other locations scattered around campus, including multiple coffee shops, which you are sure to find if you explore.",
     },
 
     {

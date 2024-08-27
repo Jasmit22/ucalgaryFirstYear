@@ -33,7 +33,7 @@ export default function ContactPage() {
           </label>
           <textarea
             className="textarea textarea-bordered w-full mb-4 text-black"
-            placeholder="Bio"
+            placeholder="Message"
           ></textarea>
           <button className="btn bg-ucalgaryRed text-white border-none hover:bg-red-800 mb-5 font-bold shadow-2xl">
             Send Message

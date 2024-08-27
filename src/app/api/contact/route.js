@@ -12,7 +12,7 @@ const Message =
   mongoose.models.Message || mongoose.model("Message", messageSchema);
 
 export async function GET(req) {
-  // Implementation for updating a review can go here
+  // Implementation for updating a message can go here
 }
 
 export async function POST(req) {
@@ -39,22 +39,22 @@ export async function POST(req) {
     await message.save();
 
     return NextResponse.json(
-      { message: "Review saved successfully." },
+      { message: "Message saved successfully." },
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error saving review:", error);
+    console.error("Error saving message:", error);
     return NextResponse.json(
-      { message: "Failed to save the review." },
+      { message: "Failed to save the message." },
       { status: 500 }
     );
   }
 }
 
 export async function PUT(req) {
-  // Implementation for updating a review can go here
+  // Implementation for updating a message can go here
 }
 
 export async function DELETE(req) {
-  // Implementation for deleting a review can go here
+  // Implementation for deleting a message can go here
 }

@@ -4,7 +4,7 @@
 
 # Calgary First Year
 
-Calgary First Year helps first year UofC students navigate life as school approaches. We know it can be a bit strange coming to University for the first time if you know nothing about it. 
+[Calgary First Year](https://www.calgaryfirstyear.com) helps first year UofC students navigate life as school approaches. We know it can be a bit strange coming to University for the first time if you know nothing about it. 
 
 ## Tech Stack
 
